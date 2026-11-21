@@ -1,73 +1,44 @@
-# Stage 1 — Original Data Collection closure checklist
+# Stage 1 — Data Collection: signed off for exactly three approved sources
 
-**Scope:** Finish Stage 1 before starting Stage 2. The project uses **exactly three approved data datasets** (SCANIA Component X v2, the original user-supplied AI4I 2020/Mendeley records, and the original Kaggle fault-image archive). Technical PDFs are supporting **documents**, not fourth datasets or source-matched SCANIA maintenance histories.
+**Decision (2026-11-21): COMPLETE — original-file acquisition.** The owner explicitly narrowed this project to **exactly these three sources**:
 
-**Current decision (2026-11-21):** A single current local original-source collection inventory **has been executed and PASSED** for **9/9 SCANIA source CSVs, 2/2 SCANIA official PDFs, the unchanged original AI4I CSV and the original Kaggle ZIP**. See [actual observed Stage 1 original-file inventory](stage1-acquisition-results-2026-11-21.md). **Full Stage 1 project-documentation collection is still open**: two general pump technical PDFs selected for OCR/RAG have not been checked on the current laptop, and individual Kaggle-photo reuse rights remain unverified. The verified three-dataset acquisition does not imply all other project data stages are complete.
+1. **SCANIA Component X v2**, original Researchdata version 2 (nine original CSVs, with the two PDFs published **inside that SCANIA source package**).
+2. **AI4I 2020**, the original user-supplied Mendeley dataset (its source publisher describes synthetic manufacturing-style observations).
+3. **Industrial Machinery Fault Image Dataset**, the original user-supplied Kaggle ZIP.
 
-## Source register — what can be established from earlier actual evidence
+**No additional pump manual datasets, PDFs or other supplementary documents are required or approved.** In particular, `pump.pdf` and `pumplcc_1001.pdf` were previously suggested by mistake and are explicitly **OUT OF SCOPE**. Do not download them, copy them into the current project, use them for RAG, or block Stage 1 because of their absence. The two PDFs **packaged by the original SCANIA provider** remain source documentation *within SCANIA*, not a fourth source.
 
-| Approved source | Original acquisition evidence in project | Reference | Rights/provenance limit |
-|---|---|---|---|
-| SCANIA Component X v2 | Owner successfully ran genuine nine-original-CSV audit and subsequent indexed real-readout pipeline; 33,641 source vehicles and 1,516,819 recorded readouts | https://researchdata.se/en/catalogue/dataset/2024-34/2 | Original provider lists **CC BY 4.0**. The dataset's **nine CSVs and two original documentation PDFs** should be inventoried separately. SHA-256 values from the owner-run audit are not independent provider-signed checksums |
-| Mendeley AI4I 2020 V1 | The unchanged previously uploaded/extracted `ai4i2020.csv` had 10,000 records and SHA-256 `dc6630cd9b1f0f853922fad78a1b6436570d3f1ec863f1dd5c4340ac56bc8a8e` in the project data-preparation record | https://data.mendeley.com/datasets/5ww3zv87y7/1 | Mendeley record lists **CC0 1.0**. The original AI4I benchmark is **publisher-synthetic**, not real factory measurements. This Mendeley record re-describes AI4I originally available from UCI; do not claim independently authenticated upstream original authorship |
-| Industrial machinery fault images | Existing owner-audited unchanged ZIP fingerprint `d30ffdcdcda1258ac95d89dd90539fe7ffd7b398e693ada652b4f63c073c9b28`; 234 original image entries | https://www.kaggle.com/datasets/zara2099/industrial-machinery-fault-image-dataset/data | **Exact dataset license and individual photo rights are not verified.** Kaggle availability does not certify ownership. Do not redistribute or present the images as rights-cleared. Review labels, duplicates and provenance only at their later agreed stages |
+## Provenance and actual acquisition evidence
 
-SCANIA provider's original version-2 listing includes:
-- Nine original source CSVs (three each for train/validation/test).
-- **`2024_IDA_challenge_v2.pdf`** and **`Scania_component_X_PdM.pdf`** original supporting documentation PDFs.
-- The source record explicitly lists CC BY 4.0, provided attribution terms are respected.
+The owner executed `src/preprocessing/audit_stage1_collection.py` locally with the actual approved files, returning `THREE_ORIGINAL_DATASETS_AND_SCANIA_DOCUMENTS_LOCALLY_VERIFIED` and `FILE_ACQUISITION_CHECKS_PASSED_RIGHTS_REVIEW_OPEN`:
 
-These source facts were checked against the listed official Researchdata v2 and Mendeley V1 publisher records on **2026-11-21**. The precise original Kaggle dataset licensing could **not** be independently confirmed from the readable source; do not invent it.
+| Source | Actual owner-run local evidence | Stage 1 collection |
+|---|---|---|
+| [SCANIA Component X version 2](https://researchdata.se/en/catalogue/dataset/2024-34/2) | **9/9 original CSVs** match prior owner-run SHA-256 audit; **2/2 official same-source documentation PDFs** present | PASS |
+| [AI4I 2020, Mendeley V1](https://data.mendeley.com/datasets/5ww3zv87y7/1) | Unchanged original `ai4i2020.csv` extracted from previously supplied nested ZIP; matches previously audited SHA-256 `dc6630cd9b1f0f853922fad78a1b6436570d3f1ec863f1dd5c4340ac56bc8a8e` | PASS |
+| [Industrial Machinery Fault Images, Kaggle](https://www.kaggle.com/datasets/zara2099/industrial-machinery-fault-image-dataset/data) | Original **234-image ZIP** `archive.zip`; matches previous owner-audited SHA-256 `d30ffdcdcda1258ac95d89dd90539fe7ffd7b398e693ada652b4f63c073c9b28`; archive integrity checks passed | PASS |
 
-The previously mentioned pump technical manuals, if collected separately, are **independent supporting PDF documents**, not a fourth machine-sensor dataset and not documented as joined to SCANIA vehicle histories. Their actual local filenames, provenance, reuse conditions and SHA-256 still need a separate inventory. Providing `--supporting-pdf` paths in the script records local presence and hashes only, **not** independent permission or content validation.
+See [the actual terminal-report transcription and collection evidence](stage1-acquisition-results-2026-11-21.md). The complete local owner-run report remains at `data/processed/stage1_collection_inventory_verified.json`; original raw files and source archives are not committed to GitHub. The earlier incomplete inventory report was preserved as audit history; its initially missing *assumed paths* were resolved and the corrected inventory **passed**.
 
-## Stage 1 evidence-only inventory script
+## Acceptance boundary and limitations
 
-`src/preprocessing/audit_stage1_collection.py` reads local **existing, unmodified** data originals and already owner-generated original SCANIA audit report.
+Stage 1 **collection** is complete because all three agreed original datasets are present and the implemented archive/file checks passed. **No extra manuals** and **no new datasets** are required.
 
-It checks:
-- All **nine** SCANIA version-2 CSV files exist and match every previous owner-run original raw CSV SHA-256 fingerprint.
-- Both SCANIA source documentation PDF files exist and have a PDF header (basic file-level check only, not OCR or content validation).
-- The original previously source-audited **AI4I CSV** matches its actual prior source fingerprint and has the original 14-column CSV header.
-- The original previously source-audited **Kaggle ZIP** matches the prior source fingerprint, contains 234 original file members under the expected five class folders, has unique safe paths and passes ZIP CRC checks. This does **not** evaluate image labels or resolve rights.
-- Optionally records existing machine/manual PDFs (source file name, byte size, local hash and PDF header), without creating any new document or source data.
+This sign-off does **not** certify all source records as trustworthy or permission-cleared:
 
-It **does not download, replace, generate, clean, split, train on, or fabricate any source data**. No external files are uploaded, no raw CSVs/images are added to GitHub, and no predicted model performance is asserted.
+- Original Researchdata SCANIA v2 lists CC BY 4.0; Mendeley V1 lists CC0 1.0. The specific Kaggle archive's license and **individual image provenance/reuse rights are unresolved**. Record this as an explicit **Stage 2 provenance/rights audit and any later image-use/release gate**, not as an excuse to invent or collect other data. Do not claim rights clearance, redistribute affected photos publicly, or use them in activities requiring unverified permissions.
+- SHA-256 matches are comparisons to the **owner's previously recorded original downloaded files**, **not** independent publisher-signed checksum authentication.
+- SCANIA is real truck data, AI4I is **publisher-synthetic**, and the Kaggle photographs are independent examples. Do not fabricate same-machine joins, maintenance histories or sensor-photo supervision.
+- This step makes **no claims** about Stage 2 auditing, Stage 3 cleaning, Stage 4 label verification, Stage 5 splitting, Stage 6 feature engineering, Stage 7 final data validation, or Stage 8 modeling.
 
-## Run once on the actual original files
+## Final Stage 1 exit checklist
 
-From the cloned repository in PowerShell, after merging the PR:
+- [x] 9/9 unchanged original SCANIA version-2 CSVs present and owner-hash-matched.
+- [x] 2/2 PDFs supplied within the original SCANIA source present.
+- [x] Unchanged approved AI4I original CSV present, hash-matched.
+- [x] Unchanged approved Kaggle ZIP present, owner-hash-matched, 234 archive members verified.
+- [x] Exact approved source scope fixed at **three**, with **no standalone pump guides**.
+- [x] Kaggle image rights/provenance and external publisher checksum limitations explicitly recorded **as unresolved**, not falsely cleared.
+- [x] Owner-run consolidated original acquisition report checked, Stage 1 acquisition sign-off issued.
 
-```powershell
-git pull origin main
-
-py -3.11 src/preprocessing/audit_stage1_collection.py --scania-data "C:\Users\hindh\Documents\2024-34-2\data" --scania-audit "data/processed/scania_audit.json" --ai4i "data/raw/ai4i2020.csv" --images "data/raw/industrial_fault_images.zip" --output "data/processed/stage1_collection_inventory.json"
-```
-
-By default the SCANIA PDF originals are checked in **`C:\Users\hindh\Documents\2024-34-2\documentation`** (sibling of the original `data` directory). Use `--scania-docs "EXACT_EXISTING_DOCUMENTATION_FOLDER"` if they are somewhere else. If your already-collected AI4I CSV or original image ZIP are stored elsewhere, **point `--ai4i` or `--images` to their actual existing paths**; do not download substitute copies to make the check pass.
-
-To inventory existing supplemental technical manuals, append the flag once per actual file, for example:
-
-```powershell
---supporting-pdf "EXACT_PATH_TO_EXISTING_PUMP_PDF"
-```
-
-(Place that argument on the same invocation line; it is optional and never changes the approved dataset count.)
-
-The terminal prints only the summarized source-file collection status. The full local `stage1_collection_inventory.json` includes actual sizes, SHA-256 values, per-file presence and reasons for any missing/mismatched source. Since it is ignored under `data/processed/`, it is not committed to GitHub.
-
-If a file is missing or its digest differs, **stop** and use the original source archive from your own previously approved files. Never generate substitute machine measurements/images or suppress checks by inventing an expected fingerprint. The script refuses overwriting an earlier report; use a new versioned output path for subsequent runs.
-
-## Exit criteria for Stage 1 (before Stage 2)
-
-- [ ] **9/9** genuine original SCANIA v2 CSVs present and consistent with the previous owner's original-data audit.
-- [ ] **2/2** original SCANIA documentation PDFs locally present.
-- [ ] Original approved AI4I CSV present and same unchanged, owner-audited SHA-256.
-- [ ] Original approved fault-image ZIP present, fingerprint and original 234-member structure verified.
-- [ ] Supporting technical/manual PDF inventory either recorded from actual files or explicitly scoped out; no fake PDFs.
-- [ ] License/source register retained in GitHub: SCANIA CC BY 4.0 and Mendeley V1 CC0 1.0 as listed by their pages; Kaggle exact license/per-image photo rights **OPEN** and explicitly disclosed.
-- [ ] Owner-run local collection-inventory report reviewed and source availability gate confirmed.
-
-**Stage 1 file acquisition** can be declared complete when the actual originals and required documentation are verified, with every unresolved rights/provenance issue explicitly registered. This **does not itself certify full legal reuse permissions or high-quality image labels**. If project requirements demand rights-cleared images at the collection stage, full Stage 1 closure must remain **BLOCKED** until that external evidence is provided. Do not silently waive this restriction.
-
-The next stage is **Stage 2 Data Auditing** only after Stage 1's actual local file collection evidence is reviewed and any required rights limitations accepted. Later Stage 3 Cleaning, Stage 4 Labels, Stage 5 Splits, Stage 6 Features, Stage 7 Final Data Validation must be closed sequentially, not bundled together.
+**Next step, and only next step:** **Stage 2 — Data Auditing**, across the same three original sources. Complete Stages 2, 3, 4, 5 and 6 **one by one** before Stage 7 final data validation. There is no requirement to create or retrieve additional source materials.
