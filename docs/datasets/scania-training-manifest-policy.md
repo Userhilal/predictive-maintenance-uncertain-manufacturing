@@ -1,6 +1,6 @@
 # SCANIA v2 — Original-only training cohort manifest
 
-**Status:** Proposed implementation; must run and be checked on the owner's actual SCANIA v2 files before a model is approved.
+**Status (2026-11-21):** The owner successfully executed the original-only SCANIA v2 training manifest. It references 1,122,452 original train readouts across 23,550 genuine vehicles and preserves the previous 25,758 / 894,300 / 202,394 measured target-observability counts; all source hashes match the earlier owner's local audit. See [actual measured manifest results](scania-training-manifest-results-2026-11-21.md). **No model was trained; no source rows fabricated.**
 
 **Strict provenance:** Only [the original owner-supplied SCANIA Component X v2](https://researchdata.se/en/catalogue/dataset/2024-34/2), its genuine downloaded CSVs, and the previously *owner-executed source-only audit/index/horizon reports*. No replacement dataset, artificial vehicle, invented sensor measurement, synthetic failure or fake source history.
 
@@ -38,7 +38,7 @@ These targets are **computed from genuine recorded SCANIA endpoints**; they are 
 
 ## How to run locally
 
-**After merging the pull request** and inside the existing project root in Windows PowerShell:
+**For reproduction using the already-merged script**, run inside the existing project root in Windows PowerShell with a NEW output directory; the previous output exists and the script correctly refuses to overwrite it:
 
 ```powershell
 git pull origin main
