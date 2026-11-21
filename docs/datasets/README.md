@@ -19,6 +19,7 @@ This page records **current evidence**, not a certificate that all data is produ
 - Intended use: time-to-event / survival modeling, censored data, failure-proximity classification, uncertainty analysis.
 - Limitation: trucks rather than manufacturing equipment; sensor meanings anonymized.
 - **Open item:** original CSV contents were not independently audited in this repository. Obtain data and check keys, missingness, sequence order, leakage, and class counts before training.
+- File acquisition, integrity validation, executable audit and documented open gates: [SCANIA raw-file audit workflow](scania-raw-validation.md).
 
 ## 3. Industrial Machinery Fault Image Dataset
 
