@@ -1,12 +1,12 @@
 # SCANIA Component X — Original-source-only validation
 
-**Status: ORIGINAL SCANIA CSV AUDIT NOT RUN.** This page describes checks to execute against the original research data. No fabricated measurements, example trucks, mock sensor values, or synthetic fixture records are included.
+**Status: ORIGINAL SCANIA CSV AUDIT COMPLETED LOCALLY — DETAILED ACCEPTANCE REVIEW OPEN.** The owner ran the validator against nine original CSVs and reported 33,641 vehicles, 1,516,819 readouts, disjoint vehicle splits, and verified vehicle-target linkage. See the [measured audit findings](scania-audit-results-2026-11-21.md) for per-split checks, actual target distributions, and limits. No fabricated measurements, example trucks, mock sensor values, or synthetic fixture records are included.
 
 ## Only permitted SCANIA data source
 
 https://researchdata.se/en/catalogue/dataset/2024-34/2
 
-Use the nine original CSVs under **Data files**, and the two documentation PDFs listed by that dataset. Downloaded CSVs must not be edited in place or replaced with guessed data. The files have not been successfully downloaded into our execution environment.
+Use the nine original CSVs under **Data files**, and the two documentation PDFs listed by that dataset. Downloaded CSVs must not be edited in place or replaced with guessed data. The owner obtained the original files locally and successfully executed the repository audit. This hosted execution environment still has not inspected the original CSV bytes directly.
 
 **Important provenance:** The scripts compute SHA-256 values for each downloaded CSV so the user can track its exact bytes. No trusted official checksums were retrieved from the user-supplied source, so the scripts **do not claim** that a computed hash is verified against an official reference. Previous third-party checksum references have been removed.
 
@@ -20,7 +20,7 @@ Use the nine original CSVs under **Data files**, and the two documentation PDFs 
 
 Readout fields: vehicle_id, time_step and 105 anonymized operational counters/histogram values. Specification files: vehicle_id plus Spec_0 through Spec_7. The number of repairs reported for training is 2,272; other vehicles are observed without a recorded repair event in the study window (right-censored). A repair record is not the same as a guaranteed physical breakdown. The time-step unit is anonymized.
 
-All these numbers are from the original dataset's documentation or published description. They must be **checked against the actual CSV files** before being treated as audited values.
+The population and readout counts in this table were subsequently matched by the owner's actual-file audit, as documented in the [audit results](scania-audit-results-2026-11-21.md). Other detailed checks and source-hash comparison remain open.
 
 ## Optional GitHub Actions audit (original files only)
 
@@ -57,14 +57,15 @@ Both commands work with the research-data files only. The downloader will keep a
 6. Time-step sequences, ordering, and repeated adjacent time steps.
 7. Repair and censoring indicators, validation/test label distributions, and study-end boundaries.
 
-A missing CSV should stop the audit. Do **not** invent missing SCANIA rows or mark the dataset validated when the original source is unavailable.
+A missing CSV should stop the audit. Do **not** invent missing SCANIA rows. The owner has completed an original-file audit; inspect the full output and unresolved warnings before signing off final acceptance.
 
 ## Unresolved gates
 
-- [ ] Download all nine original CSVs from the supplied version-2 repository.
-- [ ] Inspect complete CSVs, record their computed fingerprints and compare their schemas and counts to the publisher documentation.
+- [x] Obtain all nine original CSVs from the supplied version-2 repository locally.
+- [x] Run the original-file audit and confirm population and readout counts match the publisher documentation.
+- [ ] Review the complete local JSON report, including all per-feature missing counts and computed fingerprints.
 - [ ] Review audit warnings and document any scientifically justified exclusions or transformations.
 - [ ] Obtain direct provider checksums, if supplied through the permitted repository, for stronger byte-level provenance.
-- [ ] Approve censoring-aware time-to-event modeling only after the raw-file audit is complete.
+- [ ] Approve censoring-aware time-to-event modeling after review of the full raw-file report and valid prediction cutoffs.
 
 There are no source-created test fixtures or pretend SCANIA evaluation results in this project. SCANIA truck histories remain **independent** from the Kaggle photographs and Mendeley AI4I manufacturing-style records.
