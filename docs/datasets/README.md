@@ -4,6 +4,9 @@
 
 This page records **current evidence**, not a certificate that all data is production-ready.
 
+- **Stage 1 Collection closure in progress:** [original-only local collection inventory and acceptance checklist](stage1-collection-closure.md) verifies nine real SCANIA CSVs, two official SCANIA documentation PDFs, the unchanged AI4I source CSV and the original Kaggle ZIP. The image source's license/per-image rights remain explicitly unverified; no collection sign-off is claimed until the owner runs this inventory. Stages 2–6 are handled separately, one at a time.
+
+
 ## 1. AI4I 2020
 
 - Source: https://data.mendeley.com/datasets/5ww3zv87y7/1
