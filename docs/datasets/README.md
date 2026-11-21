@@ -4,7 +4,7 @@
 
 This page records **current evidence**, not a certificate that all data is production-ready.
 
-- **Stage 1 Collection closure in progress:** [original-only local collection inventory and acceptance checklist](stage1-collection-closure.md) verifies nine real SCANIA CSVs, two official SCANIA documentation PDFs, the unchanged AI4I source CSV and the original Kaggle ZIP. The image source's license/per-image rights remain explicitly unverified; no collection sign-off is claimed until the owner runs this inventory. Stages 2–6 are handled separately, one at a time.
+- **Stage 1 core original-source file acquisition PASSED on the owner's laptop (2026-11-21):** 9/9 SCANIA original CSVs, both SCANIA original documentation PDFs, source-hash-matched AI4I CSV from the original nested archive, and the previous original-source-hash-matched Kaggle ZIP. See [actual owner-run collection inventory](stage1-acquisition-results-2026-11-21.md) and [Stage 1 gate policy](stage1-collection-closure.md). **Full Stage 1 documentary scope still open**: two separately selected pump OCR/RAG guides were not checked in this inventory; individual Kaggle-photo reuse rights remain unverified. Proceed to Stage 2 only after explicit Stage 1 scope/sign-off; no synthetic files or generated data.
 
 
 ## 1. AI4I 2020

@@ -2,7 +2,7 @@
 
 **Scope:** Finish Stage 1 before starting Stage 2. The project uses **exactly three approved data datasets** (SCANIA Component X v2, the original user-supplied AI4I 2020/Mendeley records, and the original Kaggle fault-image archive). Technical PDFs are supporting **documents**, not fourth datasets or source-matched SCANIA maintenance histories.
 
-**Current decision:** The three sources are previously documented and their originals were processed in earlier owner-run audits, but a **single current local collection inventory has not yet been executed**. Do not declare full Stage 1 sign-off from a list of URLs alone.
+**Current decision (2026-11-21):** A single current local original-source collection inventory **has been executed and PASSED** for **9/9 SCANIA source CSVs, 2/2 SCANIA official PDFs, the unchanged original AI4I CSV and the original Kaggle ZIP**. See [actual observed Stage 1 original-file inventory](stage1-acquisition-results-2026-11-21.md). **Full Stage 1 project-documentation collection is still open**: two general pump technical PDFs selected for OCR/RAG have not been checked on the current laptop, and individual Kaggle-photo reuse rights remain unverified. The verified three-dataset acquisition does not imply all other project data stages are complete.
 
 ## Source register — what can be established from earlier actual evidence
 
