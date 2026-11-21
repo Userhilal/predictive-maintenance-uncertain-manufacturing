@@ -19,7 +19,7 @@ This page records **current evidence**, not a certificate that all data is produ
 - Type: real operational sequences, vehicle characteristics, repair/event and label files.
 - Intended use: time-to-event / survival modeling, censored data, failure-proximity classification, uncertainty analysis.
 - Limitation: trucks rather than manufacturing equipment; sensor meanings anonymized.
-- **Open item:** original CSV contents were not independently audited in this repository. Obtain data and check keys, missingness, sequence order, leakage, and class counts before training.
+- **Actual-file audit executed locally (2026-11-21):** 33,641 vehicles, 1,516,819 readouts, valid split separation and reported vehicle-target linkage. No malformed numeric values or backward/repeated adjacent timestamps were found. Highest observed per-feature missing rate was under 1% for each split. Provider hash comparison and full JSON/report acceptance remain open. [See measured results](scania-audit-results-2026-11-21.md).
 - File acquisition, integrity validation, executable audit and documented open gates: [SCANIA raw-file audit workflow](scania-raw-validation.md).
 
 ## 3. Industrial Machinery Fault Image Dataset
