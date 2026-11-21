@@ -14,7 +14,7 @@ The owner successfully audited the nine original files and indexed all 1,516,819
 - **Validation/test:** class_label applies to the last *provided* observed readout for each vehicle. The original five classes describe proximity windows: class 0 more than 48 time steps or no repair, class 1 24–48, class 2 12–24, class 3 6–12, class 4 0–6. Exact future repair time is not supplied for validation/test; do not invent it or assume unprovided inclusion conventions at boundary values.
 - Time steps are anonymized, not established calendar hours or days. Repairs are observed service events, not guaranteed physical breakdowns.
 
-## The proposed diagnostic — not yet executed on the original CSVs
+## Diagnostic executed on the original CSVs
 
 The new Python script **src/preprocessing/audit_scania_cutoffs.py** verifies the source fingerprints against the real local data audit, then compares **existing** training observation timestamps to the recorded repair or censoring endpoints. It checks the source-only index against real counts and produces aggregate numbers only:
 
@@ -51,4 +51,4 @@ The script refuses changed source files and refuses to overwrite an existing rep
 6. Fit any later model-dependent transformations on training data only. There is currently **no numeric imputation** and no supervised training.
 7. Preserve separation from the independent Mendeley AI4I and Kaggle image collections.
 
-**Status:** Proposed source-only cutoff QA script prepared and checked on the genuine uploaded raw-audit report; real full-data cutoff QA execution is still pending on the owner's laptop. Publisher checksum comparison remains unverified.
+**Status (2026-11-21):** The user has now executed the full cutoff audit against the actual original SCANIA v2 files. All 1,122,452 genuine training readouts are strictly before the corresponding recorded repair/censoring endpoint; none are at or after it. See [source-grounded completed run](scania-cutoff-audit-results-2026-11-21.md). This establishes the source endpoint time check only; the model's outcome-independent prediction-cutoff selection, censoring-aware training and held-out evaluation rules are still pending. Publisher checksum comparison remains unverified.
