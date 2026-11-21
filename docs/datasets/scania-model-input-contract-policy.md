@@ -1,6 +1,6 @@
 # SCANIA v2 — First model-input preprocessing contract (no training)
 
-**Status:** The first baseline's **policy is defined** from the owner's measured SCANIA v2 sensor review. The contract builder has **not yet run on the owner's full original-data profile JSON**.
+**Status (2026-11-21):** The owner has successfully executed the input-contract builder on the original-source-derived SCANIA v2 manifest, full 105-sensor profile and quality review: `ORIGINAL_SCANIA_MODEL_INPUT_CONTRACT_PREPARED`. The actual terminal output confirms 105 real sensors, 737,995 known-outcome training-fit observations, 162,292 unknown training-fit observations excluded from binary loss, and 182,063 known / 40,102 unknown observations in internal holdout. The baseline input contract preserves original missingness with no clipping/scaling/imputation; **no model is trained**. See [executed source-only contract results](scania-model-input-contract-results-2026-11-21.md).
 
 **Only source:** https://researchdata.se/en/catalogue/dataset/2024-34/2 , the owner's real SCANIA Component X v2 download and its already locally executed source-only profile/manifest/quality audits. These are truck histories, not synchronized factory sensor/photos.
 
