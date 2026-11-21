@@ -25,10 +25,13 @@ import json
 import zipfile
 from pathlib import Path
 
-from prepare_ai4i import SOURCE_SHA256 as AI4I_SHA256
-from prepare_fault_images import SOURCE_SHA256 as IMAGE_SHA256
 from prepare_scania import EXPECTED_FILES as SCANIA_FILES
 from prepare_scania import validate_audit
+
+# Fingerprints of the unchanged files previously audited from the owner's
+# original approved uploads. Not independent publisher-signed hashes.
+AI4I_SHA256 = "dc6630cd9b1f0f853922fad78a1b6436570d3f1ec863f1dd5c4340ac56bc8a8e"
+IMAGE_SHA256 = "d30ffdcdcda1258ac95d89dd90539fe7ffd7b398e693ada652b4f63c073c9b28"
 
 SOURCE_SCANIA = "https://researchdata.se/en/catalogue/dataset/2024-34/2"
 SOURCE_AI4I = "https://data.mendeley.com/datasets/5ww3zv87y7/1"
