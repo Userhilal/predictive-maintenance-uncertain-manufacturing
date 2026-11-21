@@ -154,8 +154,13 @@ def audit_folder(folder: Path, verify_hashes: bool = True, expect_published_coun
         if verify_hashes and not match:
             raise ValueError(f"SHA256 does not match reference metadata for {name}")
     all_ids = {}
+    reference_features = None
     for split in SPLITS:
         reads = audit_readouts(folder / f"{split}_operational_readouts.csv")
+        if reference_features is None:
+            reference_features = reads["feature_columns"]
+        elif reads["feature_columns"] != reference_features:
+            raise ValueError(f"Operational feature schema/order differs in {split} split")
         specs = read_small(folder / f"{split}_specifications.csv", {"vehicle_id", *SPEC_COLS}, "specifications")
         target_kind = "tte" if split == "train" else "labels"
         targets = read_small(folder / ("train_tte.csv" if split == "train" else f"{split}_labels.csv"),
