@@ -4,7 +4,7 @@
 
 The owner merged original Stage 6 implementation PR #49 and executed `src/preprocessing/engineer_stage6_ai4i_features.py` on the actual unchanged, originally published synthetic AI4I 2020 CSV, using the already verified eligible Stage 5 assignment metadata and exact Stage 4 original label eligibility policy. No new source datasets, synthetic observations, fault images, independent pump PDFs, model or feature-training from holdouts were added.
 
-**This is actual owner-local output, not a simulated source execution.** The original Stage 6 report and feature data are local, Git-ignored files that have not been read back for independent post-execution acceptance yet.
+**This is actual owner-local output, not a simulated source execution.** The original Stage 6 report and feature data remain local and Git-ignored; they were subsequently read back by the owner-run original-source verification script and accepted in the final review recorded below.
 
 ## Actual Stage 6 terminal JSON
 
@@ -81,18 +81,18 @@ git pull origin main
 py -3.11 src/preprocessing/review_stage6_ai4i_features.py --ai4i "data/raw/ai4i2020.csv" --stage5-dir "data/processed/stage5_eligible_splits" --stage6-dir "data/processed/stage6_ai4i_features"
 ```
 
-**Do NOT rerun** `engineer_stage6_ai4i_features.py` to fix or replace the existing source-derived feature artifacts; the producer is deliberately write-once. Send the actual read-only verifier terminal JSON for the final Stage 6 technical review.
+**Do NOT rerun** `engineer_stage6_ai4i_features.py` or overwrite existing original-source-derived outputs. The owner has already executed the read-only reviewer successfully; its complete actual JSON and final qualified decision appear below.
 
 ### Stage 6 exit status
 
 - [x] Owner executed genuine AI4I 2020 feature engineering using 6,981 train fit rows, 9,973 eligible UDI rows, 8 approved predictors and no original source modifications.
 - [x] All 27 original AI4I disputed label UDIs excluded from source-derived AI4I feature cohorts, as reported by the original actual source-run code.
 - [x] No SCANIA cross-task supervised feature matrix or original Kaggle supervised image features created; photo label/rights issue #43 remains open.
-- [ ] Recompute actual source-only five numeric train-fit statistics against original 6,981 AI4I source rows and compare the existing saved feature contract.
-- [ ] Recompute all eight predictor values for all 9,973 eligible original UDI rows in the three unchanged Stage 5 cohorts; verify their exact source UDI/target alignment and SHA-256.
-- [ ] Record **risk-qualified Stage 6 AI4I-only feature engineering technical sign-off**, not fully supervised multimodal dataset readiness. **Stage 7 final data validation has not begun.**
+- [x] Owner's genuine read-only verifier recomputed five numeric train-only means, population standard deviations and source ranges against exactly 6,981 original AI4I source training rows, matching the saved feature contract.
+- [x] Owner's genuine read-only verifier recomputed all eight predictors for 9,973 original source UDI records (79,784 values), verified exact source UDI/target matches and all four Stage 6 output SHA-256 digests.
+- [x] Risk-qualified **Stage 6 AI4I-only train-only feature engineering technical sign-off** recorded below. This does NOT certify independently verified multimodal image labels/rights or SCANIA unified supervised task compatibility. **Stage 7 final data validation has not begun.**
 
-**Current stage:** Stage 6 producer EXECUTED, final source-value read-only review REQUIRED. This source is the **original published synthetic AI4I** and should never be called real measured manufacturing history.
+**Final stage decision:** Stage 6 **technically complete for eligible original AI4I tabular train-only features**, with source-value review passed and unresolved SCANIA task and image supervision gates explicitly carried forward. AI4I remains **publisher-synthetic**, not real measured manufacturing history. Stage 7 has not begun.
 
 ## Final actual owner-run Stage 6 read-only source/feature review — 2026-11-21
 
