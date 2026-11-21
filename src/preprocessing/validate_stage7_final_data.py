@@ -29,7 +29,6 @@ from pathlib import Path
 
 from prepare_ai4i import SOURCE_SHA256 as AI4I_SHA, load_and_validate
 from prepare_scania import EXPECTED_FILES as SCANIA_FILES, validate_audit
-from prepare_fault_images import SOURCE_SHA256 as IMAGE_ARCHIVE_SHA
 from review_stage3_cleaning import review as review_stage3
 from review_stage4_labels import review as review_stage4
 from review_stage5_splits import review as review_stage5
@@ -39,6 +38,7 @@ from review_stage6_ai4i_features import (
 from verify_stage4_labels import scan_source_labels
 
 # Actual owner-run read-only review fingerprints, not publisher signatures.
+IMAGE_ARCHIVE_SHA = "d30ffdcdcda1258ac95d89dd90539fe7ffd7b398e693ada652b4f63c073c9b28"
 STAGE2_SHA = "07fa57306fd93f09bb2ba28ebecb1be7526043503aacb1991478da42073eab67"
 STAGE3_SHA = "3f8e299a9fb70d65cf4a69463185f872e63f7777a5ca7d47e7bcc4b2c7fde186"
 STAGE4_SHA = "c0c32dc6d523a7e67a2e1ec0ed01b01f0ddb4798c671836d2af97717ed56db29"
