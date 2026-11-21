@@ -1,0 +1,83 @@
+{
+  "policy_id": "STAGE4_SOURCE_LABEL_VERIFICATION_RISK_QUALIFIED_2026_11_21",
+  "evidence": {
+    "owner_reviewed_stage4_report_sha256": "c0c32dc6d523a7e67a2e1ec0ed01b01f0ddb4798c671836d2af97717ed56db29",
+    "owner_reviewed_stage3_report_sha256": "3f8e299a9fb70d65cf4a69463185f872e63f7777a5ca7d47e7bcc4b2c7fde186",
+    "all_four_stage4_csv_hashes_verified_by_owner_run": true,
+    "original_source_files_modified": false,
+    "limitations": "Owner reported real local output; source images themselves and full per-row local CSVs are not accessible via this GitHub review"
+  },
+  "source_policy": {
+    "exactly_three_original_sources": [
+      "SCANIA Component X v2",
+      "AI4I 2020",
+      "Industrial Machinery Fault Image Dataset"
+    ],
+    "scania": {
+      "train_source_rows": 23550,
+      "validation_source_rows": 5046,
+      "test_source_rows": 5045,
+      "train_label_semantics": "Original in_study_repair observed event vs right censoring with length_of_study_time_step",
+      "validation_and_test_semantics": "Original class_label categories 0-4, distinct task from source train event/censoring",
+      "use_original_source_cohorts_only": true,
+      "converting_censoring_to_healthy_label_prohibited": true,
+      "inventing_common_binary_target_from_source_five_class_labels_prohibited": true,
+      "independent_vehicle_outcome_truth_not_established": true
+    },
+    "ai4i": {
+      "original_rows": 10000,
+      "original_binary_labels": {
+        "0": 9661,
+        "1": 339
+      },
+      "disputed_udi_review_queue_relative_path": "data/processed/stage4_label_verification/ai4i_27_source_label_disagreements_for_review.csv",
+      "source_target_mode_mismatches": 27,
+      "mismatch_types": {
+        "mode_flag_positive_global_target_zero": 18,
+        "global_target_one_no_positive_mode_flag": 9
+      },
+      "stage5_supervised_source_candidate_rule": "Include only original UDI rows absent from exact Stage 4 27-row mismatch queue. Retain original Machine failure label as published. Source-level consistency is not independent correctness.",
+      "provisionally_eligible_original_rows": 9973,
+      "provisionally_eligible_original_binary_target_counts": {
+        "0": 9643,
+        "1": 330
+      },
+      "disputed_original_rows_training_status": "quarantined_not_in_supervised_split",
+      "original_records_or_labels_rewritten": false,
+      "failure_mode_columns_must_not_be_input_features_for_global_failure_prediction": true,
+      "may_reconsider_exclusions_only_with_source_grounded_adjudication": true
+    },
+    "industrial_fault_images": {
+      "original_source_archive_members": 234,
+      "source_folder_labeled_but_independently_truth_verified": 0,
+      "provisional_unique_reference_count": 219,
+      "same_class_duplicate_reference_count_excluded_from_candidate_view": 7,
+      "known_conflicting_folder_label_members_quarantined": 4,
+      "previously_manual_flagged_members_quarantined": 4,
+      "all_234_supervised_image_training_or_evaluation_eligibility": "BLOCKED",
+      "reason": [
+        "No individually expert/independently visually verified image class",
+        "Exact dataset licensing and per-photo reuse rights unverified",
+        "Original conflicting annotations and manual-review cases remain quarantined"
+      ],
+      "metadata_only_lineage_and_review_queue_permitted_as_local_source_quality_evidence": true,
+      "independent_visual_review_required_before_supervised_image_use": true,
+      "rights_and_provenance_evidence_required_before_permission_dependent_use": true,
+      "no_source_folder_label_may_be_claimed_expert_verified": true,
+      "no_photo_bytes_or_original_labels_modified": true
+    }
+  },
+  "project_limits": {
+    "no_fourth_source_or_unrelated_supporting_manuals": true,
+    "no_cross_dataset_same_machine_join_without_source_proof": true,
+    "no_derived_split_written_by_stage4": true,
+    "no_features_engineered_by_stage4": true,
+    "no_model_trained_by_stage4": true,
+    "stage5_may_scope_to_provenance_valid_source_cohorts_only": true,
+    "image_supervised_splits_must_remain_blocked_until_approved": true
+  },
+  "stage4_technical_source_label_verification_completed": true,
+  "all_three_sources_independently_truth_labeled": false,
+  "full_three_source_supervised_training_approved": false,
+  "unresolved_label_and_photo_rights_risks_accepted_as_documented_restrictions": true
+}
