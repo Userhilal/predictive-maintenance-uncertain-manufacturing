@@ -54,6 +54,16 @@ The script reads no other datasets. It writes exactly one local, Git-ignored sou
 
 The compiled Python syntax workflow does **not** validate the user's underlying datasets. Do not claim measured Stage 2 results before the owner executes the script on local originals.
 
+## Review existing actual report without re-running heavy source audits
+
+After the owner has executed the Stage 2 audit successfully, print the remaining important factual source-quality details with the read-only helper:
+
+```powershell
+py -3.11 src/preprocessing/review_stage2_report.py --input "data/processed/stage2_original_data_quality.json"
+```
+
+This command does **not** rerun SCANIA's million-plus original readouts, re-open the 234 image sources, or rewrite/overwrite the existing Stage 2 JSON. It prints the existing observed SCANIA per-split missingness/event counts, original AI4I numeric ranges and UDI concentrations, and Kaggle per-class image counts, small-image totals, exact conflicting source-folder filenames and file extension/content anomalies. Share the actual output for the final quality-gate review. Its report SHA-256 establishes which local Stage 2 evidence was summarized.
+
 ## Stage 2 acceptance gates
 
 - [x] Owner ran the genuine consolidated source-only audit and provided the real terminal output on 2026-11-21 (33,641 SCANIA vehicles; 10,000 AI4I rows; 234 original images).
