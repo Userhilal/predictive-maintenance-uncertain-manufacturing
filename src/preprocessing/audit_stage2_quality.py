@@ -1,4 +1,4 @@
-"""Stage 2 ONLY: audit exactly three already-collected original data sources.
+r"""Stage 2 ONLY: audit exactly three already-collected original data sources.
 
 Reads previously passed original SCANIA audit + Stage 1 inventory, original
 AI4I CSV and original Kaggle ZIP. Creates descriptive quality evidence ONLY:
