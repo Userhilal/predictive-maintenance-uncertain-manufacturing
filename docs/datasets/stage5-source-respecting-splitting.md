@@ -1,6 +1,6 @@
 # Stage 5 — Source-respecting Data Splitting (eligible source cohorts only)
 
-**Status: STAGE 5 SOURCE-RESPECTING SPLIT ASSIGNMENT EXECUTED SUCCESSFULLY ON OWNER'S REAL ORIGINALS; FINAL METADATA HASH/ASSIGNMENT REVIEW STILL PENDING.** Actual terminal results, source limitations and the read-only final review gate are recorded in [Stage 5 genuine owner-run results](stage5-actual-split-results-2026-11-21.md). Stage 4 original-source label-lineage integrity has been signed off **only with strict restrictions**, and issue #43 remains open for original fault-image visual labels and reuse rights. No new datasets are authorized.
+**Status: STAGE 5 ELIGIBLE TABULAR/TELEMETRY SOURCE PARTITIONING TECHNICALLY COMPLETE AFTER OWNER-RUN SEVEN-MANIFEST INTEGRITY REVIEW (2026-11-21).** No image supervised partition or unified SCANIA task is approved. Full actual results and final restrictions: [Stage 5 source-partition sign-off](stage5-actual-split-results-2026-11-21.md). Actual terminal results, source limitations and the read-only final review gate are recorded in [Stage 5 genuine owner-run results](stage5-actual-split-results-2026-11-21.md). Stage 4 original-source label-lineage integrity has been signed off **only with strict restrictions**, and issue #43 remains open for original fault-image visual labels and reuse rights. No new datasets are authorized.
 
 ## Three original sources only
 
@@ -62,12 +62,12 @@ No extra Python dependencies or data-source downloads. The script refuses to ove
 ## Exit checks
 
 - [x] Owner merged Stage 5 PR #44 and successfully ran the split manifest generator on real, unchanged original data (2026-11-21).
-- [ ] All 33,641 SCANIA official original vehicle memberships and original source labels preserved, all cohorts disjoint; 1,516,819 original readouts **not resplit or reproduced**.
-- [ ] All 9,973 source-consistent AI4I UDIs appear **once** across supervised partitions, each split retaining both binary failure labels; none of the 27 disputed UDIs appears.
-- [ ] Original source failure rate is preserved within reasonable per-stratum rounding, with reported per-split class and product-type counts; no source flag leakage into model features.
-- [ ] Exactly **zero** supervised image splits created; no image rights/class approval asserted.
-- [ ] Verify all **seven** metadata CSV SHA-256 digests and exact assignment memberships against the full local report; record any limitations before signing off.
-- [ ] No original source bytes/labels modified, no fake data or extra datasets, no derived sensor features, no model trained.
-- [ ] Stage 5 must be signed off **only as eligible tabular/telemetry source partitioning**, never as a fully supervised three-source multimodal model-ready split. Image supervision remains blocked until issue #43 is actually resolved.
+- [x] All 33,641 SCANIA official original vehicle memberships and original source labels preserved, all cohorts disjoint; 1,516,819 original readouts **not resplit or reproduced**.
+- [x] All 9,973 source-consistent AI4I UDIs appear **once** across supervised partitions, each split retaining both binary failure labels; none of the 27 disputed UDIs appears.
+- [x] AI4I original source-negative/source-positive and H/L/M Type counts were reconciled within split and reconstructed exactly using the class+Type seeded assignment; source mode flags/UDIs/identifiers are not approved predictive features. This assignment script **did not create feature matrices**.
+- [x] Exactly **zero** supervised image splits created; no image rights/class approval asserted. Image evidence issue #43 remains OPEN.
+- [x] Owner's actual read-only review verified **all seven** derived CSV SHA-256 digests, unique/disjoint source IDs, source label counts, and **exact AI4I seeded original UDI-to-split assignments**. Actual Stage 5 local report SHA-256 `9bb0db903ee0490cd543ea592ef4773819af58ad57016e6dea3ca7cc86894cda`.
+- [x] No original source bytes/labels modified, no fake data or extra datasets, no derived sensor features, no model trained.
+- [x] Stage 5 technically signed off **only as eligible tabular/telemetry source partitioning**, not a full supervised three-source multimodal split. Image training/supervised split remains blocked by issue #43 and SCANIA train-vs-val/test target tasks remain distinct.
 
-**Current status: STAGE 5 SOURCE-RESPECTING SPLITS EXECUTED; exact source membership, seven-manifest SHA-256 and deterministic UDI seed reproducibility read-only review OPEN.** Stage 6 Feature Engineering has not begun. Merge the review PR and execute `py -3.11 src/preprocessing/review_stage5_splits.py --input-dir "data/processed/stage5_eligible_splits"` without recreating the split.
+**Final decision:** `STAGE5_ELIGIBLE_TABULAR_SOURCE_PARTITIONS_COMPLETE_WITH_IMAGE_AND_TASK_RESTRICTIONS`. Stage 6 **not yet started**. It may prepare eligible AI4I source training-only transforms, but must not claim a unified supervised SCANIA target or run supervised fault-image transforms/training without the missing original rights and verified image label evidence. Owner's preliminary local report and 7 manifest SHA-256 fingerprints remain untouched.
