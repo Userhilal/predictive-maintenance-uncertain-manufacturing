@@ -8,6 +8,7 @@ on:
       - "src/preprocessing/profile_scania_trainfit_sensors.py"
       - "src/preprocessing/review_scania_sensor_profile.py"
       - "src/preprocessing/create_scania_model_input_contract.py"
+      - "src/preprocessing/audit_stage1_collection.py"
       - "src/preprocessing/audit_scania_cutoffs.py"
       - "src/preprocessing/prepare_scania.py"
       - ".github/workflows/scania-source-only-syntax.yml"
@@ -24,4 +25,4 @@ jobs:
         with:
           python-version: '3.11'
       - name: Compile source-only scripts (no downloads, no generated data)
-        run: python -m py_compile src/preprocessing/prepare_scania.py src/preprocessing/audit_scania_cutoffs.py src/preprocessing/audit_scania_horizon48.py src/preprocessing/build_scania_training_manifest.py src/preprocessing/profile_scania_trainfit_sensors.py src/preprocessing/review_scania_sensor_profile.py src/preprocessing/create_scania_model_input_contract.py
+        run: python -m py_compile src/preprocessing/prepare_scania.py src/preprocessing/audit_scania_cutoffs.py src/preprocessing/audit_scania_horizon48.py src/preprocessing/build_scania_training_manifest.py src/preprocessing/profile_scania_trainfit_sensors.py src/preprocessing/review_scania_sensor_profile.py src/preprocessing/create_scania_model_input_contract.py src/preprocessing/audit_stage1_collection.py
