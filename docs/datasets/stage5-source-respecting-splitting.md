@@ -1,6 +1,6 @@
 # Stage 5 — Source-respecting Data Splitting (eligible source cohorts only)
 
-**Status: STAGE 5 SCRIPT PREPARED, NOT YET RUN ON THE OWNER'S ORIGINAL DATA.** Stage 4 original-source label-lineage integrity has been signed off **only with strict restrictions**, and issue #43 remains open for original fault-image visual labels and reuse rights. No new datasets are authorized.
+**Status: STAGE 5 SOURCE-RESPECTING SPLIT ASSIGNMENT EXECUTED SUCCESSFULLY ON OWNER'S REAL ORIGINALS; FINAL METADATA HASH/ASSIGNMENT REVIEW STILL PENDING.** Actual terminal results, source limitations and the read-only final review gate are recorded in [Stage 5 genuine owner-run results](stage5-actual-split-results-2026-11-21.md). Stage 4 original-source label-lineage integrity has been signed off **only with strict restrictions**, and issue #43 remains open for original fault-image visual labels and reuse rights. No new datasets are authorized.
 
 ## Three original sources only
 
@@ -61,7 +61,7 @@ No extra Python dependencies or data-source downloads. The script refuses to ove
 
 ## Exit checks
 
-- [ ] Owner merges the Stage 5 PR and executes on real, unchanged original data.
+- [x] Owner merged Stage 5 PR #44 and successfully ran the split manifest generator on real, unchanged original data (2026-11-21).
 - [ ] All 33,641 SCANIA official original vehicle memberships and original source labels preserved, all cohorts disjoint; 1,516,819 original readouts **not resplit or reproduced**.
 - [ ] All 9,973 source-consistent AI4I UDIs appear **once** across supervised partitions, each split retaining both binary failure labels; none of the 27 disputed UDIs appears.
 - [ ] Original source failure rate is preserved within reasonable per-stratum rounding, with reported per-split class and product-type counts; no source flag leakage into model features.
@@ -70,4 +70,4 @@ No extra Python dependencies or data-source downloads. The script refuses to ove
 - [ ] No original source bytes/labels modified, no fake data or extra datasets, no derived sensor features, no model trained.
 - [ ] Stage 5 must be signed off **only as eligible tabular/telemetry source partitioning**, never as a fully supervised three-source multimodal model-ready split. Image supervision remains blocked until issue #43 is actually resolved.
 
-**Current status: STAGE 5 IMPLEMENTATION PREPARED; EXECUTION, REVIEW AND SIGN-OFF OPEN.** Stage 6 Feature Engineering has not begun.
+**Current status: STAGE 5 SOURCE-RESPECTING SPLITS EXECUTED; exact source membership, seven-manifest SHA-256 and deterministic UDI seed reproducibility read-only review OPEN.** Stage 6 Feature Engineering has not begun. Merge the review PR and execute `py -3.11 src/preprocessing/review_stage5_splits.py --input-dir "data/processed/stage5_eligible_splits"` without recreating the split.
