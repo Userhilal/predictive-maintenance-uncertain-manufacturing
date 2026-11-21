@@ -4,7 +4,7 @@
 
 This page records **current evidence**, not a certificate that all data is production-ready.
 
-- **Stage 1 DATA COLLECTION SIGNED OFF — exactly 3 approved source datasets (2026-11-21).** The owner's actual collection inventory verified 9/9 original SCANIA v2 CSVs plus 2 official PDFs within that source, the original AI4I 2020 CSV, and the unchanged 234-image Kaggle ZIP. **No external pump PDF guides, replacement datasets or additional sources are required or approved.** See [verified source-collection results](stage1-acquisition-results-2026-11-21.md) and [completed Stage 1 policy](stage1-collection-closure.md). Kaggle image license and individual reuse rights remain **unverified** and must be addressed as source-provenance/usage gates, not falsely certified. **Next stage: 2. Data Auditing only.**
+- **Stage 1 DATA COLLECTION SIGNED OFF — exactly 3 approved source datasets (2026-11-21).** The owner's actual collection inventory verified 9/9 original SCANIA v2 CSVs plus 2 official PDFs within that source, the original AI4I 2020 CSV, and the unchanged 234-image Kaggle ZIP. **No external pump PDF guides, replacement datasets or additional sources are required or approved.** See [verified source-collection results](stage1-acquisition-results-2026-11-21.md) and [completed Stage 1 policy](stage1-collection-closure.md). Kaggle image license and individual reuse rights remain **unverified** and must be addressed as source-provenance/usage gates, not falsely certified. **Stage 2 Data Auditing is now open:** [read-only three-source audit and acceptance checks](stage2-original-data-auditing.md). No original CSV/ZIP changes, splits, cleaning or label editing.
 
 
 ## 1. AI4I 2020
