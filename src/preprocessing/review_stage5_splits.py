@@ -220,7 +220,7 @@ def verify_ai4i(report: dict, tables: dict[str, list[dict]]) -> dict:
                 "mode_flag_positive_but_binary_target_zero": 18,
                 "binary_target_one_but_no_mode_flag_positive": 9
             }
-            or len(seen | quarantine_ids) != 10000):
+            or len(set(seen) | quarantine_ids) != 10000):
         raise ValueError("AI4I eligible + quarantined original UDIs do not account for all 10,000 rows")
 
     # Reconstruct the seeded stratified shuffle solely from existing derived
