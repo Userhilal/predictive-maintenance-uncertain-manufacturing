@@ -16,18 +16,19 @@ SPLITS = ("train", "validation", "test")
 EXPECTED_VEHICLES = {"train": 23550, "validation": 5046, "test": 5045}
 EXPECTED_READOUTS = {"train": 1122452, "validation": 196227, "test": 198140}
 SPEC_COLS = {f"Spec_{i}" for i in range(8)}
-# Fingerprints obtained from the public pdmdata/scania_x metadata (cross-check against SND metadata).
-CHECKSUMS = {
-    "train_operational_readouts.csv": "e01cb0bd87dfab4c9dbad215d51d81282fc0d413be96d6f819ea872fb7a3c715",
-    "train_specifications.csv": "47cc9a67aee19d5e2ee8620fe8e467490b2125bacc7787ce781ce9f3c1f0c38f",
-    "train_tte.csv": "d8c2379ed7c95a575dd869730b2b3b96d660317f49e57de300518ff3b08d53a5",
-    "validation_operational_readouts.csv": "1e1597eec866588c2ad95eb923555ad719c64b3697d9140f9cec6809349809af",
-    "validation_specifications.csv": "a31e832846538dd7a1829108b69420d9377dcd05d6446d8ac1270a974fc58ae2",
-    "validation_labels.csv": "ad876c95c3696f4cfca2d76212ad6bb3cac6b2d2950a4aeaf218ee8b1548d08c",
-    "test_operational_readouts.csv": "81f2709cd339e0ff561f5fd3188d7f431680e32400bd788814880d7759615ba1",
-    "test_specifications.csv": "40ac8a111f6d5b416107ec1786f639766ecf1293a1c9c0c0dbf24f14c1c5d0e7",
-    "test_labels.csv": "60f923051d4ba1bef4c81166cf9e8ca01daf3b7a29c73016c6f48a23dcfa0223",
-}
+# Only filenames from the user's Researchdata dataset listing (version 2).
+# The original files are not available here; source checksums are NOT invented.
+FILES = (
+    "train_operational_readouts.csv",
+    "train_specifications.csv",
+    "train_tte.csv",
+    "validation_operational_readouts.csv",
+    "validation_specifications.csv",
+    "validation_labels.csv",
+    "test_operational_readouts.csv",
+    "test_specifications.csv",
+    "test_labels.csv",
+)
 
 def digest(path: Path) -> str:
     h = hashlib.sha256()
@@ -141,18 +142,19 @@ def audit_readouts(path: Path) -> dict:
             "max_readouts_per_vehicle": max(st["readouts"] for st in by_vehicle.values()),
             "by_vehicle": by_vehicle}
 
-def audit_folder(folder: Path, verify_hashes: bool = True, expect_published_counts: bool = True) -> dict:
-    missing_files = sorted(set(CHECKSUMS) - {p.name for p in folder.glob("*.csv")})
+def audit_folder(folder: Path) -> dict:
+    missing_files = sorted(set(FILES) - {p.name for p in folder.glob("*.csv")})
     if missing_files:
         raise FileNotFoundError(f"Missing required CSVs: {missing_files}")
-    report = {"status": "RAW_CSV_AUDIT_EXECUTED", "source_version": "2024-34/3",
-              "source_doi": "10.5878/bnh5-ka77", "checksums": {}, "splits": {}, "warnings": []}
-    for name, expected in CHECKSUMS.items():
-        actual = digest(folder / name)
-        match = actual == expected
-        report["checksums"][name] = {"sha256": actual, "matches_reference_metadata": match}
-        if verify_hashes and not match:
-            raise ValueError(f"SHA256 does not match reference metadata for {name}")
+    report = {"status": "RAW_CSV_AUDIT_EXECUTED", "source_version": "2024-34/2",
+              "source_url": "https://researchdata.se/en/catalogue/dataset/2024-34/2",
+              "checksums": {}, "splits": {}, "warnings": []}
+    # Record hashes of the real downloaded files; without a provider hash
+    # these are provenance fingerprints, NOT proof of source authenticity.
+    for name in FILES:
+        report["checksums"][name] = {"sha256": digest(folder / name),
+                                     "provider_hash_verified": False}
+    report["warnings"].append("File SHA-256 values computed locally but not checked against official provider hashes")
     all_ids = {}
     reference_features = None
     for split in SPLITS:
@@ -169,7 +171,7 @@ def audit_folder(folder: Path, verify_hashes: bool = True, expect_published_coun
         all_ids[split] = reads["ids"]
         if not reads["ids"] == specs["ids"] == targets["ids"]:
             raise ValueError(f"Split {split}: vehicle IDs do not align across all 3 CSVs")
-        if expect_published_counts and (len(reads["ids"]) != EXPECTED_VEHICLES[split] or
+        if (len(reads["ids"]) != EXPECTED_VEHICLES[split] or
                                         reads["rows"] != EXPECTED_READOUTS[split]):
             raise ValueError(f"Split {split}: published vehicle/readout counts do not match")
         if split == "train":
@@ -210,11 +212,8 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--data-dir", required=True, type=Path)
     ap.add_argument("--output", type=Path, default=Path("data/processed/scania_audit.json"))
-    ap.add_argument("--skip-hash-check", action="store_true", help="Only for a separately documented source variant")
-    ap.add_argument("--skip-published-count-check", action="store_true", help="For miniature fixtures only")
     args = ap.parse_args()
-    result = audit_folder(args.data_dir, verify_hashes=not args.skip_hash_check,
-                          expect_published_counts=not args.skip_published_count_check)
+    result = audit_folder(args.data_dir)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"status": result["status"], "overall": result["overall"],
