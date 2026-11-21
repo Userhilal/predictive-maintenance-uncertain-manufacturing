@@ -26,6 +26,7 @@ This page records **current evidence**, not a certificate that all data is produ
 - Type: separate image classification collection.
 - Preliminary audit in the project discussion reported duplicates, conflicting category labels, and provenance concerns. Reconfirm against the original download and preserve its hash.
 - Intended use: experimental image classification only, after relabeling/review.
+- Reproducible Phase 2 image audit, provisional candidate splits and source review queue: [fault image preparation](fault-images-preparation.md).
 - Limitation: no demonstrated links to AI4I or SCANIA machines, sensor histories, or repair outcomes.
 
 ## Requirements before modeling

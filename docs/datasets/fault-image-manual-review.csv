@@ -1,0 +1,5 @@
+path,reason,review_status
+Dataset/Crack/1_.jpg,visible-crack-not-conclusively-established,pending
+Dataset/Misalignment/1_.jpg,product-style-bearing-photo-misalignment-not-established,pending
+Dataset/Normal condition/11_.jpg,stock-image-marking-and-source-rights-require-verification,pending
+Dataset/Wear/4_.jpg,product-style-bearing-photo-wear-not-established,pending
