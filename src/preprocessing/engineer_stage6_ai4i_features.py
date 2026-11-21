@@ -85,7 +85,7 @@ def read_assignment(path: Path) -> list[dict[str, str]]:
     return rows
 
 
-def check_inputs(source: Path, stage5_dir: Path, policy_file: Path) -> tuple[dict, dict, dict]:
+def check_inputs(source: Path, stage5_dir: Path, policy_file: Path) -> tuple[dict, str, dict[str, dict[str, str]]]:
     reviewed = review_stage5(stage5_dir)
     if (reviewed["status"] != "STAGE5_ACTUAL_SOURCE_SPLIT_MANIFESTS_REVIEWED_READ_ONLY"
             or reviewed["original_stage5_report_sha256"] != STAGE5_ORIGINAL_REPORT_SHA256
