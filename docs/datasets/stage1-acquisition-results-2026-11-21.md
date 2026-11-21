@@ -39,28 +39,21 @@ The project owner ran the already merged `src/preprocessing/audit_stage1_collect
 
 The first local inventory had genuinely returned **MISSING** for AI4I/image files because its guessed `data/raw` paths did not contain those originals. Both were subsequently located, the AI4I nested CSV SHA was checked before any extraction, and the final inventory was executed with **correct actual file locations and a new versioned output filename**. The earlier incomplete report remains preserved; no audit evidence was overwritten.
 
-## Important distinction: acquired files vs complete Stage 1 scope and legal reuse
+## Final source scope decision: exactly three datasets
 
-**PASS:** All three approved original dataset archives/CSVs and both official SCANIA accompanying PDFs are currently present and pass the implemented file/fingerprint collection checks. The SCANIA data is from *real trucks*, Mendeley AI4I is *publisher-synthetic*, and the unrelated Kaggle images cannot be presented as photos of the same machines in the sensor datasets.
+**Final Stage 1 acquisition decision (2026-11-21): COMPLETE.** Following the verified owner-run `THREE_ORIGINAL_DATASETS_AND_SCANIA_DOCUMENTS_LOCALLY_VERIFIED` result, the owner explicitly confirmed the scope is **SCANIA Component X v2, AI4I 2020 and Industrial Machinery Fault Images only**.
 
-**OPEN — Independent supporting OCR/RAG technical manuals:** Prior project material specifically named two general guides `pump.pdf` (*Improving Pumping System Performance*) and `pumplcc_1001.pdf` (*Pump Life Cycle Costs*) for OCR/RAG and maintenance context. They were described as previously collected in an earlier academic prototype, but **this current laptop collection inventory did not receive either as a supporting-PDF path** (`supporting_manual_pdfs_checked: 0`). Until their actual local paths, basic file integrity and provenance are inventoried, the broader project's supporting-document collection should not be marked complete. These guides are independent documents, not a fourth approved sensor dataset or machine-registered SCANIA manuals.
+Two separately suggested pump publications (`pump.pdf`, `pumplcc_1001.pdf`) are **OUT OF SCOPE**. Their absence in the owner's local inventory is **not** a missing-file or acceptance blocker. They must not be required for this project's RAG, model training or maintenance examples. Both SCANIA provider-package PDFs are *part of the original SCANIA source* and remain counted within the SCANIA acquisition inventory; they are not new datasets.
 
-**OPEN — Image rights:** The exact Kaggle dataset's reuse license and individual photograph provenance/reuse rights have not been independently verified. A matching original archive hash **does not grant permission to redistribute or publicly train on restricted imagery**. Preserve rights as unresolved; determine allowable usage before any public image redistribution or release.
+**Three source acquisition checks: PASS.** The 9 original SCANIA CSVs, the 2 accompanying SCANIA original-source documentation PDFs, the original SHA-matched AI4I CSV, and the original SHA-matched 234-image ZIP are already physically verified. No need to rerun the same successful inventory or obtain any other files.
 
-**OPEN — Publisher authentication:** The SHA-256 matches to the owner's previous original-source local checksums, not independently certified publisher-issued checksums. Do not represent them as external provenance certification.
+### Limitations explicitly carried into Stage 2 audit
 
-**NOT claimed:** final data cleaning, resolved labels, approved train/validation/test splits across all sources, feature engineering, final data validation, RAG-ready grounded text corpus, training or model performance.
+- The Kaggle image archive's exact reuse license and individual image provenance/rightsholder permissions remain **unverified**. Stage 1 file collection is complete; this is a **source-provenance/rights verification gate** for Stage 2 auditing and any later external use. Do not claim permission to publicly redistribute images.
+- Original local SHA-256 comparisons are against previously owner-audited downloaded copies, not externally publisher-signed hash certifications.
+- SCANIA vehicle sensor histories, AI4I publisher-synthetic manufacturing records and Kaggle fault images are **separate** sources. No real shared identifiers or joint machine observations are established.
+- No cleaning decisions, label sign-off, approved image split, final feature matrix or trained model are implied by completion of Stage 1.
 
-## Stage 1 closeout checklist (strict sequence requested by owner)
+**Next milestone: Stage 2 — Data Auditing only.** The owner requires each of Stages 2 through 6 to be fully resolved sequentially before Stage 7.
 
-- [x] File collection of all three approved datasets physically verified on owner laptop.
-- [x] Two official SCANIA source documentation PDFs verified.
-- [x] AI4I original nested source CSV extracted *unchanged*, with exact previously audited SHA-256.
-- [x] Kaggle original archive located and verified against earlier owner-audited hash.
-- [ ] Inventory original local `pump.pdf` and `pumplcc_1001.pdf` if still in OCR/RAG scope, with their actual paths and source/reference attribution; no fabricated manuals.
-- [ ] Preserve and clearly disposition source image reuse/legal caveat (may remain a separate unresolved publication gate, but never claim license verified).
-- [ ] Sign off **full Stage 1 project-materials collection** after technical documents are accounted for, then begin **Stage 2 Data Auditing**. Do not skip stages 3–6 or jump to Stage 7.
-
-**Decision:** `THREE_CORE_DATASET_FILE_ACQUISITION_PASSED`; **full Stage 1 project-material inventory remains open** until the supporting-document scope and declared licensing limitations are resolved. No additional raw datasets, source rows, generated sensor values or fake image measurements were created.
-
-See [Stage 1 collection-closure policy](stage1-collection-closure.md) and [GitHub Stage 1 tracking issue #28](https://github.com/Userhilal/predictive-maintenance-uncertain-manufacturing/issues/28).
+See [Stage 1 completed collection policy](stage1-collection-closure.md) and [Stage 1 GitHub evidence issue #28](https://github.com/Userhilal/predictive-maintenance-uncertain-manufacturing/issues/28).
