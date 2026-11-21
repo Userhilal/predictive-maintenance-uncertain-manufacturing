@@ -1,6 +1,6 @@
 # Stage 4 — Source Label Verification (exactly three approved datasets)
 
-**Status: IMPLEMENTATION PREPARED; REAL ORIGINAL-DATA EXECUTION AND SOURCE-LABEL REVIEW STILL OPEN.**
+**Status: REAL ORIGINAL-DATA LABEL-LINEAGE EXECUTION SUCCEEDED; QUEUE INTEGRITY REVIEW AND LABEL ADJUDICATION STILL OPEN.** The owner executed the merged Stage 4 verifier on genuine sources; see [actual source-label results and next review step](stage4-actual-source-label-results-2026-11-21.md).
 
 This phase follows the *completed and risk-qualified* Stage 3 source-preserving cleaning sign-off. Stage 4 checks how original labels are represented, linked to their original records, and where their meaning or correctness **cannot be independently established**. It **does not** blindly convert source flags into ground truth, override original labels, make image classifications from file names, split datasets, or train a model.
 
@@ -60,7 +60,7 @@ The script refuses to overwrite a prior Stage 4 output folder and writes an atom
 
 ## Stage 4 acceptance gates
 
-- [ ] Run the owner-local Stage 4 original-source label integrity script on the same three approved source datasets.
+- [x] Owner ran Stage 4 original-source label integrity against the same three approved original datasets; genuine terminal result received 2026-11-21.
 - [ ] Review the actual SCANIA original 23,550/5,046/5,045 target rows, original event/censor and five-class counts, unique ID bindings, unchanged source hashes, and semantic differences without inventing target mappings.
 - [ ] Review all 10,000 AI4I source label-lineage entries and the exact **27 original disagreements**; document a defensible label treatment using published original semantics. If they cannot be resolved, explicitly quarantine/disallow disputed records in any later supervised training view without rewriting original labels. A source flag is not an external adjudicator.
 - [ ] Review original-source image folder labels and **eight** quarantined source cases. Verify actual visual content and any available annotation provenance before declaring any image class as true. Source-folder labels alone are **provisional**; avoid implying all 219 remaining source-folder labels have been visually verified.
