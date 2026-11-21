@@ -1,6 +1,6 @@
 # SCANIA v2 — Detailed review of 105 original sensor feature profiles
 
-**Current status:** Review script prepared, but **not yet executed on the owner's full, original-data sensor-profile JSON**. We have only the successful top-level profiling summary. Never invent feature names, missingness percentages, sensor means or standard deviations.
+**Completed (2026-11-21):** The owner successfully executed the source-only 105-sensor review on their existing real SCANIA v2 JSON profile: 105 feature entries checked, 77,263,458 originally observed sensor values and 226,017 missing in the fit-known population (0.291674% missing), zero all-missing/constant or >=1%-missing features, and 95 descriptive extreme-range review flags. See [actual executed results](scania-sensor-quality-results-2026-11-21.md). No new sensor observations, imputation or model training.
 
 **Exclusive source:** [the owner's original Researchdata SCANIA Component X version-2 dataset](https://researchdata.se/en/catalogue/dataset/2024-34/2). The prior [source-only 105-sensor profiler](scania-source-feature-profile-policy.md) created `data/processed/scania_trainfit_sensor_profile.json` on the owner's computer; it has not been added to GitHub. Source data remain unchanged.
 
