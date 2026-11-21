@@ -219,7 +219,7 @@ def difference_hash(img) -> int:
     """64-bit dHash; similarity is a review hint, not proof of image identity."""
     from PIL import ImageOps, Image
     transposed = ImageOps.exif_transpose(img)
-    pixels = list(transposed.convert("L").resize((9, 8), Image.Resampling.LANCZOS).getdata())
+    pixels = list(transposed.convert("L").resize((9, 8), Image.Resampling.LANCZOS).tobytes())
     result = 0
     for r in range(8):
         for c in range(8):

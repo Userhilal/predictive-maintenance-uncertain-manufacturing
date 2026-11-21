@@ -1,6 +1,6 @@
 # Stage 2 — Original-source Data Auditing, exactly three datasets
 
-**Status: AUDIT IMPLEMENTATION PREPARED; ACTUAL CONSOLIDATED OWNER-RUN RESULTS REQUIRED.** Stage 1 original-file collection is complete and signed off. This stage does **not** clean, correct, delete, relabel, split, engineer features, train a model, or download any other data.
+**Status: REAL THREE-SOURCE AUDIT EXECUTED on the owner's original local files; full local report review and Stage 2 sign-off still pending.** See [actual user-run Stage 2 results and risk register](stage2-audit-results-2026-11-21.md). Stage 1 original-file collection is complete and signed off. This stage does **not** clean, correct, delete, relabel, split, engineer features, train a model, or download any other data.
 
 The only approved sources:
 
@@ -54,13 +54,23 @@ The script reads no other datasets. It writes exactly one local, Git-ignored sou
 
 The compiled Python syntax workflow does **not** validate the user's underlying datasets. Do not claim measured Stage 2 results before the owner executes the script on local originals.
 
+## Review existing actual report without re-running heavy source audits
+
+After the owner has executed the Stage 2 audit successfully, print the remaining important factual source-quality details with the read-only helper:
+
+```powershell
+py -3.11 src/preprocessing/review_stage2_report.py --input "data/processed/stage2_original_data_quality.json"
+```
+
+This command does **not** rerun SCANIA's million-plus original readouts, re-open the 234 image sources, or rewrite/overwrite the existing Stage 2 JSON. It prints the existing observed SCANIA per-split missingness/event counts, original AI4I numeric ranges and UDI concentrations, and Kaggle per-class image counts, small-image totals, exact conflicting source-folder filenames and file extension/content anomalies. Share the actual output for the final quality-gate review. Its report SHA-256 establishes which local Stage 2 evidence was summarized.
+
 ## Stage 2 acceptance gates
 
-- [ ] Owner runs actual consolidated source-only audit and provides the real terminal output.
+- [x] Owner ran the genuine consolidated source-only audit and provided the real terminal output on 2026-11-21 (33,641 SCANIA vehicles; 10,000 AI4I rows; 234 original images).
 - [ ] Original SCANIA population, missing sensor counts and three-split integrity reconciled.
 - [ ] Actual AI4I full-source quality summary reviewed, especially class imbalance, UDI concentration, target/failure-mode mismatch and original published synthetic status.
 - [ ] All 234 original Kaggle images audited; exact duplicates, cross-label duplicates, image resolution, extension-content mismatch, and perceptual candidates documented **without changing labels or deleting data**.
 - [ ] Explicit disclosure of unverified third-party publisher hashes and **Kaggle image rights / provenance**. If permitted usage cannot be established, restrict affected image operations accordingly; do not claim public redistribution rights.
 - [ ] Create a source-specific **audit sign-off with disclosed risks and review queues**, reserving resolution of cleaning choices to Stage 3, label decisions to Stage 4, splits to Stage 5 and feature transformations to Stage 6. Never silently call unresolved image labels “correct”.
 
-**Decision now:** Stage 2 **OPEN**. Do not proceed to Stage 3 until this real-source audit report is evaluated. In particular, the audit script does not certify complete usage permissions for Kaggle photographs or independently published SHA fingerprints.
+**Decision now:** Stage 2 **EXECUTED; DETAILED LOCAL EVIDENCE REVIEW OPEN**. Do not proceed to Stage 3 until this real-source audit report is evaluated. In particular, the audit script does not certify complete usage permissions for Kaggle photographs or independently published SHA fingerprints.
