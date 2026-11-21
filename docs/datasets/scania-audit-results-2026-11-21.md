@@ -9,7 +9,7 @@ The project owner downloaded and extracted the **original nine CSVs** from the u
 Audit command (illustrative path parameter points to the actual downloaded files):
 
 ```powershell
-py -3.11 src/preprocessing/audit_scania.py --data-dir "C:\Users\hindh\Documents\2024-34-2\data" --output data/processed/scania_audit.json
+py -3.11 src/preprocessing/audit_scania.py --data-dir "PATH_TO_ORIGINAL_SCANIA_CSV_FOLDER" --output data/processed/scania_audit.json
 ```
 
 ### Run summary reported by the audit tool
