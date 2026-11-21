@@ -1,6 +1,6 @@
 # Stage 3 — Actual conservative original-source cleaning results (2026-11-21)
 
-**Status: OWNER EXECUTED THE SOURCE-PRESERVING CLEANING SCRIPT SUCCESSFULLY. Manifest integrity/partition read-back remains pending.**
+**Final decision (2026-11-21): STAGE 3 CONSERVATIVE DATA CLEANING COMPLETE — reviewed against actual owner-run metadata, with label/rights limitations explicitly unresolved.** The Stage 3 original local JSON remains a preliminary execution report (`stage3_signed_off=false`); this document separately records the reviewed technical sign-off without modifying the original report.
 
 Stage 1 collection and Stage 2 read-only technical auditing have already been signed off with documented risks. The owner merged Stage 3 PR #35 and executed `src/preprocessing/clean_stage3_originals.py` on exactly the same three original approved sources, against the unchanged actual Stage 2 report with locally verified SHA-256 `07fa57306fd93f09bb2ba28ebecb1be7526043503aacb1991478da42073eab67`.
 
@@ -61,3 +61,59 @@ py -3.11 src/preprocessing/review_stage3_cleaning.py --input-dir "data/processed
 **Send the real read-only output** to complete the final technical review. Do **not** rerun `clean_stage3_originals.py` into the same existing output directory (it intentionally refuses overwrites). Do not commence Stage 4 Label Verification until Stage 3 manifest review and sign-off.
 
 **Current decision:** `STAGE3_CONSERVATIVE_CLEANING_EXECUTED_REVIEW_REQUIRED`. Stage 3 is **not yet signed off**, and Kaggle image reuse rights are **not verified**. The only three approved sources are SCANIA v2, AI4I 2020 and the original industrial fault-image archive.
+
+## Actual post-cleaning manifest review and formal Stage 3 sign-off
+
+The owner executed the already merged **read-only** `src/preprocessing/review_stage3_cleaning.py` against the three previously generated local CSV image manifests and `stage3_cleaning_report.json`. The returned result was:
+
+```json
+{
+  "status": "STAGE3_ACTUAL_CLEANING_MANIFESTS_REVIEWED_READ_ONLY",
+  "stage3_report_sha256": "3f8e299a9fb70d65cf4a69463185f872e63f7777a5ca7d47e7bcc4b2c7fde186",
+  "stage2_evidence_sha256": "07fa57306fd93f09bb2ba28ebecb1be7526043503aacb1991478da42073eab67",
+  "original_three_source_readouts_preserved": 1516819,
+  "original_scania_sensor_missing_cells_preserved": 481376,
+  "original_ai4i_rows_preserved": 10000,
+  "original_ai4i_disputed_target_rows_retained": 27,
+  "original_image_members_accounted_for": 234,
+  "image_action_counts": {
+    "exclude_same_class_duplicate": 7,
+    "provisional_candidate": 219,
+    "quarantine_conflicting_labels": 4,
+    "quarantine_manual_review": 4
+  },
+  "image_original_folder_class_counts": {
+    "Crack": 47,
+    "Misalignment": 53,
+    "Normal condition": 48,
+    "Surface defects": 43,
+    "Wear": 43
+  },
+  "original_exact_image_duplicate_groups": 9,
+  "exact_cross_class_conflicting_members_quarantined": 4,
+  "original_ambiguous_manual_review_members_quarantined": 4,
+  "all_three_image_manifests_sha256_verified": true,
+  "original_source_files_modified": false,
+  "image_label_or_license_approved": false,
+  "splits_or_features_created": false,
+  "stage3_final_signoff_requires_review_of_this_output": true
+}
+```
+
+**Meaning of the last field:** `stage3_final_signoff_requires_review_of_this_output=true` was the reviewer's deliberately cautious pre-signoff annotation. The actual return value has **now been reviewed** and this document serves as the subsequent sign-off. Do not overwrite the existing, already-fingerprinted Stage 3 output just to change its preliminary flags.
+
+### Verified acceptance criteria
+
+- [x] Stage 3 actual cleaning command ran successfully on the previously audited original three sources and produced derived manifest data, without modifying the original files.
+- [x] The original 1,516,819 SCANIA readouts and all 481,376 missing original sensor cells are preserved, with **no imputation, clipping, feature transforms or new measurements**.
+- [x] All 10,000 original AI4I records and the 27 original failure-mode/target discrepancies are retained without label changes.
+- [x] Exactly 234 unique original Kaggle ZIP member references occur in the full derived manifest; original source-folder class counts **47 Crack, 53 Misalignment, 48 Normal condition, 43 Surface defects, 43 Wear**.
+- [x] The 219 provisional-candidate references and 15 flagged-reference records form a valid complete, disjoint partition of all 234 originals. The 15 are **7** same-class exact duplicate references, **4** cross-class label-conflicting source-image references, and **4** already-pending manual-review references.
+- [x] **Nine** original exact-byte image duplicate groups validated, with all source-folder cross-class groups quarantined, one representative per same-folder exact-byte group retained, no original labels rewritten.
+- [x] All **three** derived CSV manifests were hashed and compared to the SHA-256 values originally recorded inside the actual Stage 3 cleaning JSON report. No unexpected source path, membership or hash mismatch found.
+- [x] Each image manifest still marks `human_label_verified=false` and `source_photo_reuse_rights_verified=false`. The source image archive and its individual contents were not recompressed, copied, re-encoded, or distributed by this workflow.
+- [x] No train/validation/test split, feature engineering, ML training, source-data augmentation, new dataset or unrelated supporting pump PDF added.
+
+**Rights and label limitations are NOT certified away:** The 219 original-image references remain **provisional**, **not human-label-verified**, and their exact photo origins/licenses/reuse rights remain **UNVERIFIED**. Treat image redistribution and any other permission-dependent operations as blocked pending genuine permission evidence. The 27 AI4I discrepancies and original source-folder image conflicts need **Stage 4 Label Verification**; do not resolve or invent labels by assumption.
+
+**Decision: `STAGE3_CONSERVATIVE_CLEANING_COMPLETE_WITH_DOCUMENTED_OPEN_LABEL_AND_RIGHTS_ISSUES`.** This is a technical data-cleaning sign-off only. The next permitted project stage is **Stage 4 — Label Verification**, after this documentation is merged. Stage 5 Splitting, Stage 6 Feature Engineering, Stage 7 Final Data Validation and Stage 8 Model Development are NOT started.

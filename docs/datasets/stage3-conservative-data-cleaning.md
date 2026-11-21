@@ -1,6 +1,6 @@
 # Stage 3 — Conservative data cleaning for exactly three original sources
 
-**Status: ACTUAL OWNER-RUN STAGE 3 CLEANING EXECUTED SUCCESSFULLY; MANIFEST INTEGRITY REVIEW STILL PENDING.** The owner's observed local outcome is recorded in [actual Stage 3 cleaning results](stage3-cleaning-results-2026-11-21.md). No original data bytes were changed. Formal Stage 3 sign-off awaits a read-only verification of the generated three CSV manifests.
+**Status: STAGE 3 CONSERVATIVE DATA CLEANING COMPLETED AND TECHNICALLY SIGNED OFF — WITH DOCUMENTED OPEN LABEL AND IMAGE-RIGHTS ISSUES (2026-11-21).** The owner's observed local outcome is recorded in [actual Stage 3 cleaning results](stage3-cleaning-results-2026-11-21.md). No original data bytes were changed. Owner subsequently executed read-only review of all three generated CSV manifests, with hashes matching the source cleaning report; see [actual Stage 3 detailed verification and sign-off](stage3-cleaning-results-2026-11-21.md).
 
 The owner finished Stage 1 Data Collection and Stage 2 technical Data Auditing using **exactly three sources**. Stage 2 source-audit report was produced from real original bytes and its SHA-256 was verified by the owner through the read-only reviewer: `07fa57306fd93f09bb2ba28ebecb1be7526043503aacb1991478da42073eab67`. The Stage 2 technical sign-off is documented in [the actual real-source audit results](stage2-audit-results-2026-11-21.md). Source-image licenses, exact individual origins, and re-use rights remain unverified; no new data are to be collected.
 
@@ -60,10 +60,10 @@ The script refuses to overwrite a pre-existing output directory, verifies the ex
 ## Stage 3 exit criteria
 
 - [x] Owner executed conservative Stage 3 on the same originals and pasted the actual successful terminal JSON with all expected original row and image-status counts.
-- [ ] Source SCANIA 33,641 vehicles/1,516,819 original readouts and 481,376 genuinely missing sensor values preserved; clearly documented **no imputation** policy.
-- [ ] Source AI4I original 10,000 records/339 original positives preserved with 27 source disagreements left for Stage 4.
-- [ ] Exactly 234 original image ZIP members accounted for: 219 provisional references, seven same-class exact-copy references, four cross-label duplicate records and four manual-review records. Cross-class labels **not changed**.
-- [ ] Original-image rights/provenance **still not verified**; no usage permission, training-readiness or redistribution claim.
-- [ ] Output manifests/report reviewed and Stage 3 cleaning policy/result signed off, **not** mistaken for Stage 4 label sign-off or Stage 5 train/test split readiness.
+- [x] Source SCANIA 33,641 vehicles/1,516,819 original readouts and 481,376 genuinely missing sensor values preserved; documented **no imputation** policy.
+- [x] Source AI4I original 10,000 records/339 original positives preserved with 27 source disagreements left for Stage 4.
+- [x] Exactly 234 original image ZIP members accounted for: 219 provisional references, seven same-class exact-copy references, four cross-label duplicate records and four manual-review records. Cross-class labels **not changed**.
+- [x] Original-image rights/provenance **still not verified**; no usage permission, training-readiness or redistribution claim. This is a documented **open risk**, not a resolved right.
+- [x] Owner's actual read-only image-manifest hash and membership review passed; Stage 3 cleaning policy/result technically signed off, **not** mistaken for Stage 4 label sign-off or Stage 5 train/test split readiness.
 
-**Current decision:** Stage 3 original-source-preserving cleaning **EXECUTED SUCCESSFULLY** on owner's originals, but formal completion is pending **read-only integrity review** of generated manifests and report fingerprints; no Stage 4 activity yet. Merge the results reviewer PR and run `py -3.11 src/preprocessing/review_stage3_cleaning.py --input-dir "data/processed/stage3_cleaning"`. Do not rerun cleaning or overwrite the actual output.
+**Final decision:** `STAGE3_CONSERVATIVE_CLEANING_COMPLETE_WITH_DOCUMENTED_OPEN_LABEL_AND_RIGHTS_ISSUES`. Original files remain untouched; source-image rights and disputed labels remain explicitly unresolved. The next stage is **Stage 4 Label Verification**, with no added datasets or unrelated manuals; Stage 5/6 actions remain out of scope until later.
