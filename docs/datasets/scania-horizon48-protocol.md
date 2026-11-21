@@ -1,6 +1,6 @@
 # SCANIA Component X v2 — Prediction horizon and censoring rules
 
-**Status:** Modeling-readiness protocol defined; original-data 48-step outcome-observability audit still must run locally. **No model training and no new records have been performed.**
+**Status (2026-11-21):** The owner ran the 48-step outcome-observability audit on the original real SCANIA v2 training CSVs. Results: 25,758 source readouts with observed repair within 48 steps, 894,300 with observed no repair during 48 steps, and 202,394 **unknown** from short-censored follow-up. See [actual source audit results](scania-horizon48-audit-results-2026-11-21.md). No model training, imputation or generated source data.
 
 ## Source and rationale
 
@@ -57,5 +57,7 @@ Get-Content "data/processed/scania_horizon48_audit.json"
 ```
 
 The script checks original `train_tte.csv` and `train_operational_readouts.csv` file fingerprints against the owner's genuine source audit and streams the original readouts in parallel with their existing source-only observation index. It counts 48-step known-repair, known-not-within-horizon, and unknown-right-censored cases. If original row IDs or timestamps no longer match, the script stops; it will not silently accept a fabricated/shifted index. It refuses overwriting an existing report.
+
+**Completed diagnostic:** The actual source-only 48-step audit was executed locally; the genuine counts and their implications are documented in [real 48-step audit results](scania-horizon48-audit-results-2026-11-21.md).
 
 **Provenance limitation:** file fingerprints are compared against the owner's locally generated real source audit, not independently certified against published SCANIA source hashes. The other two original project data sources are unchanged.
