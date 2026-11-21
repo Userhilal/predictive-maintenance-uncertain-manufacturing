@@ -1,6 +1,6 @@
 # SCANIA v2 — Source-only sensor feature profiling
 
-**Status:** Prepared for execution against the actual owner-downloaded SCANIA v2 files; **no sensor values, feature statistics or model performance are claimed until the real local script runs**.
+**Status (2026-11-21):** The owner successfully executed the source-only profiler on the original SCANIA v2 CSVs. The terminal summary verifies 105 sensor features, 1,122,452 source readouts, 737,995 known-outcome training-fit readouts used for descriptive statistics and 162,292 unknown training-fit readouts excluded. See [actual execution results](scania-source-feature-profile-results-2026-11-21.md). **Detailed numerical per-feature statistics are not yet independently inspected; the full JSON is still needed.** No imputation or model training.
 
 **Sole source for this step:** [Original SCANIA Component X, version 2](https://researchdata.se/en/catalogue/dataset/2024-34/2). The owner has already run and checked the nine-original-CSV audit, source-only observation index, 48-step outcome-observability audit and ID-grouped training reference manifest. See [the executed training manifest](scania-training-manifest-results-2026-11-21.md).
 
