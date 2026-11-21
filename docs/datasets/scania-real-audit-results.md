@@ -30,7 +30,7 @@
 | Validation | 5,046 | 196,227 | 1–209 | 0.808% | 0.293% | Classes 0–4: 4,910 / 16 / 14 / 30 / 76 |
 | Test | 5,045 | 198,140 | 1–262 | 0.895% | 0.319% | Classes 0–4: 4,903 / 26 / 15 / 41 / 60 |
 
-The aggregate feature-cell missingness percentages above were computed by summing the report's **105 per-feature missing-cell counts** and dividing by (number of operational readouts × 105). This is not the fraction of rows containing any missing entry. A few histogram-bin groups share identical missing-value counts; per-vehicle and row-level missingness patterns need examination before imputation.
+Across all three partitions there are **481,376 missing sensor cells out of 159,265,995 available feature cells**, or **0.302% overall**.\n\nThe aggregate feature-cell missingness percentages above were computed by summing the report's **105 per-feature missing-cell counts** and dividing by (number of operational readouts × 105). This is not the fraction of rows containing any missing entry. A few histogram-bin groups share identical missing-value counts; per-vehicle and row-level missingness patterns need examination before imputation.
 
 ## Remaining-data concerns
 
