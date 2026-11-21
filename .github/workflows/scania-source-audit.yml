@@ -1,0 +1,31 @@
+name: Validate original SCANIA Component X files
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit-original-scania:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Check out project
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch ONLY original SCANIA v2 CSVs
+        run: python scripts/download_scania.py --output data/raw/scania
+      - name: Validate original source CSVs (no generated observations)
+        run: python src/preprocessing/audit_scania.py --data-dir data/raw/scania --output data/processed/scania_audit.json
+      - name: Upload audit report ONLY (never raw source data)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scania-source-audit-report
+          path: data/processed/scania_audit.json
+          if-no-files-found: warn
+          retention-days: 30

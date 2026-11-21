@@ -22,6 +22,14 @@ Readout fields: vehicle_id, time_step and 105 anonymized operational counters/hi
 
 All these numbers are from the original dataset's documentation or published description. They must be **checked against the actual CSV files** before being treated as audited values.
 
+## Optional GitHub Actions audit (original files only)
+
+After merging the workflow into main, open **Actions → Validate original SCANIA Component X files → Run workflow**.
+The workflow is **manual only**: it does not run automatically and will consume a GitHub-hosted runner only when explicitly started.
+It downloads the nine CSVs **only from the user-provided Researchdata SCANIA version 2 link**, validates their actual contents and uploads **only the JSON quality report** as an Actions artifact (kept for 30 days).
+The raw source CSVs are not added to the repository or uploaded as artifacts.
+If Researchdata blocks downloads from GitHub-hosted runners too, the workflow will fail honestly and no dataset will be fabricated.
+GitHub Actions must be enabled for the repository. Keep the issue open until a successful run has been reviewed.
 ## Run validation on original files
 
 Requirements: Python 3.11+, free disk space, and direct access to the official Researchdata host.

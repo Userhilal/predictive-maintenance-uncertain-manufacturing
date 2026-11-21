@@ -10,12 +10,13 @@ import csv
 import sys
 import urllib.request
 from pathlib import Path
+from urllib.parse import urlencode
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from src.preprocessing.audit_scania import FILES, digest
 
-BASE = "https://api.researchdata.se/dataset/2024-34/2/file/data/"
+BASE = "https://api.researchdata.se/dataset/2024-34/2/file/data"
 
 
 def download(output: Path, names: list[str]) -> None:
@@ -28,7 +29,8 @@ def download(output: Path, names: list[str]) -> None:
             print(f"Existing source file kept unchanged: {name}; SHA256={digest(dest)}")
             continue
         temp = dest.with_suffix(".csv.partial")
-        request = urllib.request.Request(BASE + name, headers={"User-Agent": "ResearchData-Audit/1.0"})
+        url = BASE + "?" + urlencode({"filePath": name})
+        request = urllib.request.Request(url, headers={"User-Agent": "ResearchData-Audit/1.0"})
         try:
             with urllib.request.urlopen(request, timeout=120) as src, temp.open("wb") as out:
                 while chunk := src.read(1024 * 1024):
