@@ -1,6 +1,6 @@
 # Stage 6 — Feature Engineering (eligible AI4I original data only)
 
-**Status: STAGE 6 SOURCE-ONLY IMPLEMENTATION PREPARED, NOT YET EXECUTED OR REVIEWED ON OWNER ORIGINAL DATA.**
+**Status: STAGE 6 AI4I ORIGINAL-SOURCE TRAIN-ONLY FEATURE ENGINEERING EXECUTED SUCCESSFULLY ON OWNER'S DATA; FINAL SOURCE-VALUE AND OUTPUT-HASH READ-ONLY VERIFICATION PENDING.** See [the actual user-executed Stage 6 terminal summary and source-level review contract](stage6-actual-feature-results-2026-11-21.md). This source is AI4I's originally published synthetic benchmark; no independent three-source multimodal feature readiness is claimed.
 
 Stage 5 **eligible tabular/telemetry source partition integrity** was signed off with actual owner-run seven-manifest hashes and exact AI4I seeded UDI reconstruction (Stage 5 local report SHA-256 `9bb0db903ee0490cd543ea592ef4773819af58ad57016e6dea3ca7cc86894cda`). Original SCANIA train repair/right-censor and official val/test five-class target compatibility remains **unresolved**, and all source Kaggle fault photos remain **blocked for supervised image feature/training use** while their image labels and rights/provenance remain unverified (issue #43).
 
@@ -63,7 +63,7 @@ No extra data downloads or Python libraries required beyond standard Python 3.11
 
 ### Stage 6 exit checks (still to do)
 
-- [ ] Merge the Stage 6 feature PR and execute the genuine original AI4I source data script.
+- [x] Owner merged Stage 6 PR #49 and successfully executed the feature producer on the unchanged original AI4I CSV, using the same approved Stage 5/Stage 4 source evidence. Real terminal JSON received 2026-11-21.
 - [ ] Confirm exactly **6,981 train UDI** source records fitted the 5 numeric transformers; confirm **8** output features and 9,973 original source-consistent UDI rows across train/val/test.
 - [ ] Confirm **27 original disputed UDI rows remain completely excluded** from all engineered output matrices; targets/UIDs remain metadata outside the approved predictor list.
 - [ ] Confirm train-only derived mean/std are finite and match the training UDI original source measurements. Same numeric parameters are used for validation/test and original source classes/types, with no leakage or global fitting.
@@ -71,4 +71,4 @@ No extra data downloads or Python libraries required beyond standard Python 3.11
 - [ ] Verify image/SCANIA restrictions remain active and no original source file, earlier split metadata, photo, or model was modified.
 - [ ] Record source-specific Stage 6 technical sign-off **for AI4I eligible engineered tabular features only** after inspecting actual owner-run feature output and its derived file hashes. This does **not** clear SCANIA's cross-task model readiness, Kaggle supervised image label/rights, or all three-source full multimodal model readiness.
 
-**Current status: STAGE 6 IMPLEMENTATION READY, EXECUTION AND TECHNICAL REVIEW PENDING.** Stage 7 final data validation and Stage 8 model development remain out of scope until the respective gates are satisfied.
+**Current status: STAGE 6 FEATURE GENERATION EXECUTED, FINAL SOURCE-VALUE REVIEW OPEN.** Owner has provided actual 6,981 train-only fit and 9,973 transformed UDI counts, 8 features and preserved source label counts. Merge the read-only review PR, then run `py -3.11 src/preprocessing/review_stage6_ai4i_features.py --ai4i "data/raw/ai4i2020.csv" --stage5-dir "data/processed/stage5_eligible_splits" --stage6-dir "data/processed/stage6_ai4i_features"`. Stage 7/8 are not started.
