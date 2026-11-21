@@ -49,37 +49,54 @@ def rows_from_csv(path: Path):
             yield columns, row, n
 
 def read_small(path: Path, fields: set[str], kind: str) -> dict:
+    """Validate original small CSVs. IDs are optional per published SCANIA schema.
+
+    Never infer the vehicle-ID mapping from row order when IDs are absent.
+    """
     ids = set()
     counts = Counter()
     missing = Counter()
     columns = None
     total = 0
+    has_ids = False
     for header, row, line in rows_from_csv(path):
-        columns = header
-        if set(header) != fields:
-            raise ValueError(f"Unexpected {kind} fields in {path.name}: {header}")
-        ident = row["vehicle_id"]
-        if not ident or ident in ids:
-            raise ValueError(f"Empty or duplicate vehicle_id in {path.name}, line {line}")
-        ids.add(ident)
+        if columns is None:
+            columns = header
+            actual = set(header)
+            if actual not in (fields, fields | {"vehicle_id"}):
+                raise ValueError(f"Unexpected {kind} columns in {path.name}: {header}")
+            has_ids = "vehicle_id" in actual
+        elif header != columns:
+            raise ValueError(f"Header changed in {path.name}")
+        if has_ids:
+            ident = row["vehicle_id"]
+            if not ident or ident in ids:
+                raise ValueError(f"Empty or duplicate vehicle_id in {path.name}, line {line}")
+            ids.add(ident)
         total += 1
         for key, val in row.items():
             if val is None or not val.strip():
                 missing[key] += 1
         if kind == "tte":
             if row["in_study_repair"] not in ("0", "1"):
-                raise ValueError(f"Invalid repair event at {path.name}:{line}")
-            if not math.isfinite(float(row["length_of_study_time_step"])):
-                raise ValueError(f"Invalid study time at {path.name}:{line}")
+                raise ValueError(f"Invalid repair event in {path.name}:{line}")
+            try:
+                t = float(row["length_of_study_time_step"])
+                if not math.isfinite(t) or t < 0:
+                    raise ValueError()
+            except (TypeError, ValueError):
+                raise ValueError(f"Invalid study duration in {path.name}:{line}") from None
             counts[row["in_study_repair"]] += 1
         if kind == "labels":
             if row["class_label"] not in ("0", "1", "2", "3", "4"):
-                raise ValueError(f"Invalid class label at {path.name}:{line}")
+                raise ValueError(f"Invalid class label in {path.name}:{line}")
             counts[row["class_label"]] += 1
     if columns is None:
         raise ValueError(f"CSV {path.name} has no data rows")
-    return {"rows": total, "ids": ids, "counts": dict(sorted(counts.items())),
+    return {"rows": total, "ids": ids if has_ids else None,
+            "has_vehicle_id": has_ids, "counts": dict(sorted(counts.items())),
             "missing_cells_by_column": dict(sorted(missing.items())), "columns": columns}
+
 
 def audit_readouts(path: Path) -> dict:
     ids: set[str] = set()
@@ -163,25 +180,40 @@ def audit_folder(folder: Path) -> dict:
             reference_features = reads["feature_columns"]
         elif reads["feature_columns"] != reference_features:
             raise ValueError(f"Operational feature schema/order differs in {split} split")
-        specs = read_small(folder / f"{split}_specifications.csv", {"vehicle_id", *SPEC_COLS}, "specifications")
+        specs = read_small(folder / f"{split}_specifications.csv", SPEC_COLS, "specifications")
         target_kind = "tte" if split == "train" else "labels"
-        targets = read_small(folder / ("train_tte.csv" if split == "train" else f"{split}_labels.csv"),
-                             {"vehicle_id", "length_of_study_time_step", "in_study_repair"}
-                             if split == "train" else {"vehicle_id", "class_label"}, target_kind)
+        target_fields = {"length_of_study_time_step", "in_study_repair"} if split == "train" else {"class_label"}
+        targets = read_small(
+            folder / ("train_tte.csv" if split == "train" else f"{split}_labels.csv"),
+            target_fields, target_kind
+        )
         all_ids[split] = reads["ids"]
-        if not reads["ids"] == specs["ids"] == targets["ids"]:
-            raise ValueError(f"Split {split}: vehicle IDs do not align across all 3 CSVs")
-        if (len(reads["ids"]) != EXPECTED_VEHICLES[split] or
-                                        reads["rows"] != EXPECTED_READOUTS[split]):
+        for kind, table in (("specifications", specs), ("target", targets)):
+            if table["rows"] != len(reads["ids"]):
+                raise ValueError(f"{split} {kind}: rows do not match vehicle count")
+            if table["has_vehicle_id"]:
+                if table["ids"] != reads["ids"]:
+                    raise ValueError(f"{split} {kind}: vehicle IDs do not match readouts")
+            else:
+                report["warnings"].append(
+                    f"{split} {kind}: no vehicle_id in original CSV; cannot verify "
+                    "which row belongs to which vehicle; NO positional join performed."
+                )
+        if len(reads["ids"]) != EXPECTED_VEHICLES[split] or reads["rows"] != EXPECTED_READOUTS[split]:
             raise ValueError(f"Split {split}: published vehicle/readout counts do not match")
-        if split == "train":
-            # Training event marker is about first repair or censoring, not physical breakdown.
+        # Only compare study endpoints when real vehicle identifiers establish links.
+        if split == "train" and targets["has_vehicle_id"]:
             with (folder / "train_tte.csv").open(encoding="utf-8-sig", newline="") as stream:
                 endpoints = {r["vehicle_id"]: float(r["length_of_study_time_step"])
                              for r in csv.DictReader(stream)}
             beyond = sum(st["max_time"] > endpoints[vid] for vid, st in reads["by_vehicle"].items())
             if beyond:
                 report["warnings"].append(f"{beyond} training vehicles have readouts after study endpoint")
+        elif split == "train":
+            report["warnings"].append(
+                "Training repair time cannot be joined to individual vehicle time series "
+                "until the source's row-to-vehicle correspondence is verified."
+            )
         info = {"vehicles": len(reads["ids"]), "readouts": reads["rows"],
                 "operational_columns": reads["columns"],
                 "max_feature_missing_fraction": reads["max_missing_fraction"],
@@ -191,6 +223,7 @@ def audit_folder(folder: Path) -> dict:
                 "min_readouts_per_vehicle": reads["min_readouts_per_vehicle"],
                 "max_readouts_per_vehicle": reads["max_readouts_per_vehicle"],
                 "feature_missing_counts": reads["missing_values_by_feature"],
+                "small_tables_with_explicit_vehicle_id": {"specifications": specs["has_vehicle_id"], "target": targets["has_vehicle_id"]},
                 "target_counts": targets["counts"],
                 "specification_missing_cells": specs["missing_cells_by_column"],
                 "target_missing_cells": targets["missing_cells_by_column"]}
@@ -205,7 +238,13 @@ def audit_folder(folder: Path) -> dict:
     report["overall"] = {"vehicles": sum(len(s) for s in all_ids.values()),
                          "readouts": sum(v["readouts"] for v in report["splits"].values()),
                          "disjoint_vehicle_splits": True,
-                         "source_data_modified": False}
+                         "source_data_modified": False,
+                         "vehicle_target_linkage_verified": all(
+                             v["small_tables_with_explicit_vehicle_id"]["target"]
+                             and v["small_tables_with_explicit_vehicle_id"]["specifications"]
+                             for v in report["splits"].values())}
+    if not report["overall"]["vehicle_target_linkage_verified"]:
+        report["status"] = "AUDIT_COMPLETED_BUT_ROW_TO_VEHICLE_LINKAGE_UNVERIFIED"
     return report
 
 def main() -> None:
