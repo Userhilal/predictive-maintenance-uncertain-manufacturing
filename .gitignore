@@ -221,3 +221,26 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# Add these lines to the EXISTING .gitignore in the GitHub repository.
+# They exclude large/raw datasets and generated model artifacts.
+
+data/raw/
+data/processed/
+data/external/
+*.parquet
+*.feather
+*.pkl
+*.joblib
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.onnx
+*.pt
+*.pth
+*.ckpt
+*.zip
+*.7z
+*.rar
+.env.*
+!.env.example
