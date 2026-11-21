@@ -16,6 +16,7 @@ on:
       - "src/preprocessing/verify_stage4_labels.py"
       - "src/preprocessing/review_stage4_labels.py"
       - "src/preprocessing/split_stage5_eligible_sources.py"
+      - "src/preprocessing/review_stage5_splits.py"
       - "src/preprocessing/prepare_ai4i.py"
       - "src/preprocessing/prepare_fault_images.py"
       - "src/preprocessing/audit_scania_cutoffs.py"
@@ -34,4 +35,4 @@ jobs:
         with:
           python-version: '3.11'
       - name: Compile source-only scripts (no downloads, no generated data)
-        run: python -m py_compile src/preprocessing/prepare_scania.py src/preprocessing/audit_scania_cutoffs.py src/preprocessing/audit_scania_horizon48.py src/preprocessing/build_scania_training_manifest.py src/preprocessing/profile_scania_trainfit_sensors.py src/preprocessing/review_scania_sensor_profile.py src/preprocessing/create_scania_model_input_contract.py src/preprocessing/audit_stage1_collection.py src/preprocessing/audit_stage2_quality.py src/preprocessing/review_stage2_report.py src/preprocessing/clean_stage3_originals.py src/preprocessing/review_stage3_cleaning.py src/preprocessing/verify_stage4_labels.py src/preprocessing/review_stage4_labels.py src/preprocessing/split_stage5_eligible_sources.py src/preprocessing/prepare_ai4i.py src/preprocessing/prepare_fault_images.py
+        run: python -m py_compile src/preprocessing/prepare_scania.py src/preprocessing/audit_scania_cutoffs.py src/preprocessing/audit_scania_horizon48.py src/preprocessing/build_scania_training_manifest.py src/preprocessing/profile_scania_trainfit_sensors.py src/preprocessing/review_scania_sensor_profile.py src/preprocessing/create_scania_model_input_contract.py src/preprocessing/audit_stage1_collection.py src/preprocessing/audit_stage2_quality.py src/preprocessing/review_stage2_report.py src/preprocessing/clean_stage3_originals.py src/preprocessing/review_stage3_cleaning.py src/preprocessing/verify_stage4_labels.py src/preprocessing/review_stage4_labels.py src/preprocessing/split_stage5_eligible_sources.py src/preprocessing/review_stage5_splits.py src/preprocessing/prepare_ai4i.py src/preprocessing/prepare_fault_images.py
