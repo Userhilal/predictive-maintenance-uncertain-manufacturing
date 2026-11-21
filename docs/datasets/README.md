@@ -1,11 +1,12 @@
 # Dataset sources and audit status
 
+**Strict source-only policy:** Use only the user-provided Kaggle fault-image dataset, Researchdata SCANIA Component X version 2, and Mendeley AI4I 2020 records. No assistant-generated fake records or synthetic test fixtures. AI4I is synthetic by design in the published original source; never represent it as measured factory data. Source-inaccessible data remains unverified.
+
 This page records **current evidence**, not a certificate that all data is production-ready.
 
 ## 1. AI4I 2020
 
-- Source: https://archive.ics.uci.edu/dataset/601/ai4i
-- Shared copy: https://data.mendeley.com/datasets/5ww3zv87y7/1
+- Source: https://data.mendeley.com/datasets/5ww3zv87y7/1
 - Type: synthetic manufacturing-style observations; binary machine failure and separate failure-mode flags.
 - Preliminary file audit in the project discussion found strong class imbalance and label disagreements between the global failure flag and individual mode flags. These exceptions must be reviewed, not silently repaired.
 - Intended use: baseline failure classification, class-imbalance handling, uncertainty calibration.
@@ -14,11 +15,12 @@ This page records **current evidence**, not a certificate that all data is produ
 
 ## 2. SCANIA Component X
 
-- Source: https://researchdata.se/en/catalogue/dataset/2024-34/3
+- Source: https://researchdata.se/en/catalogue/dataset/2024-34/2
 - Type: real operational sequences, vehicle characteristics, repair/event and label files.
 - Intended use: time-to-event / survival modeling, censored data, failure-proximity classification, uncertainty analysis.
 - Limitation: trucks rather than manufacturing equipment; sensor meanings anonymized.
 - **Open item:** original CSV contents were not independently audited in this repository. Obtain data and check keys, missingness, sequence order, leakage, and class counts before training.
+- File acquisition, integrity validation, executable audit and documented open gates: [SCANIA raw-file audit workflow](scania-raw-validation.md).
 
 ## 3. Industrial Machinery Fault Image Dataset
 

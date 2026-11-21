@@ -1,6 +1,6 @@
 # Industrial machinery fault images — Phase 2 preparation
 
-**Status: PROVISIONAL_CURATED_IMAGES_REVIEW_AND_RIGHTS_OPEN.** Reproducible source audit and provisional split proposal, not a certified classifier dataset. No original labels changed or model trained.
+**Status: PROVISIONAL_CURATED_IMAGES_REVIEW_AND_RIGHTS_OPEN.** Reproducible source audit and provisional split proposal, not a certified classifier dataset. No original labels changed or model trained. No artificial/generated replacement images or synthetic test fixtures are permitted; use only the original Kaggle images.
 
 ## Original source
 

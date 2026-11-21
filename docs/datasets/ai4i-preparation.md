@@ -1,11 +1,11 @@
 # AI4I 2020 — Phase 2 data preparation
 
-**Scope:** auditable preprocessing and a binary machine-failure benchmark split. **No model training or model performance is claimed.**
+**Scope:** auditable preprocessing and a binary machine-failure benchmark split. **No model training or model performance is claimed.** Only original Mendeley-supplied records may be used. Mendeley's AI4I is itself an originally published synthetic benchmark; this project creates no new synthetic observations.
 
 ## Source and provenance
 
 - User-provided file: Predictive maintenance dataset.zip → nested AI4I ZIP → ai4i2020.csv.
-- Reference: https://archive.ics.uci.edu/dataset/601/ai4i
+- Reference: https://data.mendeley.com/datasets/5ww3zv87y7/1
 - SHA-256 of the provided unmodified CSV: **dc6630cd9b1f0f853922fad78a1b6436570d3f1ec863f1dd5c4340ac56bc8a8e**
 - Keep raw and processed CSVs locally. Neither belongs in GitHub.
 
@@ -69,7 +69,7 @@ The script uses only the Python standard library. It verifies the source SHA by 
 - [x] Verified features, schema, missingness, uniqueness, class balance, source exceptions and SHA.
 - [x] Preserved source and documented label conflicts without rewriting targets.
 - [x] Deterministic, leakage-aware synthetic benchmark split generator.
-- [x] Automated regression tests for split reproducibility, uniqueness, target exceptions, and source preservation.
+- [ ] Revalidate against the genuine supplied CSV when executing on a new machine; artificial test fixtures have been removed by source-only policy.
 - [ ] Get independent review of unclear source labels, when available.
 - [ ] Add distribution-shift validation before claiming performance beyond this synthetic benchmark.
 
