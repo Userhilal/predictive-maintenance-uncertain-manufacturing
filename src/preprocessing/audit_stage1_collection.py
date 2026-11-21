@@ -1,4 +1,4 @@
-"""Stage 1 ONLY: inventory existing original approved data files, without modifying them.
+r"""Stage 1 ONLY: inventory existing original approved data files, without modifying them.
 
 This verifies acquisition, not model readiness, source-label correctness, or
 permissions to reuse individually sourced Kaggle photographs. It never
