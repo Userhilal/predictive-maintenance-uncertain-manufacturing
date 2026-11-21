@@ -30,6 +30,14 @@ It downloads the nine CSVs **only from the user-provided Researchdata SCANIA ver
 The raw source CSVs are not added to the repository or uploaded as artifacts.
 If Researchdata blocks downloads from GitHub-hosted runners too, the workflow will fail honestly and no dataset will be fabricated.
 GitHub Actions must be enabled for the repository. Keep the issue open until a successful run has been reviewed.
+## November 21, 2026: failed workflow run and corrected procedure
+
+- GitHub Actions [run #1](https://github.com/Userhilal/predictive-maintenance-uncertain-manufacturing/actions/runs/44891907761) stopped with **HTTP 404** while downloading the first original CSV. All subsequent CSV validation steps were skipped; there is no verified raw-data report.
+- The download tool now tries two routes operated by the **same user-supplied SCANIA version-2 source**: the Researchdata `filePath` link, then SND's version-2 catalogue download path. Both could still fail if the upstream servers reject automated requests.
+- The workflow first attempts the small original train_tte.csv file, then the other original files. No mock observations are created to fill gaps.
+- If the download fails again, visit [the original dataset page](https://researchdata.se/en/catalogue/dataset/2024-34/2), download the exact listed CSVs using your browser into data/raw/scania, and run the audit locally. If browser links also fail, contact Researchdata/SND; do not replace the data with another dataset.
+- The original published data descriptor lists train_tte.csv with two data columns and specifications with eight categorical columns. The audit now supports these small-file tables with **or without vehicle_id**. When IDs are absent, it checks row totals but **does not invent a row-to-vehicle alignment** and explicitly reports that linkage remains unverified.
+- A passing CSV syntax/count audit without verifiable row-to-vehicle target correspondence must **not** be interpreted as approved training-ready RUL data.
 ## Run validation on original files
 
 Requirements: Python 3.11+, free disk space, and direct access to the official Researchdata host.

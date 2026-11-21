@@ -17,7 +17,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Fetch ONLY original SCANIA v2 CSVs
+      - name: Check downloader and auditor Python syntax (no fake data)
+        run: python -m py_compile scripts/download_scania.py src/preprocessing/audit_scania.py
+      - name: Preflight original train_tte.csv download (smallest real source first)
+        run: python scripts/download_scania.py --output data/raw/scania --only train_tte.csv
+      - name: Fetch remaining original SCANIA v2 CSVs
         run: python scripts/download_scania.py --output data/raw/scania
       - name: Validate original source CSVs (no generated observations)
         run: python src/preprocessing/audit_scania.py --data-dir data/raw/scania --output data/processed/scania_audit.json
