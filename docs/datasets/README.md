@@ -9,6 +9,7 @@ This page records **current evidence**, not a certificate that all data is produ
 - Type: synthetic manufacturing-style observations; binary machine failure and separate failure-mode flags.
 - Preliminary file audit in the project discussion found strong class imbalance and label disagreements between the global failure flag and individual mode flags. These exceptions must be reviewed, not silently repaired.
 - Intended use: baseline failure classification, class-imbalance handling, uncertainty calibration.
+- Preparation workflow, verified data-quality counts, and local execution: [AI4I phase 2 preparation](ai4i-preparation.md).
 - Limitation: no trustworthy per-machine run-to-failure trajectories.
 
 ## 2. SCANIA Component X
