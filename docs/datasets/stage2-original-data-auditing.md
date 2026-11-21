@@ -1,6 +1,6 @@
 # Stage 2 — Original-source Data Auditing, exactly three datasets
 
-**Status: REAL THREE-SOURCE AUDIT EXECUTED on the owner's original local files; full local report review and Stage 2 sign-off still pending.** See [actual user-run Stage 2 results and risk register](stage2-audit-results-2026-11-21.md). Stage 1 original-file collection is complete and signed off. This stage does **not** clean, correct, delete, relabel, split, engineer features, train a model, or download any other data.
+**Status: STAGE 2 TECHNICAL AUDIT COMPLETE WITH DOCUMENTED OPEN ISSUES (2026-11-21).** Owner executed the source audit and the read-only detailed report reviewer on genuine original files. This audit-only sign-off does not certify image rights, correct conflicting labels, or clean source data; see [actual review and sign-off](stage2-audit-results-2026-11-21.md). See [actual user-run Stage 2 results and risk register](stage2-audit-results-2026-11-21.md). Stage 1 original-file collection is complete and signed off. This stage does **not** clean, correct, delete, relabel, split, engineer features, train a model, or download any other data.
 
 The only approved sources:
 
@@ -67,10 +67,10 @@ This command does **not** rerun SCANIA's million-plus original readouts, re-open
 ## Stage 2 acceptance gates
 
 - [x] Owner ran the genuine consolidated source-only audit and provided the real terminal output on 2026-11-21 (33,641 SCANIA vehicles; 10,000 AI4I rows; 234 original images).
-- [ ] Original SCANIA population, missing sensor counts and three-split integrity reconciled.
-- [ ] Actual AI4I full-source quality summary reviewed, especially class imbalance, UDI concentration, target/failure-mode mismatch and original published synthetic status.
-- [ ] All 234 original Kaggle images audited; exact duplicates, cross-label duplicates, image resolution, extension-content mismatch, and perceptual candidates documented **without changing labels or deleting data**.
-- [ ] Explicit disclosure of unverified third-party publisher hashes and **Kaggle image rights / provenance**. If permitted usage cannot be established, restrict affected image operations accordingly; do not claim public redistribution rights.
-- [ ] Create a source-specific **audit sign-off with disclosed risks and review queues**, reserving resolution of cleaning choices to Stage 3, label decisions to Stage 4, splits to Stage 5 and feature transformations to Stage 6. Never silently call unresolved image labels “correct”.
+- [x] Original SCANIA population, missing sensor counts, source target counts and three-split integrity reconciled with the actual owner-read report.
+- [x] Original AI4I full-source quality summary reviewed, including original label counts, numeric limits, UDI concentration, 27 contradictions and published synthetic status.
+- [x] All 234 original Kaggle images audited; exact duplicates, cross-label duplicates, image resolution, extension-content mismatch and heuristic dHash candidates documented **without changing labels or deleting data**.
+- [x] Explicit disclosure of unverified third-party publisher hashes and **Kaggle image rights / provenance**; permission-dependent image activities and public redistribution remain gated on actual usage-rights evidence, not declared approved.
+- [x] Source-grounded **technical audit sign-off with disclosed risks and review queues** published, reserving cleaning for Stage 3, label decisions for Stage 4, splits for Stage 5 and transformations for Stage 6. No unverified image label was called correct.
 
-**Decision now:** Stage 2 **EXECUTED; DETAILED LOCAL EVIDENCE REVIEW OPEN**. Do not proceed to Stage 3 until this real-source audit report is evaluated. In particular, the audit script does not certify complete usage permissions for Kaggle photographs or independently published SHA fingerprints.
+**Decision now:** Stage 2 **TECHNICAL AUDIT COMPLETE WITH DOCUMENTED OPEN ISSUES**; open risks remain explicitly unresolved. Next Stage 3 — Data Cleaning, *only after sign-off PR merge*. Do not proceed to Stage 3 until this real-source audit report is evaluated. In particular, the audit script does not certify complete usage permissions for Kaggle photographs or independently published SHA fingerprints.
