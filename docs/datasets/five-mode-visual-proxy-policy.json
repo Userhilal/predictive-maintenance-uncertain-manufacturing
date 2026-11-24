@@ -1,0 +1,86 @@
+{
+  "policy_id": "FIVE_MODE_EXPLORATORY_VISUAL_PROXY_NOT_VERIFIED_CAUSE_2026_11_24",
+  "purpose": "Provide explicit review hypotheses connecting existing original image-source folder categories to AI4I source failure-mode labels for an UNPAIRED class reference catalog. Not ground truth, not same machine, not model training labels.",
+  "allowed_original_sources": [
+    "SCANIA Component X v2",
+    "AI4I 2020",
+    "Industrial Machinery Fault Image Dataset"
+  ],
+  "canonical_modes": {
+    "TWF": {
+      "meaning": "Tool Wear Failure",
+      "source_flag": "TWF",
+      "physical_evidence": "Original AI4I tool wear [min] plus documented cutting-tool failure; generic component abrasion alone insufficient"
+    },
+    "HDF": {
+      "meaning": "Heat Dissipation Failure",
+      "source_flag": "HDF",
+      "physical_evidence": "AI4I air/process temperature differential and rotational speed; independently diagnosed thermal system fault"
+    },
+    "PWF": {
+      "meaning": "Power Failure",
+      "source_flag": "PWF",
+      "physical_evidence": "AI4I torque and rotational speed supply a calculated mechanical power indicator; not proof of electrical supply outage"
+    },
+    "OSF": {
+      "meaning": "Overstrain Failure",
+      "source_flag": "OSF",
+      "physical_evidence": "AI4I tool wear [min], torque [Nm] and original product Type; source-specific mechanical strain condition, not generic cracks"
+    },
+    "RNF": {
+      "meaning": "Random Failure",
+      "source_flag": "RNF",
+      "physical_evidence": "Original AI4I RNF source target or documented independent event diagnosis, NOT leftover image classes"
+    }
+  },
+  "original_photo_folder_rules": [
+    {
+      "original_folder": "Wear",
+      "original_count": 43,
+      "candidate_mode": "TWF",
+      "visual_proxy_strength": "WEAK",
+      "justification": "Visible generic component wear can suggest wear mechanisms, but is not verified as AI4I cutting tool wear failure"
+    },
+    {
+      "original_folder": "Crack",
+      "original_count": 47,
+      "candidate_mode": "OSF",
+      "visual_proxy_strength": "WEAK",
+      "justification": "Visible cracks may be consistent with overload, fatigue, corrosion or other causes; no verified AI4I strain diagnosis"
+    },
+    {
+      "original_folder": "Misalignment",
+      "original_count": 53,
+      "candidate_mode": "OSF",
+      "visual_proxy_strength": "VERY_WEAK",
+      "justification": "Misalignment can contribute to mechanical loading but is not equivalent to overstrain; some original source images show only equipment/product photos"
+    },
+    {
+      "original_folder": "Surface defects",
+      "original_count": 43,
+      "candidate_mode": "OSF",
+      "visual_proxy_strength": "VERY_WEAK",
+      "justification": "Generic surface flaws have multiple possible mechanisms and may be unrelated to mechanical overstrain"
+    },
+    {
+      "original_folder": "Normal condition",
+      "original_count": 48,
+      "candidate_mode": null,
+      "visual_proxy_strength": "SOURCE_FOLDER_NORMAL_UNVERIFIED",
+      "justification": "Source-folder claim of normal visual appearance; not verified no-failure diagnosis and not RNF"
+    }
+  ],
+  "modes_without_direct_original_photo_class": [
+    "HDF",
+    "PWF",
+    "RNF"
+  ],
+  "all_photo_candidate_modes_are_unverified": true,
+  "all_photo_rights_remain_unverified": true,
+  "all_234_original_photo_supervised_training_or_evaluation_blocked": true,
+  "source_folder_label_to_verified_failure_mechanism_mapping_prohibited": true,
+  "no_same_machine_event_or_timestamp_pairs_exist_in_approved_sources": true,
+  "class_alignment_type": "UNPAIRED_REFERENCE_ONLY",
+  "note_scania": "SCANIA original 105 sensor columns / 14 operational variables are anonymized: cannot claim named SCANIA temperature, torque, power, tool wear or these five AI4I failure labels",
+  "note_ai4i": "Original AI4I is publisher synthetic process records, not source-proven per-machine synchronized time series. Five binary mode flags are original targets, never input features. Keep 27 disputed UDI rows quarantined."
+}
