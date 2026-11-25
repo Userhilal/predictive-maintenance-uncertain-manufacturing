@@ -244,3 +244,14 @@ data/external/
 *.rar
 .env.*
 !.env.example
+
+# Historical local integration packages (not the authoritative corrected package)
+/AI4I_Kaggle_assembly/
+/AI4I_Kaggle_finalise/
+/AI4I_Kaggle_photo_filter/
+/ai4i_kaggle_class_catalog/
+/ai4i_kaggle_mapping/
+/ai4i_kaggle_mapping_v2/
+/ai4i_kaggle_mapping_v3/
+/five_mode_hybrid/
+/five_mode_integration/
