@@ -1,0 +1,29 @@
+name: AI4I Kaggle source-free integrity
+on:
+  push:
+    paths:
+      - 'AI4I_Kaggle_corrected/**'
+      - '.github/workflows/ai4i-kaggle-integrity.yml'
+  pull_request:
+    paths:
+      - 'AI4I_Kaggle_corrected/**'
+      - '.github/workflows/ai4i-kaggle-integrity.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  syntax-and-pins:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile source files
+        run: python -m compileall -q AI4I_Kaggle_corrected src/preprocessing
+      - name: Verify exact committed annotation bytes
+        run: python AI4I_Kaggle_corrected/verify_published.py --check-assets-only
+      - name: Verify CLI imports
+        run: |
+          python AI4I_Kaggle_corrected/verify_published.py --help
+          python AI4I_Kaggle_corrected/test_published.py --help
