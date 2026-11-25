@@ -1,0 +1,87 @@
+{
+  "status": "CORRECTED_PHOTO_SIDE_PASS_ONLY",
+  "full_ai4i_rebuild_verified": false,
+  "source_sha256": {
+    "kaggle_zip": "d30ffdcdcda1258ac95d89dd90539fe7ffd7b398e693ada652b4f63c073c9b28",
+    "ai4i": null,
+    "index": null
+  },
+  "split_counts": {},
+  "rnf_positive_by_split": {},
+  "verified_image_hashes": 225,
+  "strict_photo_references": 133,
+  "strict_links": 55,
+  "format_mismatches": [
+    {
+      "image_id": "498040b717c80884c95f7b6842653369831d6b230eaf47b2b8a4c7e92e24ac43",
+      "canonical_local_path": "photos/498040b717c80884c95f7b6842653369831d6b230eaf47b2b8a4c7e92e24ac43.jpeg",
+      "actual_encoding": "WEBP",
+      "recommended_extension": ".webp",
+      "filename_extension_matches": "false",
+      "strict_photo_reference_eligible": "true"
+    },
+    {
+      "image_id": "5cad733fc3d816511714b2f9697dc4e96d5723623c3c705e42d67470d20b863a",
+      "canonical_local_path": "photos/5cad733fc3d816511714b2f9697dc4e96d5723623c3c705e42d67470d20b863a.png",
+      "actual_encoding": "JPEG",
+      "recommended_extension": ".jpg",
+      "filename_extension_matches": "false",
+      "strict_photo_reference_eligible": "true"
+    }
+  ],
+  "coverage": [
+    {
+      "failure_type": "TWF",
+      "ai4i_records": null,
+      "strict_photo_links": 16,
+      "confirmed_photo_labels": 0,
+      "equipment_context_only": 0
+    },
+    {
+      "failure_type": "HDF",
+      "ai4i_records": null,
+      "strict_photo_links": 11,
+      "confirmed_photo_labels": 0,
+      "equipment_context_only": 0
+    },
+    {
+      "failure_type": "PWF",
+      "ai4i_records": null,
+      "strict_photo_links": 4,
+      "confirmed_photo_labels": 0,
+      "equipment_context_only": 4
+    },
+    {
+      "failure_type": "OSF",
+      "ai4i_records": null,
+      "strict_photo_links": 24,
+      "confirmed_photo_labels": 0,
+      "equipment_context_only": 0
+    },
+    {
+      "failure_type": "RNF",
+      "ai4i_records": null,
+      "strict_photo_links": 0,
+      "confirmed_photo_labels": 0,
+      "equipment_context_only": 0
+    }
+  ],
+  "confirmed_photo_labels": 0,
+  "verified_event_pairs": 0,
+  "full_five_mode_mapping_validated": false,
+  "supervised_multimodal_ready": false,
+  "output_sha256": {
+    "HDF/photo_links.csv": "82869df46d403ca2505397c64d2b24938912fbea330a8c1f9315353404e461bc",
+    "OSF/photo_links.csv": "b68af83517b4d9e61ca5a4b798bd0b28f8fd3e71c17310abeaa9d403d97b1efa",
+    "PWF/photo_links.csv": "c46851b00524a3d30865e7724c435ff15d83baa6e4ed17a477ae636fef5c371f",
+    "RNF/photo_links.csv": "22f339ec2f4dcbc4e688cd68557e53c01a1a21ccfb6fb6910e96b24fb40fa950",
+    "TWF/photo_links.csv": "9762a22216cc7c1f36b0d27ddd3f9110742a83100d0479afa01421e067ed38cd",
+    "class_photo_links.csv": "97948692ab78dded610c96e520d4ac7873c436ae4248a44094f6b8f1b068d0d8",
+    "coverage.csv": "51859bd6c66cad110a94a7afe78e41025ed0437f147602bfebed93083275fe4d",
+    "data_policy.json": "615d22c0d055ec2a40cb91b9cc131034bf27ebfb53249e5f2beb1a9c0aa75d7f",
+    "excluded_class_photo_links.csv": "051393e92aa90b556ae12ebb1e5189c7a7dc93192c976d32cf4f70f66a723ee2",
+    "image_formats_225.csv": "ef568138420d6a9b181736f25230b34a921d043fa838c7749901ca7bd7c78bea",
+    "photo_index.csv": "51f03d94a4877cb844a098ab19c447422bd2e10888615e33da78a85d540d75f6",
+    "semantic_decisions_55.csv": "e9c0b463b5032e1f6bf9a24c3645749fe3bae17d720c481296190197c761dccb"
+  }
+}
