@@ -1,0 +1,702 @@
+{
+  "report_version": "1.0.0",
+  "status": "AI4I_BASELINE_CONFIGURATION_TECHNICALLY_VALIDATED",
+  "generated_at_utc": "2026-11-25T16:39:37.147224+00:00",
+  "project": "Predictive Maintenance in an Uncertain Manufacturing Process",
+  "project_step": "5.1.1",
+  "task": "D - Baseline Model Configuration",
+  "dataset": "AI4I 2020",
+  "configuration_version": "1.0.0",
+  "feature_contract_version": "1.0.0",
+  "imbalance_strategy_version": "1.0.0",
+  "environment": {
+    "status": "PASS",
+    "python_version": "3.11.9",
+    "scikit_learn_version": "1.9.1",
+    "dependency_lock_file": "uv.lock",
+    "dependency_lock_sha256": "1271fdf47be8beada4f58deb4e40ad9db96a1698549292b3856e87b4719bf3de",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "architecture": "AMD64",
+    "packages": {
+      "numpy": "2.4.6",
+      "pandas": "3.1.1",
+      "scikit-learn": "1.9.1",
+      "pytest": "9.2.0"
+    },
+    "pyproject_sha256": "96a65c104c4153ef1be0e0933712114f00e0c474b044c9c8592fd3efa5a6815e"
+  },
+  "repository": {
+    "branch": "feat/ai4i-model-input-pipeline",
+    "head_commit": "763e0b858125c26cb5c72c56e29cd4f01e0d0174",
+    "working_tree_clean": false,
+    "working_tree_status": [
+      "?? .python-version",
+      "?? configs/ai4i_baseline_models.json",
+      "?? configs/ai4i_imbalance_strategy.json",
+      "?? configs/ai4i_test_access_policy.json",
+      "?? pyproject.toml",
+      "?? reports/ai4i/imbalance_strategy_report.json",
+      "?? reports/ai4i/model_input_validation.json",
+      "?? scripts/generate_ai4i_baseline_report.py",
+      "?? scripts/generate_ai4i_imbalance_report.py",
+      "?? scripts/generate_ai4i_validation_report.py",
+      "?? src/prediction/__init__.py",
+      "?? src/prediction/ai4i/__init__.py",
+      "?? src/prediction/ai4i/access_policy.py",
+      "?? src/prediction/ai4i/baseline_config.py",
+      "?? src/prediction/ai4i/data_loader.py",
+      "?? src/prediction/ai4i/feature_contract.py",
+      "?? src/prediction/ai4i/imbalance_strategy.py",
+      "?? src/prediction/ai4i/validation.py",
+      "?? tests/prediction/test_ai4i_baseline_config.py",
+      "?? tests/prediction/test_ai4i_imbalance_strategy.py",
+      "?? tests/prediction/test_ai4i_pipeline_integration.py",
+      "?? tests/prediction/test_ai4i_test_protection.py",
+      "?? uv.lock"
+    ],
+    "provenance_note": "The HEAD commit identifies the repository base. Uncommitted implementation files are identified by their individual SHA-256 fingerprints."
+  },
+  "previous_task_validation": {
+    "status": "PASS",
+    "task_b": {
+      "status": "AI4I_MODEL_INPUT_PIPELINE_TECHNICALLY_VALIDATED",
+      "sha256": "f4028571361f9b528ffa39030c25bd9a15b12294ef4cb4be97ae7c43b07fe821",
+      "passed_tests": 20,
+      "original_report_preserved": true
+    },
+    "task_c": {
+      "status": "AI4I_IMBALANCE_STRATEGY_TECHNICALLY_VALIDATED",
+      "sha256": "36be1e836df49662154077ebe381fd46c558a846fd91deb67aee9147e3982395",
+      "passed_tests": 59,
+      "cumulative_passed_tests": 79,
+      "original_report_preserved": true
+    },
+    "previous_approval_status": {
+      "task_b_technical_validation": true,
+      "task_c_technical_validation": true,
+      "stage5_formal_signoff_granted": false,
+      "stage6_formal_signoff_granted": false,
+      "step_5_1_1_completed": false,
+      "step_5_1_2_training_authorized": false
+    }
+  },
+  "reference_fingerprints": {
+    "configs/ai4i_baseline_models.json": {
+      "status": "PASS",
+      "sha256": "e974bb972168347a436b8b9f1ff6f61735a650e753d04e9452a3679732a4786e",
+      "size_bytes": 7076
+    },
+    "src/prediction/ai4i/baseline_config.py": {
+      "status": "PASS",
+      "sha256": "71403923176b112e45fd5ac0f9ed647a75d954a4c27d89f2b9f6a9a420046300",
+      "size_bytes": 22674
+    },
+    "tests/prediction/test_ai4i_baseline_config.py": {
+      "status": "PASS",
+      "sha256": "a993ff49a4a5c3711a9850f0701b726dd6689b60aac97a058768d4e0eff5e368",
+      "size_bytes": 16380
+    },
+    "reports/ai4i/model_input_validation.json": {
+      "status": "PASS",
+      "sha256": "f4028571361f9b528ffa39030c25bd9a15b12294ef4cb4be97ae7c43b07fe821",
+      "size_bytes": 24983
+    },
+    "reports/ai4i/imbalance_strategy_report.json": {
+      "status": "PASS",
+      "sha256": "36be1e836df49662154077ebe381fd46c558a846fd91deb67aee9147e3982395",
+      "size_bytes": 16828
+    },
+    "uv.lock": {
+      "status": "PASS",
+      "sha256": "1271fdf47be8beada4f58deb4e40ad9db96a1698549292b3856e87b4719bf3de",
+      "size_bytes": 24758
+    }
+  },
+  "implementation_fingerprints": {
+    ".python-version": {
+      "sha256": "61141e9590171b900fdf709e7ea8f050d5c2a69198d4a4a1977d7c45186307e5",
+      "size_bytes": 7
+    },
+    "configs/ai4i_baseline_models.json": {
+      "sha256": "e974bb972168347a436b8b9f1ff6f61735a650e753d04e9452a3679732a4786e",
+      "size_bytes": 7076
+    },
+    "configs/ai4i_imbalance_strategy.json": {
+      "sha256": "0f53ace02430fb1d411f0bb435093c890af25434f244ca9f646146e3f553d38f",
+      "size_bytes": 3873
+    },
+    "configs/ai4i_test_access_policy.json": {
+      "sha256": "9b4b30dd40abf084bd7ded167e4284a9c24f8f779c32066e3293b201b09836ab",
+      "size_bytes": 1526
+    },
+    "pyproject.toml": {
+      "sha256": "96a65c104c4153ef1be0e0933712114f00e0c474b044c9c8592fd3efa5a6815e",
+      "size_bytes": 258
+    },
+    "reports/ai4i/imbalance_strategy_report.json": {
+      "sha256": "36be1e836df49662154077ebe381fd46c558a846fd91deb67aee9147e3982395",
+      "size_bytes": 16828
+    },
+    "reports/ai4i/model_input_validation.json": {
+      "sha256": "f4028571361f9b528ffa39030c25bd9a15b12294ef4cb4be97ae7c43b07fe821",
+      "size_bytes": 24983
+    },
+    "scripts/generate_ai4i_baseline_report.py": {
+      "sha256": "287926d20001614ea9ee26130ed7c600f48d64d1e5173bb8fe55b06ddca660fe",
+      "size_bytes": 26603
+    },
+    "scripts/generate_ai4i_imbalance_report.py": {
+      "sha256": "a316cd468d8f1cb8d5586f9f853b9b029e4f0094ba3f3dab89780586d67faaa3",
+      "size_bytes": 20579
+    },
+    "scripts/generate_ai4i_validation_report.py": {
+      "sha256": "077a97b2c347eadf39946566f994cea0763fa028040f3fed9ecf6962041b97ac",
+      "size_bytes": 16854
+    },
+    "src/prediction/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "src/prediction/ai4i/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "src/prediction/ai4i/access_policy.py": {
+      "sha256": "87ed68f22b9e259eb24d4c86a69bac44ac1eaa40827af9a413e3de30e8b6df3b",
+      "size_bytes": 6905
+    },
+    "src/prediction/ai4i/baseline_config.py": {
+      "sha256": "71403923176b112e45fd5ac0f9ed647a75d954a4c27d89f2b9f6a9a420046300",
+      "size_bytes": 22674
+    },
+    "src/prediction/ai4i/data_loader.py": {
+      "sha256": "e3f82c5ad8993a59bf8e842238897c724abc4ffc57baa6dad49655eb78c688dc",
+      "size_bytes": 15802
+    },
+    "src/prediction/ai4i/feature_contract.py": {
+      "sha256": "2cd5db85b51c630412cc394029139dc2bf5cfb4733a19b04bdd52dc064cf4bdd",
+      "size_bytes": 5163
+    },
+    "src/prediction/ai4i/imbalance_strategy.py": {
+      "sha256": "284945bb68753c236a645afa5caaf29e59279c1af5acc1943d482d4200867842",
+      "size_bytes": 17079
+    },
+    "src/prediction/ai4i/validation.py": {
+      "sha256": "e876513c38f129a5fbabb5294310e4474320ee727d21df2efe9116ac2b5120c6",
+      "size_bytes": 29852
+    },
+    "tests/prediction/test_ai4i_baseline_config.py": {
+      "sha256": "a993ff49a4a5c3711a9850f0701b726dd6689b60aac97a058768d4e0eff5e368",
+      "size_bytes": 16380
+    },
+    "tests/prediction/test_ai4i_imbalance_strategy.py": {
+      "sha256": "6dd723b9e399c9f05f39b88118f9209a91df67bc686e03ce73c1167f436f50e3",
+      "size_bytes": 14598
+    },
+    "tests/prediction/test_ai4i_pipeline_integration.py": {
+      "sha256": "e0e31425c0e829be8a78d08a4b08cd8390c3e3cb257db97e5feebf9e70aabc74",
+      "size_bytes": 11062
+    },
+    "tests/prediction/test_ai4i_test_protection.py": {
+      "sha256": "6f022d11416834eeb891292980e0b72479470dccbf673ce613d65cf901b3fe3c",
+      "size_bytes": 4649
+    },
+    "uv.lock": {
+      "sha256": "1271fdf47be8beada4f58deb4e40ad9db96a1698549292b3856e87b4719bf3de",
+      "size_bytes": 24758
+    }
+  },
+  "independent_data_audit": {
+    "status": "AI4I_MODEL_INPUT_DATA_VALIDATED",
+    "summary": {
+      "eligible_rows": 9973,
+      "feature_count": 8,
+      "predictor_values_checked": 79784,
+      "normal_count": 9643,
+      "failure_count": 330,
+      "quarantined_rows": 27,
+      "failure_rate": 0.0330893412212975
+    },
+    "stage6_integrity": {
+      "status": "STAGE6_FILE_INTEGRITY_VERIFIED",
+      "stage6_report_sha256": "0250e7063eaae1f551a843cde3f963ba95f16f08cb261bd40b592783c58a3973",
+      "original_contract_status": "STAGE6_AI4I_TRAIN_ONLY_FEATURE_CONTRACT_PRELIMINARY",
+      "verified_output_file_count": 4,
+      "verified_files": {
+        "ai4i_test_features.csv": {
+          "status": "PASS",
+          "sha256": "9478aa663c40436560cf136ff24539291582e2d2abd00af4349cc5e2cad1f98f",
+          "size_bytes": 171551
+        },
+        "ai4i_train_features.csv": {
+          "status": "PASS",
+          "sha256": "6955ff605cf3e0261319db65fb9cd0a9e17c4c80969a9739e06374cfcb0457ec",
+          "size_bytes": 799844
+        },
+        "ai4i_train_only_feature_contract.json": {
+          "status": "PASS",
+          "sha256": "679b2922a5ac9fcc0c55d263201cfb7755c9bca83b5aaa78d89d8a2a3bf0bbba",
+          "size_bytes": 3441
+        },
+        "ai4i_validation_features.csv": {
+          "status": "PASS",
+          "sha256": "5eaadfa151d30f7322c6ddfb75a6eb59b080704a352977bca5fbfb1669ecb50e",
+          "size_bytes": 171716
+        }
+      }
+    },
+    "cross_partition_validation": {
+      "status": "PASS",
+      "partition_overlap_counts": {
+        "train_validation": 0,
+        "train_test": 0,
+        "validation_test": 0
+      },
+      "eligible_unique_udi_count": 9973,
+      "quarantined_unique_udi_count": 27,
+      "quarantine_overlap_count": 0,
+      "all_original_udis_accounted": 10000,
+      "complete_original_source_coverage": true
+    },
+    "test_used_for_integrity_audit_only": true,
+    "original_stage6_files_preserved": true
+  },
+  "baseline_configuration": {
+    "status": "PASS",
+    "configuration": {
+      "configuration_version": "1.0.0",
+      "feature_contract_version": "1.0.0",
+      "imbalance_strategy_version": "1.0.0",
+      "dataset": "AI4I 2020",
+      "project_step": "5.1.1",
+      "task": "D - Baseline Model Configuration",
+      "configuration_status": "INITIAL_FIXED_BASELINE_CONFIGURATION",
+      "classification_task": {
+        "type": "binary_classification",
+        "target_column": "original_machine_failure_target_not_a_feature",
+        "negative_class": 0,
+        "positive_class": 1,
+        "feature_count": 8
+      },
+      "environment": {
+        "python_version": "3.11.9",
+        "scikit_learn_version": "1.9.1",
+        "dependency_lock_file": "uv.lock",
+        "global_random_seed": 42
+      },
+      "data_policy": {
+        "training_partition": "train",
+        "model_selection_partition": "validation",
+        "protected_partition": "test",
+        "existing_feature_contract_required": true,
+        "existing_partitions_preserved": true,
+        "original_class_distribution_preserved": true,
+        "additional_standardization_allowed": false,
+        "new_preprocessing_allowed": false,
+        "resampling_allowed": false,
+        "test_access_for_configuration_allowed": false
+      },
+      "model_order": [
+        "dummy_classifier",
+        "logistic_regression",
+        "random_forest"
+      ],
+      "models": {
+        "dummy_classifier": {
+          "enabled": true,
+          "display_name": "Dummy Classifier",
+          "estimator_class": "sklearn.dummy.DummyClassifier",
+          "role": "unweighted_reference_baseline",
+          "parameters": {
+            "strategy": "prior",
+            "random_state": 42,
+            "constant": null
+          },
+          "class_weight_policy": {
+            "enabled": false,
+            "source": null,
+            "additional_sample_weight_allowed": false
+          }
+        },
+        "logistic_regression": {
+          "enabled": true,
+          "display_name": "Logistic Regression",
+          "estimator_class": "sklearn.linear_model.LogisticRegression",
+          "role": "weighted_linear_baseline",
+          "parameters": {
+            "solver": "lbfgs",
+            "C": 1.0,
+            "l1_ratio": 0.0,
+            "dual": false,
+            "tol": 0.0001,
+            "fit_intercept": true,
+            "max_iter": 1000,
+            "random_state": 42,
+            "verbose": 0,
+            "warm_start": false
+          },
+          "class_weight_policy": {
+            "enabled": true,
+            "source": "verified_train_class_weights",
+            "method": "balanced",
+            "source_partition": "train",
+            "hardcoded_weights_allowed": false,
+            "additional_sample_weight_allowed": false
+          }
+        },
+        "random_forest": {
+          "enabled": true,
+          "display_name": "Random Forest",
+          "estimator_class": "sklearn.ensemble.RandomForestClassifier",
+          "role": "weighted_nonlinear_baseline",
+          "parameters": {
+            "n_estimators": 200,
+            "criterion": "gini",
+            "max_depth": 10,
+            "min_samples_split": 5,
+            "min_samples_leaf": 2,
+            "min_weight_fraction_leaf": 0.0,
+            "max_features": "sqrt",
+            "max_leaf_nodes": null,
+            "min_impurity_decrease": 0.0,
+            "bootstrap": true,
+            "oob_score": false,
+            "n_jobs": 1,
+            "random_state": 42,
+            "verbose": 0,
+            "warm_start": false,
+            "ccp_alpha": 0.0,
+            "max_samples": null,
+            "monotonic_cst": null
+          },
+          "class_weight_policy": {
+            "enabled": true,
+            "source": "verified_train_class_weights",
+            "method": "balanced",
+            "source_partition": "train",
+            "hardcoded_weights_allowed": false,
+            "additional_sample_weight_allowed": false,
+            "balanced_subsample_enabled": false
+          },
+          "bootstrap_policy": {
+            "internal_estimator_bootstrap_allowed": true,
+            "external_dataset_resampling_allowed": false,
+            "original_dataset_modification_allowed": false
+          }
+        }
+      },
+      "model_selection_policy": {
+        "initial_hyperparameters_fixed": true,
+        "hyperparameters_optimized": false,
+        "grid_search_allowed_at_current_step": false,
+        "randomized_search_allowed_at_current_step": false,
+        "cross_validation_enabled": false,
+        "future_selection_partition": "validation",
+        "test_used_for_model_selection": false,
+        "test_used_for_hyperparameter_tuning": false
+      },
+      "evaluation_guidance": {
+        "primary_metric": "average_precision",
+        "positive_class": 1,
+        "accuracy_as_primary_metric_allowed": false,
+        "precision_recall_analysis_required": true,
+        "probability_calibration_assessment_required": true,
+        "weighted_probabilities_assumed_calibrated": false,
+        "decision_threshold": null,
+        "future_threshold_selection_partition": "validation",
+        "evaluation_protocol_defined_in_task_e": true
+      },
+      "current_step_restrictions": {
+        "estimator_construction_allowed": true,
+        "model_training_allowed": false,
+        "model_prediction_allowed": false,
+        "model_evaluation_allowed": false,
+        "hyperparameter_tuning_allowed": false,
+        "threshold_optimization_allowed": false,
+        "probability_calibration_allowed": false,
+        "trained_model_serialization_allowed": false,
+        "original_data_modification_allowed": false,
+        "additional_models_allowed": false,
+        "xgboost_allowed": false,
+        "scania_modeling_allowed": false,
+        "image_modeling_allowed": false,
+        "rag_implementation_allowed": false
+      },
+      "limitations": [
+        "AI4I 2020 is a published synthetic benchmark.",
+        "The selected hyperparameters are initial fixed baseline choices.",
+        "No model has been trained or evaluated at this step.",
+        "No predictive performance ranking has been established.",
+        "Class weights compensate for statistical imbalance and do not represent measured industrial failure costs.",
+        "Weighted model probabilities are not assumed to be calibrated.",
+        "Random Forest internal bootstrap is not external class rebalancing.",
+        "Existing train-wide standardization prevents naive fold-level cross-validation.",
+        "No future-time failure prediction or industrial generalization has been established.",
+        "Formal training authorization is required before Step 5.1.2."
+      ]
+    },
+    "construction_summary": {
+      "status": "AI4I_BASELINE_ESTIMATORS_CONSTRUCTED_UNFITTED",
+      "configuration_version": "1.0.0",
+      "feature_contract_version": "1.0.0",
+      "imbalance_strategy_version": "1.0.0",
+      "dataset": "AI4I 2020",
+      "project_step": "5.1.1",
+      "configuration_sha256": "e974bb972168347a436b8b9f1ff6f61735a650e753d04e9452a3679732a4786e",
+      "environment": {
+        "status": "PASS",
+        "python_version": "3.11.9",
+        "scikit_learn_version": "1.9.1",
+        "dependency_lock_file": "uv.lock",
+        "dependency_lock_sha256": "1271fdf47be8beada4f58deb4e40ad9db96a1698549292b3856e87b4719bf3de"
+      },
+      "feature_count": 8,
+      "feature_columns": [
+        "type_H",
+        "type_L",
+        "type_M",
+        "air_temperature_K_train_z",
+        "process_temperature_K_train_z",
+        "rotational_speed_rpm_train_z",
+        "torque_Nm_train_z",
+        "tool_wear_min_train_z"
+      ],
+      "model_count": 3,
+      "model_order": [
+        "dummy_classifier",
+        "logistic_regression",
+        "random_forest"
+      ],
+      "models": {
+        "dummy_classifier": {
+          "status": "UNFITTED_ESTIMATOR_CONSTRUCTED",
+          "estimator_class": "DummyClassifier",
+          "role": "unweighted_reference_baseline",
+          "configured_parameters": {
+            "strategy": "prior",
+            "random_state": 42,
+            "constant": null
+          },
+          "class_weight": null,
+          "class_weight_source": null,
+          "is_fitted": false,
+          "model_training_performed": false,
+          "model_prediction_performed": false,
+          "model_evaluation_performed": false
+        },
+        "logistic_regression": {
+          "status": "UNFITTED_ESTIMATOR_CONSTRUCTED",
+          "estimator_class": "LogisticRegression",
+          "role": "weighted_linear_baseline",
+          "configured_parameters": {
+            "solver": "lbfgs",
+            "C": 1.0,
+            "l1_ratio": 0.0,
+            "dual": false,
+            "tol": 0.0001,
+            "fit_intercept": true,
+            "max_iter": 1000,
+            "random_state": 42,
+            "verbose": 0,
+            "warm_start": false
+          },
+          "class_weight": {
+            "0": 0.5171111111111111,
+            "1": 15.11038961038961
+          },
+          "class_weight_source": "verified_train_class_weights",
+          "is_fitted": false,
+          "model_training_performed": false,
+          "model_prediction_performed": false,
+          "model_evaluation_performed": false
+        },
+        "random_forest": {
+          "status": "UNFITTED_ESTIMATOR_CONSTRUCTED",
+          "estimator_class": "RandomForestClassifier",
+          "role": "weighted_nonlinear_baseline",
+          "configured_parameters": {
+            "n_estimators": 200,
+            "criterion": "gini",
+            "max_depth": 10,
+            "min_samples_split": 5,
+            "min_samples_leaf": 2,
+            "min_weight_fraction_leaf": 0.0,
+            "max_features": "sqrt",
+            "max_leaf_nodes": null,
+            "min_impurity_decrease": 0.0,
+            "bootstrap": true,
+            "oob_score": false,
+            "n_jobs": 1,
+            "random_state": 42,
+            "verbose": 0,
+            "warm_start": false,
+            "ccp_alpha": 0.0,
+            "max_samples": null,
+            "monotonic_cst": null
+          },
+          "class_weight": {
+            "0": 0.5171111111111111,
+            "1": 15.11038961038961
+          },
+          "class_weight_source": "verified_train_class_weights",
+          "is_fitted": false,
+          "model_training_performed": false,
+          "model_prediction_performed": false,
+          "model_evaluation_performed": false
+        }
+      },
+      "all_estimators_unfitted": true,
+      "model_training_performed": false,
+      "model_prediction_performed": false,
+      "model_evaluation_performed": false,
+      "hyperparameter_tuning_performed": false,
+      "threshold_optimization_performed": false,
+      "probability_calibration_performed": false,
+      "resampling_performed": false,
+      "new_preprocessing_performed": false,
+      "test_partition_used_for_configuration": false,
+      "decision_threshold": null,
+      "step_5_1_2_training_authorized": false
+    },
+    "training_class_weights": {
+      "status": "AI4I_TRAIN_CLASS_WEIGHTS_COMPUTED",
+      "strategy_version": "1.0.0",
+      "dataset": "AI4I 2020",
+      "feature_contract_version": "1.0.0",
+      "source_partition": "train",
+      "source_file": "ai4i_train_features.csv",
+      "source_sha256": "6955ff605cf3e0261319db65fb9cd0a9e17c4c80969a9739e06374cfcb0457ec",
+      "method": "balanced",
+      "formula": "N / (K * N_c)",
+      "total_training_rows": 6981,
+      "class_counts": {
+        "0": 6750,
+        "1": 231
+      },
+      "failure_rate": 0.03308981521272024,
+      "imbalance_ratio": 29.22077922077922,
+      "class_weights": {
+        "0": 0.5171111111111111,
+        "1": 15.11038961038961
+      },
+      "weight_ratio": 29.220779220779225,
+      "weighted_class_totals": {
+        "0": 3490.4999999999995,
+        "1": 3490.5
+      },
+      "validation_labels_used_for_weights": false,
+      "test_labels_used_for_weights": false,
+      "resampling_performed": false,
+      "new_preprocessing_performed": false,
+      "model_training_performed": false,
+      "model_prediction_performed": false,
+      "model_evaluation_performed": false,
+      "industrial_cost_ratio_estimated": false
+    }
+  },
+  "automated_tests": {
+    "baseline_configuration_tests": {
+      "status": "PASS",
+      "test_path": "tests/prediction/test_ai4i_baseline_config.py",
+      "expected_test_count": 88,
+      "total": 88,
+      "passed": 88,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 5.246,
+      "pytest_exit_code": 0,
+      "evidence_source": "Executed pytest JUnit XML"
+    },
+    "complete_prediction_suite": {
+      "status": "PASS",
+      "test_path": "tests/prediction",
+      "expected_test_count": 167,
+      "total": 167,
+      "passed": 167,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 5.823,
+      "pytest_exit_code": 0,
+      "evidence_source": "Executed pytest JUnit XML"
+    },
+    "note": "The complete suite includes the baseline tests. The two counts are not additive."
+  },
+  "integrity_verification": {
+    "status": "PASS",
+    "reference_fingerprints_unchanged": true,
+    "implementation_fingerprints_unchanged": true,
+    "previous_reports_unchanged": true,
+    "data_audit_results_unchanged": true,
+    "baseline_construction_reproducible": true,
+    "repository_state_unchanged_before_report_write": true
+  },
+  "methodological_decisions": {
+    "classification_type": "binary_classification",
+    "positive_class": 1,
+    "baseline_models": [
+      "dummy_classifier",
+      "logistic_regression",
+      "random_forest"
+    ],
+    "dummy_classifier_weighted": false,
+    "logistic_regression_weighted": true,
+    "random_forest_weighted": true,
+    "class_weight_source": "verified_train_labels",
+    "initial_hyperparameters_fixed": true,
+    "hyperparameters_optimized": false,
+    "random_seed": 42,
+    "cross_validation_enabled": false,
+    "future_model_selection_partition": "validation",
+    "future_threshold_selection_partition": "validation",
+    "primary_metric": "average_precision",
+    "decision_threshold": null,
+    "weighted_probabilities_assumed_calibrated": false,
+    "evaluation_protocol_pending_task_e": true
+  },
+  "scope_restrictions": {
+    "model_training_performed": false,
+    "model_prediction_performed": false,
+    "model_evaluation_performed": false,
+    "hyperparameter_tuning_performed": false,
+    "threshold_optimization_performed": false,
+    "probability_calibration_performed": false,
+    "resampling_performed": false,
+    "new_preprocessing_performed": false,
+    "original_data_modification_performed": false,
+    "partition_regeneration_performed": false,
+    "test_used_for_model_selection": false,
+    "test_used_for_integrity_audit_only": true,
+    "trained_model_serialization_performed": false,
+    "scania_modeling_performed": false,
+    "image_modeling_performed": false,
+    "rag_implementation_performed": false
+  },
+  "limitations": [
+    "AI4I 2020 is a published synthetic benchmark.",
+    "The selected hyperparameters are initial fixed baseline choices.",
+    "No model has been trained or evaluated at this step.",
+    "No predictive performance ranking has been established.",
+    "Class weights compensate for statistical imbalance and do not represent measured industrial failure costs.",
+    "Weighted model probabilities are not assumed to be calibrated.",
+    "Random Forest internal bootstrap is not external class rebalancing.",
+    "Existing train-wide standardization prevents naive fold-level cross-validation.",
+    "No future-time failure prediction or industrial generalization has been established.",
+    "Formal training authorization is required before Step 5.1.2.",
+    "Automated configuration tests do not establish predictive performance.",
+    "Unfitted estimators retain their standard scikit-learn fit methods. Restrictions are enforced at the current pipeline level.",
+    "Test partition protection is application-level, not physical file isolation.",
+    "The SCANIA temporal modeling and LSTM pipeline remain separate from AI4I.",
+    "Technical validation is not formal supervisor approval."
+  ],
+  "approval_status": {
+    "task_b_technical_validation": true,
+    "task_c_technical_validation": true,
+    "task_d_technical_validation": true,
+    "stage5_formal_signoff_granted": false,
+    "stage6_formal_signoff_granted": false,
+    "step_5_1_1_completed": false,
+    "step_5_1_2_training_authorized": false
+  }
+}
