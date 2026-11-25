@@ -1,0 +1,17 @@
+{
+  "passed": 10,
+  "failed": 0,
+  "tests": [
+    "real photo reconstruction comparison, read-only",
+    "modified existing photo output",
+    "forged checksum rejected",
+    "missing output rejected",
+    "extra file rejected",
+    "extra directory rejected",
+    "missing SCANIA source rejected",
+    "missing history catalog rejected",
+    "invalid retrieval split rejected",
+    "empty retrieval selection rejected"
+  ],
+  "scope": "Actual original photo-side comparison and fail-closed input tests only; full catalog and real SCANIA retrieval require owner originals."
+}

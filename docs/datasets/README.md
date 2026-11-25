@@ -1,5 +1,7 @@
 # Dataset sources and audit status
 
+**Latest scope:** [Three-source independent-evidence integration](three-source-integration.md) now includes SCANIA native histories in a common catalog while retaining separate source contexts. Earlier statements about SCANIA remaining outside the catalog are historical; the scientific no-pair/no-invented-mechanism restriction remains in force.
+
 ## Current AI4I–Kaggle integration decision (2026-11-25)
 
 **Current authoritative status:** [Final qualified data-stage acceptance](final-qualified-acceptance-2026-11-25.md). Full owner-local published-output verification and Stage 7 report review passed within scope. The chronological entries below retain historical context and are superseded where they describe these completed checks as pending.

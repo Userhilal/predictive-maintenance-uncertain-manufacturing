@@ -2,7 +2,7 @@
 
 An academic project exploring **failure prediction, time-to-event estimation, uncertainty-aware maintenance planning, multimodal retrieval, and decision support** in industrial settings.
 
-> **Project status (2026-11-25):** AI4I–Kaggle exploratory integration passed full owner-local technical validation. SCANIA remains separate; repository-wide Stage 7 source validation and read-only verification of the published corrected view passed in the owner environment. [Final qualified data-stage acceptance](docs/datasets/final-qualified-acceptance-2026-11-25.md). No confirmed photo failure labels, paired physical events, or supervised multimodal readiness. No models, RAG or decision engine implemented.
+> **Project status (2026-11-25):** AI4I–Kaggle exploratory integration passed full owner-local technical validation. SCANIA now contributes native time-series histories to an independent-evidence catalog, not paired events. Repository-wide Stage 7 and AI4I–Kaggle verification passed locally; the three-source catalog built and passed final owner-local verification (15 files and report, six actual histories / 405 readouts). See [three-source integration](docs/datasets/three-source-integration.md). [Final qualified data-stage acceptance](docs/datasets/final-qualified-acceptance-2026-11-25.md). No confirmed photo failure labels, paired physical events, or supervised multimodal readiness. No models, RAG or decision engine implemented.
 
 ## Objectives
 
@@ -41,7 +41,8 @@ data/                   # Data download instructions (raw data not committed)
 docs/datasets/          # Data provenance and quality notes
 docs/architecture/      # System design and evidence boundaries
 notebooks/             # Exploratory work once the data phase is approved
-AI4I_Kaggle_corrected/  # Authoritative exploratory integration and verification
+AI4I_Kaggle_corrected/  # Authoritative AI4I–Kaggle exploratory view
+Three_Source_Integration/ # Independent-evidence catalog and verification
 src/preprocessing/      # Original-source preparation and historical utilities
 src/prediction/         # Planned failure and time-to-event models
 src/rag/                # Planned evidence retrieval
@@ -64,8 +65,8 @@ Do **not** commit large raw CSVs, ZIPs, image collections, private documents, AP
 
 ## Current priorities
 
-- Preserve the accepted original-source reports and corrected outputs; reverify only if needed after changes.
-- Finalize requirements and architecture against the qualified source-specific acceptance; no SCANIA/image fusion or model implementation yet.
+- Preserve the verified three-source catalog and source reports. Finalize the requirements and architecture before model implementation.
+- Finalize requirements and architecture against the qualified source-specific acceptance; no unsupported same-machine fusion or model implementation yet.
 - Keep the obsolete Phase 2 10,000-row splits and folder-name proxies historical; use `corrected_review_v1` for the qualified exploratory view.
 - Retain image label/rights and SCANIA target-semantics blockers. RNF cannot be evaluated on held-out AI4I splits.
 - See [current integration instructions](AI4I_Kaggle_corrected/README.md) before using any generated data.
