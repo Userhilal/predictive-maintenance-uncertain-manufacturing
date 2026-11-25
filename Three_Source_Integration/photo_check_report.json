@@ -1,0 +1,27 @@
+{
+  "status": "PHOTO_CATALOG_CHECK_PASS_ONLY",
+  "strict_photo_references": 133,
+  "exploratory_links": 55,
+  "verified_timeseries_photo_pairs": 0,
+  "full_integration_executed": false,
+  "source_verification": {
+    "status": "PUBLISHED_PHOTO_SIDE_PASS_ONLY",
+    "full_ai4i_rebuild_verified": false,
+    "output_files_verified": 12,
+    "report_verified": true,
+    "source_sha256": {
+      "kaggle_zip": "d30ffdcdcda1258ac95d89dd90539fe7ffd7b398e693ada652b4f63c073c9b28",
+      "ai4i": null,
+      "index": null
+    },
+    "split_counts": {},
+    "rnf_positive_by_split": {},
+    "verified_image_hashes": 225,
+    "strict_photo_references": 133,
+    "strict_links": 55,
+    "confirmed_photo_labels": 0,
+    "verified_event_pairs": 0,
+    "supervised_multimodal_ready": false,
+    "source_and_published_files_modified": false
+  }
+}
