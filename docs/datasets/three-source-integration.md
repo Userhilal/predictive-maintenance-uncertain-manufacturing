@@ -18,7 +18,7 @@ No SCANIA native proximity class may be mapped to TWF/HDF/PWF/OSF/RNF. The AI4I/
 
 The correction package delivered to the owner implements `verify_integration.py`, which reconstructs the catalog in a temporary directory and compares exact inventory, 15 output hashes and the report itself. It rejects forged report hashes. `load_history.py` filters the original pinned readout CSV by exact split and vehicle ID; it never assumes that the rows are contiguous. It compares the selected catalog row to original target metadata and checks original row ordinals, timestamps and counts. It emits ordered raw sensor cells (missing strings preserved), not native targets as predictors. Full histories are inspection-only until an as-of cutoff is defined.
 
-Ten additional checks passed in the development environment using the actual original photo-side reconstruction and deliberately corrupted isolated copies, plus missing/invalid input tests. **Full post-generation verification of the three-source catalog and positive SCANIA retrieval are pending owner-local execution**; exact raw SCANIA/AI4I files are not available in that environment. No independent full source run is claimed. The code package must be added on this branch before merging. CI is source-free and does not replace local checks.
+Ten additional checks passed in the development environment using the actual original photo-side reconstruction and deliberately corrupted isolated copies, plus missing/invalid input tests. **Full post-generation verification and positive SCANIA retrieval passed in the owner environment on 2026-11-25**; exact raw SCANIA/AI4I files are not available in that environment. No independent full source run is claimed. The seven source-only package files were uploaded in commit `4aaca1e`; source-free CI completed successfully for that commit. CI is source-free and does not replace local checks.
 
 ## Local acceptance
 
@@ -26,7 +26,7 @@ Ten additional checks passed in the development environment using the actual ori
 py -3.11 Three_Source_Integration/verify_integration.py --scania-data "$HOME\Documents\2024-34-2\data" --images-zip "$HOME\Downloads\archive.zip" --test-retrieval
 ```
 
-Expected: `THREE_SOURCE_CATALOG_VERIFIED_INDEPENDENT_EVIDENCE_ONLY`, 15 files plus report checked, actual retrieval counts for first/last vehicle in each split and a noncontiguous example if available. The existing catalog is write-once; preserve it, use original paths/platform (v1 stores absolute paths). A relocated dataset must be rebuilt to a new version, not silently alter the old report.
+Observed: `THREE_SOURCE_CATALOG_VERIFIED_INDEPENDENT_EVIDENCE_ONLY`, 15 files plus report checked. Six genuine histories retrieved: train 2 / 198 readouts, validation 2 / 124, test 2 / 83 (405 readouts total). No noncontiguous history was exercised in any split; that retrieval case remains untested on real data. All 9 SCANIA source fingerprints, 9,973 eligible AI4I records, 133 strict photo references and 55 exploratory associations verified. Original source and catalog files unchanged. The independent-evidence catalog is technically accepted within scope; no verified five-mode SCANIA labels or time-series/photo pairs. The existing catalog is write-once; preserve it, use original paths/platform (v1 stores absolute paths). A relocated dataset must be rebuilt to a new version, not silently alter the old report.
 
 ## Architecture restriction
 
