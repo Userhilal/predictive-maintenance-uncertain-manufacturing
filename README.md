@@ -2,7 +2,7 @@
 
 An academic project exploring **failure prediction, time-to-event estimation, uncertainty-aware maintenance planning, multimodal retrieval, and decision support** in industrial settings.
 
-> **Project status:** Dataset understanding is underway; cleaning and preparation are next. No predictive model, multimodal RAG, or decision-support engine is implemented yet.
+> **Project status (2026-11-25):** AI4I–Kaggle exploratory integration passed full owner-local technical validation. SCANIA remains separate; repository-wide Stage 7 source validation and verification of the published corrected view remain pending owner execution. No confirmed photo failure labels, paired physical events, or supervised multimodal readiness. No models, RAG or decision engine implemented.
 
 ## Objectives
 
@@ -17,7 +17,7 @@ An academic project exploring **failure prediction, time-to-event estimation, un
 | Dataset | Intended contribution | Limitation |
 |---|---|---|
 | [AI4I 2020 (user-supplied Mendeley data)](https://data.mendeley.com/datasets/5ww3zv87y7/1) | Synthetic manufacturing-style failure classification | Not a longitudinal per-machine RUL dataset |
-| [SCANIA Component X](https://researchdata.se/en/catalogue/dataset/2024-34/2) | Real operational histories and repair/time-to-event data | Collected from trucks; raw-file audit remains pending |
+| [SCANIA Component X](https://researchdata.se/en/catalogue/dataset/2024-34/2) | Real operational histories and repair/time-to-event data | Collected from trucks; earlier owner-local raw-file audit passed, final Stage 7 recheck pending |
 | [Industrial Machinery Fault Images](https://www.kaggle.com/datasets/zara2099/industrial-machinery-fault-image-dataset/data) | Experimental visual fault classification | Small and mixed-quality image set; labeling and reuse require review |
 
 **These datasets are independent.** No shared machine identifiers link the images, AI4I observations, and SCANIA time series. Do not represent outputs from separate models as synchronized observations of one machine.
@@ -41,12 +41,13 @@ data/                   # Data download instructions (raw data not committed)
 docs/datasets/          # Data provenance and quality notes
 docs/architecture/      # System design and evidence boundaries
 notebooks/             # Exploratory work once the data phase is approved
-src/preprocessing/      # Planned data quality & preprocessing code
+AI4I_Kaggle_corrected/  # Authoritative exploratory integration and verification
+src/preprocessing/      # Original-source preparation and historical utilities
 src/prediction/         # Planned failure and time-to-event models
 src/rag/                # Planned evidence retrieval
 src/decision_support/   # Planned impact and maintenance decisions
 dashboard/              # Planned UI
-tests/                  # Planned automated checks
+tests/                  # Test documentation
 ```
 
 ## Collaboration
@@ -63,10 +64,11 @@ Do **not** commit large raw CSVs, ZIPs, image collections, private documents, AP
 
 ## Current priorities
 
-- Finalize SCANIA raw-file access and complete its file-level validation.
-- Resolve the image dataset's duplicate/label conflicts before any vision evaluation.
-- Document AI4I target inconsistencies without silently editing the original labels.
-- Agree upon project-specific acceptance criteria before modeling.
+- Verify the existing corrected view with `AI4I_Kaggle_corrected/verify_published.py` on original local sources.
+- Execute the independent Stage 7 original-source audit; this is not a SCANIA/image fusion.
+- Keep the obsolete Phase 2 10,000-row splits and folder-name proxies historical; use `corrected_review_v1` for the qualified exploratory view.
+- Retain image label/rights and SCANIA target-semantics blockers. RNF cannot be evaluated on held-out AI4I splits.
+- See [current integration instructions](AI4I_Kaggle_corrected/README.md) before using any generated data.
 
 ## License
 
