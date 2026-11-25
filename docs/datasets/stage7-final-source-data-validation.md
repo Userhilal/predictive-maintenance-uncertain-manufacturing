@@ -1,6 +1,6 @@
 # Stage 7 — Final Data Validation (three-original-source integrity, qualified readiness)
 
-**CURRENT STATUS: STAGE 7 FINAL QUALITY AUDIT PREPARED. REAL OWNER-LOCAL EXECUTION AND REVIEW NOT YET PERFORMED.**
+**CURRENT STATUS: OWNER-LOCAL STAGE 7 AUDIT EXECUTED AND QUALIFIED REPORT REVIEW COMPLETE (2026-11-25).** See [final qualified acceptance](final-qualified-acceptance-2026-11-25.md). The original report is preserved; unrestricted multimodal readiness remains blocked.
 
 This audit is **not** a new data collection step. Stages 1–6 were technically closed only within their source-specific eligibility restrictions. Stage 6 qualified sign-off for the AI4I publisher-synthetic benchmark was based on an actual owner-run SHA/source/value verification: **9,973 eligible original UDI records**, **27 disputed UDIs excluded**, **6,981** train-only fit rows, **8** approved predictor columns, and **79,784** recomputed source-derived predictor values. Original Stage 6 report SHA-256: `0250e7063eaae1f551a843cde3f963ba95f16f08cb261bd40b592783c58a3973`.
 
@@ -42,7 +42,9 @@ All other paths default to the **existing unchanged** `data/processed` and `data
 
 **Write-once result:** `data/processed/stage7_final_validation/stage7_final_source_validation_report.json`. The program refuses to overwrite previously run Stage 7 output directories. Do NOT rerun Stage 6 feature generation or Stage 5 splitting. The Stage 7 JSON itself is *not* a final sign-off until the actual terminal output and source restrictions are reviewed.
 
-## Stage 7 completion criteria
+## Historical execution checklist and acceptance criteria
+
+The checklist below describes the original procedure; the completed qualified review is recorded in the linked acceptance document.
 
 - [ ] Merge Stage 7 code PR after Python syntax CI and run it on **all three genuine original local source files/archives** as configured.
 - [ ] Verify original SCANIA 9 CSV SHA values and official source vehicle/readout target semantics; explicitly leave common supervised target/evaluation contract **BLOCKED**.
@@ -53,4 +55,4 @@ All other paths default to the **existing unchanged** `data/processed` and `data
 - [ ] Sign off **only the scope that passes** (eligible AI4I internal tabular source and verified original-file provenance). **DO NOT** declare the complete three-source supervised multimodal project data-ready while SCANIA tasks and original image labels/rights remain blocked.
 - [ ] Stage 8 Model Development is NOT authorized in this PR. If later considered, only a separately scoped original-source AI4I tabular baseline might be eligible after the Stage 7 qualified review; model readiness for SCANIA and Kaggle photos is not established.
 
-**Current stage: STAGE 7 IMPLEMENTATION PREPARED; OWNER EXECUTION AND FINAL QUALIFIED READ-ONLY DATA VALIDATION REVIEW REQUIRED.**
+**Final disposition:** original-source technical integrity and eligible AI4I internal benchmark accepted after owner-local execution and report review. Full supervised multimodal readiness remains blocked. Exact original Stage 7 report byte fingerprint was not supplied. Stage 8 implementation not authorized.
