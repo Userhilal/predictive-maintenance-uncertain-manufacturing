@@ -2,10 +2,11 @@
 
 This package supersedes the earlier photo filter for **exploratory class-reference integration only**. No original CSV, image ZIP, canonical data, or existing filtered output is modified. No additional dataset, fabricated pair, new failure target, or model is introduced. SCANIA remains separate; MATWI is excluded.
 
-## Run from the project root (Windows PowerShell)
+## Initial generation only (already completed by owner)
+
+Do not rerun this generator over the existing corrected output. For the current dataset use the read-only verification command below.
 
 ```powershell
-Expand-Archive -Path "$HOME\Downloads\AI4I_Kaggle_corrected.zip" -DestinationPath "." -Force
 py -3.11 AI4I_Kaggle_corrected/validate_and_correct.py --images-zip "$HOME\Downloads\archive.zip"
 ```
 
@@ -27,6 +28,18 @@ Successful full run status: `CORRECTED_FULL_TECHNICAL_PASS_EXPLORATORY_ONLY`. `r
 
 ## Tests and limitations
 
-18 regression checks passed in the development environment using the actual original Kaggle ZIP, including clean reconstruction and corruption cases. Re-run if desired: `py -3.11 AI4I_Kaggle_corrected/test_corrections.py --images-zip "$HOME\Downloads\archive.zip"`. The included report is the actual result of those tests. Exact AI4I raw/index files were not available in the development environment, so the full combined run remains to be executed on the owner's machine; missing originals were tested and correctly rejected. No confirmed photo targets, no event pairs, no real AI4I time series, no rights verification. RNF has one eligible tabular positive and no photograph; PWF photos provide context only. A technical pass does not establish scientific or supervised multimodal readiness.
+18 regression checks passed in the development environment using the actual original Kaggle ZIP, including clean reconstruction and corruption cases. Re-run if desired: `py -3.11 AI4I_Kaggle_corrected/test_corrections.py --images-zip "$HOME\Downloads\archive.zip"`. The included report is the actual result of those tests. Exact AI4I raw/index files were not available in the development environment, so the owner subsequently completed the full combined run successfully (`CORRECTED_FULL_TECHNICAL_PASS_EXPLORATORY_ONLY`) on 2026-11-25; missing originals were tested and correctly rejected. No confirmed photo targets, no event pairs, no real AI4I time series, no rights verification. RNF has one eligible tabular positive and no photograph; PWF photos provide context only. A technical pass does not establish scientific or supervised multimodal readiness.
 
-Repository documentation PR #60 is separate. After successful full local verification, the source-only package (no photo bytes or raw datasets) may be versioned in Git; do not commit the actual raw/processed data. The repository documentation alone does not publish the local correction scripts.
+PR #60 was merged at `4106bf5`; the six pinned annotation CSVs were independently hash-checked on GitHub. Do not commit raw/processed data.
+
+## Verify the published view (read-only)
+
+```powershell
+py -3.11 AI4I_Kaggle_corrected/verify_published.py --images-zip "$HOME\Downloads\archive.zip"
+```
+
+Expected full result: `PUBLISHED_FULL_TECHNICAL_PASS_EXPLORATORY_ONLY`. Reconstructs expected output in an external temporary directory, compares the exact file inventory, report and all 15 output hashes. It does not trust a possibly altered report or overwrite outputs. Run in the original dataset location/platform because the existing policy embeds an absolute path and report hashes reflect exact bytes. If files are relocated or rewritten, investigate the mismatch rather than bypass it. `--photos-only` is for a separately generated photo-only view, not the full dataset. Nine additional photo-side regression tests passed, including altered output plus forged checksum; full post-generation verification remains to be executed locally. `--check-assets-only` checks the six pinned annotations without raw data; CI compiles sources and checks these pins, not full data validation.
+
+## Historical outputs
+
+The earlier Phase 2 10,000-row splits, folder-proxy mappings, assembly iterations and 79-link unfiltered view are historical, not authorized training inputs. Keep old versions outside the active project or as clearly marked archival evidence; do not remove the original source files or the canonical dataset. The current strict view has 133 photo references and 55 exploratory links; RNF lacks held-out positives and PWF links are context only.

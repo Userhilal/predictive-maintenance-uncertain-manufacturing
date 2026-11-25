@@ -1,0 +1,16 @@
+{
+  "passed": 9,
+  "failed": 0,
+  "scope": "actual original photo side; missing AI4I negative test",
+  "tests": [
+    "clean published view, read-only",
+    "modified link",
+    "modified link with forged checksum",
+    "changed eligibility policy",
+    "changed report",
+    "missing output",
+    "extra file",
+    "extra directory",
+    "missing full AI4I source rejected"
+  ]
+}
