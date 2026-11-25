@@ -1,5 +1,16 @@
 # Dataset sources and audit status
 
+## Current AI4I–Kaggle integration decision (2026-11-25)
+
+The active class-reference integration is restricted to original AI4I and original Kaggle imagery. SCANIA remains separate; MATWI and all additional sources are excluded.
+
+Owner-local canonical assembly: 9,973 eligible AI4I observations (27 original label disputes excluded), 234 image references, 225 distinct contents, 219 retained and six quarantined. Strict photographic-appearance view: 133 references, 55 exploratory links (TWF 16 wear analogies, HDF 11 hypotheses, PWF 4 equipment-context links, OSF 24 hypotheses, RNF 0). No confirmed photo failure labels or same-event pairs. The old folder proxy counts below are historical, not final associations or training targets.
+
+The deep audit reproduced the photo side and identified manifest validation defects. A corrected local validator has passed 18 regression checks (including deliberate corruption and missing raw AI4I); the owner's full local run has now passed (`CORRECTED_FULL_TECHNICAL_PASS_EXPLORATORY_ONLY`), with all three pinned source SHA-256 values matching, 225 image hashes verified, 133 strict photo references and 55 exploratory links. Use the verified `corrected_review_v1` output as the authoritative exploratory data view. The sole RNF-positive eligible record is in train; validation/test contain no RNF-positive records, so held-out RNF performance cannot be estimated. Two source filename/encoding mismatches are documented, not renamed. The old Phase 2 10,000-row splits are superseded: do not use them for training. The corrected view preserves the Stage 5 6,981/1,497/1,495 assignments, excludes disputed UDIs, specifies an explicit predictor allowlist and records actual image encodings. Correction package files are delivered locally and must be committed separately; this documentation change alone does not publish the validator.
+
+The dataset remains exploratory only. AI4I is synthetic tabular data, not physical time series. Rights unverified; no photo training or publishing image bytes, no invented labels, no additional dataset, no Stage 8 model development approved.
+
+
 **Strict source-only policy:** Use only the user-provided Kaggle fault-image dataset, Researchdata SCANIA Component X version 2, and Mendeley AI4I 2020 records. No assistant-generated fake records or synthetic test fixtures. AI4I is synthetic by design in the published original source; never represent it as measured factory data. Source-inaccessible data remains unverified.
 
 This page records **current evidence**, not a certificate that all data is production-ready.

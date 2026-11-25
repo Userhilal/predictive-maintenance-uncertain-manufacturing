@@ -1,0 +1,94 @@
+{
+  "passed": 18,
+  "failed": 0,
+  "scope": "real photo-side plus missing-AI4I negative test; no full AI4I run",
+  "tests": [
+    {
+      "test": "clean original photo assembly",
+      "passed": true
+    },
+    {
+      "test": "broken link path",
+      "passed": true,
+      "rejection": "CSV differs from trusted reconstruction: <test-copy>/class_photo_links.csv"
+    },
+    {
+      "test": "RNF insertion",
+      "passed": true,
+      "rejection": "CSV differs from trusted reconstruction: <test-copy>/class_photo_links.csv"
+    },
+    {
+      "test": "unknown association",
+      "passed": true,
+      "rejection": "CSV differs from trusted reconstruction: <test-copy>/class_photo_links.csv"
+    },
+    {
+      "test": "training flag",
+      "passed": true,
+      "rejection": "CSV differs from trusted reconstruction: <test-copy>/class_photo_links.csv"
+    },
+    {
+      "test": "confirmed label",
+      "passed": true,
+      "rejection": "CSV differs from trusted reconstruction: <test-copy>/class_photo_links.csv"
+    },
+    {
+      "test": "same-event flag",
+      "passed": true,
+      "rejection": "CSV differs from trusted reconstruction: <test-copy>/class_photo_links.csv"
+    },
+    {
+      "test": "path traversal",
+      "passed": true,
+      "rejection": "CSV differs from trusted reconstruction: <test-copy>/class_photo_links.csv"
+    },
+    {
+      "test": "duplicate link",
+      "passed": true,
+      "rejection": "CSV differs from trusted reconstruction: <test-copy>/class_photo_links.csv"
+    },
+    {
+      "test": "changed rights",
+      "passed": true,
+      "rejection": "CSV differs from trusted reconstruction: <test-copy>/photo_index.csv"
+    },
+    {
+      "test": "wrong class-folder link",
+      "passed": true,
+      "rejection": "CSV differs from trusted reconstruction: <test-copy>/OSF/photo_links.csv"
+    },
+    {
+      "test": "incorrect canonical photo path",
+      "passed": true,
+      "rejection": "CSV differs from trusted reconstruction: <test-copy>/photo_index.csv"
+    },
+    {
+      "test": "legacy media eligibility corruption",
+      "passed": true,
+      "rejection": "Unexpected rows/schema/order: <test-copy>/photo_only_review/media_review_225.csv"
+    },
+    {
+      "test": "legacy filtered duplicate",
+      "passed": true,
+      "rejection": "Unexpected rows/schema/order: <test-copy>/photo_only_review/class_photo_links.csv"
+    },
+    {
+      "test": "modified bytes",
+      "passed": true,
+      "rejection": "Image hash mismatch: aee9b60a558957322925bb96100de0b96502f4d1241f96a3eb59006f5d047446"
+    },
+    {
+      "test": "extra file",
+      "passed": true,
+      "rejection": "Unexpected/missing physical image files"
+    },
+    {
+      "test": "refuse overwrite",
+      "passed": true
+    },
+    {
+      "test": "missing original AI4I fails closed",
+      "passed": true
+    }
+  ]
+}
