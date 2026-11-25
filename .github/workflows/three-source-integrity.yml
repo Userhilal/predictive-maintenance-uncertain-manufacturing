@@ -1,0 +1,31 @@
+name: Three-source integration syntax and annotation pins
+on:
+  pull_request:
+    paths:
+      - 'Three_Source_Integration/**'
+      - 'AI4I_Kaggle_corrected/**'
+  push:
+    paths:
+      - 'Three_Source_Integration/**'
+      - 'AI4I_Kaggle_corrected/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile and verify pinned annotation bytes
+        run: |
+          python -m compileall -q Three_Source_Integration AI4I_Kaggle_corrected
+          python AI4I_Kaggle_corrected/verify_published.py --check-assets-only
+      - name: Check CLI imports
+        run: |
+          python Three_Source_Integration/build_integration.py --help
+          python Three_Source_Integration/verify_integration.py --help
+          python Three_Source_Integration/load_history.py --help
+          python Three_Source_Integration/test_integrity.py --help
