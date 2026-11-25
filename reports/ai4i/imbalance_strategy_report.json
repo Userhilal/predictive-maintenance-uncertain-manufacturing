@@ -1,0 +1,419 @@
+{
+  "report_version": "1.0.0",
+  "status": "AI4I_IMBALANCE_STRATEGY_TECHNICALLY_VALIDATED",
+  "generated_at_utc": "2026-11-25T15:44:11.183865+00:00",
+  "project_step": "5.1.1",
+  "task": "C - Class Imbalance Strategy",
+  "dataset": "AI4I 2020",
+  "strategy_version": "1.0.0",
+  "feature_contract_version": "1.0.0",
+  "environment": {
+    "python_version": "3.11.9",
+    "platform": "Windows",
+    "architecture": "AMD64",
+    "package_versions": {
+      "pandas": "3.1.1",
+      "numpy": "2.4.6",
+      "scikit-learn": "1.9.1",
+      "pytest": "9.2.0"
+    },
+    "uv_lock_sha256": "1271fdf47be8beada4f58deb4e40ad9db96a1698549292b3856e87b4719bf3de",
+    "pyproject_sha256": "96a65c104c4153ef1be0e0933712114f00e0c474b044c9c8592fd3efa5a6815e"
+  },
+  "repository": {
+    "branch": "feat/ai4i-model-input-pipeline",
+    "head_commit": "763e0b858125c26cb5c72c56e29cd4f01e0d0174",
+    "working_tree_clean": false,
+    "working_tree_status": [
+      "?? .python-version",
+      "?? configs/ai4i_imbalance_strategy.json",
+      "?? configs/ai4i_test_access_policy.json",
+      "?? pyproject.toml",
+      "?? reports/ai4i/model_input_validation.json",
+      "?? scripts/generate_ai4i_imbalance_report.py",
+      "?? scripts/generate_ai4i_validation_report.py",
+      "?? src/prediction/__init__.py",
+      "?? src/prediction/ai4i/__init__.py",
+      "?? src/prediction/ai4i/access_policy.py",
+      "?? src/prediction/ai4i/data_loader.py",
+      "?? src/prediction/ai4i/feature_contract.py",
+      "?? src/prediction/ai4i/imbalance_strategy.py",
+      "?? src/prediction/ai4i/validation.py",
+      "?? tests/prediction/test_ai4i_imbalance_strategy.py",
+      "?? tests/prediction/test_ai4i_pipeline_integration.py",
+      "?? tests/prediction/test_ai4i_test_protection.py",
+      "?? uv.lock"
+    ],
+    "provenance_note": "HEAD identifies the base commit. Local implementation files may not yet be committed. Their SHA-256 fingerprints are recorded separately."
+  },
+  "previous_task_b_validation": {
+    "status": "AI4I_MODEL_INPUT_PIPELINE_TECHNICALLY_VALIDATED",
+    "report_path": "reports/ai4i/model_input_validation.json",
+    "sha256": "f4028571361f9b528ffa39030c25bd9a15b12294ef4cb4be97ae7c43b07fe821",
+    "original_report_preserved": true,
+    "previous_test_count": 20,
+    "previous_passed_tests": 20,
+    "formal_approval_status": {
+      "task_b_technical_validation": true,
+      "stage5_formal_signoff_granted": false,
+      "stage6_formal_signoff_granted": false,
+      "step_5_1_1_completed": false,
+      "step_5_1_2_training_authorized": false
+    }
+  },
+  "implementation_fingerprints": {
+    ".python-version": {
+      "sha256": "61141e9590171b900fdf709e7ea8f050d5c2a69198d4a4a1977d7c45186307e5",
+      "size_bytes": 7
+    },
+    "pyproject.toml": {
+      "sha256": "96a65c104c4153ef1be0e0933712114f00e0c474b044c9c8592fd3efa5a6815e",
+      "size_bytes": 258
+    },
+    "uv.lock": {
+      "sha256": "1271fdf47be8beada4f58deb4e40ad9db96a1698549292b3856e87b4719bf3de",
+      "size_bytes": 24758
+    },
+    "configs/ai4i_test_access_policy.json": {
+      "sha256": "9b4b30dd40abf084bd7ded167e4284a9c24f8f779c32066e3293b201b09836ab",
+      "size_bytes": 1526
+    },
+    "configs/ai4i_imbalance_strategy.json": {
+      "sha256": "0f53ace02430fb1d411f0bb435093c890af25434f244ca9f646146e3f553d38f",
+      "size_bytes": 3873
+    },
+    "reports/ai4i/model_input_validation.json": {
+      "sha256": "f4028571361f9b528ffa39030c25bd9a15b12294ef4cb4be97ae7c43b07fe821",
+      "size_bytes": 24983
+    },
+    "scripts/generate_ai4i_validation_report.py": {
+      "sha256": "077a97b2c347eadf39946566f994cea0763fa028040f3fed9ecf6962041b97ac",
+      "size_bytes": 16854
+    },
+    "scripts/generate_ai4i_imbalance_report.py": {
+      "sha256": "a316cd468d8f1cb8d5586f9f853b9b029e4f0094ba3f3dab89780586d67faaa3",
+      "size_bytes": 20579
+    },
+    "src/prediction/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "src/prediction/ai4i/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "src/prediction/ai4i/access_policy.py": {
+      "sha256": "87ed68f22b9e259eb24d4c86a69bac44ac1eaa40827af9a413e3de30e8b6df3b",
+      "size_bytes": 6905
+    },
+    "src/prediction/ai4i/data_loader.py": {
+      "sha256": "e3f82c5ad8993a59bf8e842238897c724abc4ffc57baa6dad49655eb78c688dc",
+      "size_bytes": 15802
+    },
+    "src/prediction/ai4i/feature_contract.py": {
+      "sha256": "2cd5db85b51c630412cc394029139dc2bf5cfb4733a19b04bdd52dc064cf4bdd",
+      "size_bytes": 5163
+    },
+    "src/prediction/ai4i/imbalance_strategy.py": {
+      "sha256": "284945bb68753c236a645afa5caaf29e59279c1af5acc1943d482d4200867842",
+      "size_bytes": 17079
+    },
+    "src/prediction/ai4i/validation.py": {
+      "sha256": "e876513c38f129a5fbabb5294310e4474320ee727d21df2efe9116ac2b5120c6",
+      "size_bytes": 29852
+    },
+    "tests/prediction/test_ai4i_imbalance_strategy.py": {
+      "sha256": "6dd723b9e399c9f05f39b88118f9209a91df67bc686e03ce73c1167f436f50e3",
+      "size_bytes": 14598
+    },
+    "tests/prediction/test_ai4i_pipeline_integration.py": {
+      "sha256": "e0e31425c0e829be8a78d08a4b08cd8390c3e3cb257db97e5feebf9e70aabc74",
+      "size_bytes": 11062
+    },
+    "tests/prediction/test_ai4i_test_protection.py": {
+      "sha256": "6f022d11416834eeb891292980e0b72479470dccbf673ce613d65cf901b3fe3c",
+      "size_bytes": 4649
+    }
+  },
+  "validated_strategy_configuration": {
+    "strategy_version": "1.0.0",
+    "feature_contract_version": "1.0.0",
+    "dataset": "AI4I 2020",
+    "project_step": "5.1.1",
+    "task": "C - Class Imbalance Strategy",
+    "classification_task": {
+      "type": "binary_classification",
+      "target_column": "original_machine_failure_target_not_a_feature",
+      "negative_class": 0,
+      "positive_class": 1,
+      "negative_class_meaning": "Normal operation",
+      "positive_class_meaning": "Machine failure"
+    },
+    "class_weighting": {
+      "enabled": true,
+      "method": "balanced",
+      "formula": "N / (K * N_c)",
+      "source_partition": "train",
+      "compute_from_verified_training_labels": true,
+      "validation_labels_allowed_for_weight_computation": false,
+      "test_labels_allowed_for_weight_computation": false,
+      "hardcoded_weights_allowed": false,
+      "industrial_cost_ratio_estimated": false
+    },
+    "expected_training_distribution": {
+      "total": 6981,
+      "normal": 6750,
+      "failure": 231
+    },
+    "model_strategy": {
+      "dummy_classifier": {
+        "class_weighting_enabled": false,
+        "strategy": "prior",
+        "purpose": "Unweighted reference baseline"
+      },
+      "logistic_regression": {
+        "class_weighting_enabled": true,
+        "weight_source": "verified_train_class_weights",
+        "additional_sample_weight_allowed": false
+      },
+      "random_forest": {
+        "class_weighting_enabled": true,
+        "weight_source": "verified_train_class_weights",
+        "additional_sample_weight_allowed": false,
+        "balanced_subsample_enabled": false
+      }
+    },
+    "resampling_policy": {
+      "random_oversampling_allowed": false,
+      "random_undersampling_allowed": false,
+      "smote_allowed": false,
+      "adasyn_allowed": false,
+      "synthetic_observations_allowed": false,
+      "observation_duplication_allowed": false,
+      "observation_removal_allowed": false,
+      "original_class_distribution_must_be_preserved": true
+    },
+    "validation_policy": {
+      "existing_train_validation_test_partitions_preserved": true,
+      "new_partition_generation_allowed": false,
+      "new_preprocessing_allowed": false,
+      "stratified_cross_validation_enabled": false,
+      "cross_validation_reason": "Existing numeric features were standardized using the complete original training partition. Naive cross-validation would introduce fold-level preprocessing leakage.",
+      "future_model_selection_partition": "validation",
+      "future_threshold_selection_partition": "validation",
+      "test_used_for_model_selection": false,
+      "test_used_for_threshold_selection": false
+    },
+    "evaluation_guidance": {
+      "primary_metric": "average_precision",
+      "positive_class": 1,
+      "accuracy_as_primary_metric_allowed": false,
+      "precision_recall_analysis_required": true,
+      "recall_required": true,
+      "precision_required": true,
+      "confusion_matrix_required": true,
+      "probability_calibration_assessment_required": true,
+      "weighted_probabilities_assumed_calibrated": false,
+      "evaluation_protocol_defined_in_task_e": true
+    },
+    "current_step_restrictions": {
+      "model_training_allowed": false,
+      "model_prediction_allowed": false,
+      "model_evaluation_allowed": false,
+      "hyperparameter_tuning_allowed": false,
+      "threshold_optimization_allowed": false,
+      "probability_calibration_allowed": false,
+      "original_data_modification_allowed": false
+    },
+    "limitations": [
+      "AI4I 2020 is a published synthetic benchmark.",
+      "Class weighting compensates for statistical class imbalance.",
+      "Class weights do not represent measured industrial failure costs.",
+      "Class weighting does not guarantee improved predictive performance.",
+      "Class weighting may affect probability calibration.",
+      "No future-time failure prediction or industrial generalization is established."
+    ]
+  },
+  "independent_data_audit": {
+    "status": "AI4I_MODEL_INPUT_DATA_VALIDATED",
+    "summary": {
+      "eligible_rows": 9973,
+      "feature_count": 8,
+      "predictor_values_checked": 79784,
+      "normal_count": 9643,
+      "failure_count": 330,
+      "quarantined_rows": 27,
+      "failure_rate": 0.0330893412212975
+    },
+    "cross_partition_validation": {
+      "status": "PASS",
+      "partition_overlap_counts": {
+        "train_validation": 0,
+        "train_test": 0,
+        "validation_test": 0
+      },
+      "eligible_unique_udi_count": 9973,
+      "quarantined_unique_udi_count": 27,
+      "quarantine_overlap_count": 0,
+      "all_original_udis_accounted": 10000,
+      "complete_original_source_coverage": true
+    },
+    "stage6_integrity": {
+      "status": "STAGE6_FILE_INTEGRITY_VERIFIED",
+      "stage6_report_sha256": "0250e7063eaae1f551a843cde3f963ba95f16f08cb261bd40b592783c58a3973",
+      "original_contract_status": "STAGE6_AI4I_TRAIN_ONLY_FEATURE_CONTRACT_PRELIMINARY",
+      "verified_output_file_count": 4,
+      "verified_files": {
+        "ai4i_test_features.csv": {
+          "status": "PASS",
+          "sha256": "9478aa663c40436560cf136ff24539291582e2d2abd00af4349cc5e2cad1f98f",
+          "size_bytes": 171551
+        },
+        "ai4i_train_features.csv": {
+          "status": "PASS",
+          "sha256": "6955ff605cf3e0261319db65fb9cd0a9e17c4c80969a9739e06374cfcb0457ec",
+          "size_bytes": 799844
+        },
+        "ai4i_train_only_feature_contract.json": {
+          "status": "PASS",
+          "sha256": "679b2922a5ac9fcc0c55d263201cfb7755c9bca83b5aaa78d89d8a2a3bf0bbba",
+          "size_bytes": 3441
+        },
+        "ai4i_validation_features.csv": {
+          "status": "PASS",
+          "sha256": "5eaadfa151d30f7322c6ddfb75a6eb59b080704a352977bca5fbfb1669ecb50e",
+          "size_bytes": 171716
+        }
+      }
+    },
+    "test_used_for_integrity_audit_only": true
+  },
+  "training_class_weight_computation": {
+    "status": "AI4I_TRAIN_CLASS_WEIGHTS_COMPUTED",
+    "strategy_version": "1.0.0",
+    "dataset": "AI4I 2020",
+    "feature_contract_version": "1.0.0",
+    "source_partition": "train",
+    "source_file": "ai4i_train_features.csv",
+    "source_sha256": "6955ff605cf3e0261319db65fb9cd0a9e17c4c80969a9739e06374cfcb0457ec",
+    "method": "balanced",
+    "formula": "N / (K * N_c)",
+    "total_training_rows": 6981,
+    "class_counts": {
+      "0": 6750,
+      "1": 231
+    },
+    "failure_rate": 0.03308981521272024,
+    "imbalance_ratio": 29.22077922077922,
+    "class_weights": {
+      "0": 0.5171111111111111,
+      "1": 15.11038961038961
+    },
+    "weight_ratio": 29.220779220779225,
+    "weighted_class_totals": {
+      "0": 3490.4999999999995,
+      "1": 3490.5
+    },
+    "validation_labels_used_for_weights": false,
+    "test_labels_used_for_weights": false,
+    "resampling_performed": false,
+    "new_preprocessing_performed": false,
+    "model_training_performed": false,
+    "model_prediction_performed": false,
+    "model_evaluation_performed": false,
+    "industrial_cost_ratio_estimated": false
+  },
+  "class_weight_reproducibility": {
+    "status": "PASS",
+    "repeated_computation_identical": true
+  },
+  "automated_tests": {
+    "imbalance_strategy_tests": {
+      "status": "PASS",
+      "test_path": "tests/prediction/test_ai4i_imbalance_strategy.py",
+      "expected_test_count": 59,
+      "total": 59,
+      "passed": 59,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 3.688,
+      "pytest_exit_code": 0,
+      "evidence_source": "Actual pytest JUnit XML"
+    },
+    "complete_prediction_suite": {
+      "status": "PASS",
+      "test_path": "tests/prediction/",
+      "expected_test_count": 79,
+      "total": 79,
+      "passed": 79,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 5.547,
+      "pytest_exit_code": 0,
+      "evidence_source": "Actual pytest JUnit XML"
+    },
+    "note": "The complete prediction suite includes the imbalance strategy tests. The counts must not be added together."
+  },
+  "integrity_verification": {
+    "status": "PASS",
+    "implementation_fingerprints_unchanged": true,
+    "task_b_report_unchanged": true,
+    "data_audit_results_unchanged": true,
+    "repository_state_unchanged": true
+  },
+  "methodological_decisions": {
+    "imbalance_handling": "Train-only balanced class weighting",
+    "dummy_classifier": "Unweighted prior baseline",
+    "logistic_regression": "Verified training class weights",
+    "random_forest": "Verified training class weights",
+    "cross_validation_enabled": false,
+    "cross_validation_reason": "Existing numeric features were standardized using the complete original training partition. Naive cross-validation would introduce fold-level preprocessing leakage.",
+    "future_model_selection_partition": "validation",
+    "future_threshold_selection_partition": "validation",
+    "future_primary_metric": "average_precision",
+    "weighted_probabilities_assumed_calibrated": false
+  },
+  "scope_restrictions": {
+    "model_training_performed": false,
+    "model_prediction_performed": false,
+    "model_evaluation_performed": false,
+    "hyperparameter_tuning_performed": false,
+    "threshold_optimization_performed": false,
+    "probability_calibration_performed": false,
+    "resampling_performed": false,
+    "new_preprocessing_performed": false,
+    "original_data_modified": false,
+    "original_partitions_modified": false,
+    "original_labels_modified": false,
+    "validation_labels_used_for_weights": false,
+    "test_labels_used_for_weights": false,
+    "test_used_for_integrity_audit_only": true,
+    "industrial_cost_ratio_estimated": false,
+    "physical_test_isolation": false,
+    "scania_modeling_performed": false,
+    "image_modeling_performed": false,
+    "rag_implementation_performed": false
+  },
+  "limitations": [
+    "AI4I 2020 is a published synthetic benchmark.",
+    "Class weighting compensates for statistical class imbalance.",
+    "Class weights do not represent measured industrial failure costs.",
+    "Class weighting does not guarantee improved predictive performance.",
+    "Class weighting may affect probability calibration.",
+    "No future-time failure prediction or industrial generalization is established.",
+    "Configuration validation covers expected operational fields, but is not an exhaustive strict JSON schema validation.",
+    "Restrictions are enforced at application level, not by operating system isolation.",
+    "Technical validation does not constitute formal approval of the previous data stages.",
+    "No predictive performance has been measured at this step."
+  ],
+  "approval_status": {
+    "task_b_technical_validation": true,
+    "task_c_technical_validation": true,
+    "stage5_formal_signoff_granted": false,
+    "stage6_formal_signoff_granted": false,
+    "step_5_1_1_completed": false,
+    "step_5_1_2_training_authorized": false
+  }
+}

@@ -1,0 +1,698 @@
+{
+  "report_version": "1.0.0",
+  "generated_at_utc": "2026-11-25T15:22:16.913174+00:00",
+  "status": "AI4I_MODEL_INPUT_PIPELINE_TECHNICALLY_VALIDATED",
+  "project": "Predictive Maintenance in an Uncertain Manufacturing Process",
+  "project_step": "5.1.1",
+  "task": "B - Model Input Pipeline",
+  "dataset": {
+    "name": "AI4I 2020",
+    "scope": "Internal classification on the original published synthetic benchmark",
+    "future_time_prediction_validated": false,
+    "real_industrial_generalization_validated": false
+  },
+  "feature_contract": {
+    "version": "1.0.0",
+    "feature_count": 8,
+    "approved_features": [
+      "type_H",
+      "type_L",
+      "type_M",
+      "air_temperature_K_train_z",
+      "process_temperature_K_train_z",
+      "rotational_speed_rpm_train_z",
+      "torque_Nm_train_z",
+      "tool_wear_min_train_z"
+    ]
+  },
+  "environment": {
+    "python_version": "3.11.9",
+    "python_implementation": "CPython",
+    "operating_system": "Windows",
+    "architecture": "AMD64",
+    "uv_version": "uv 0.13.0 (4ecd0eff2 2026-10-09 x86_64-pc-windows-msvc)",
+    "package_versions": {
+      "pandas": "3.1.1",
+      "numpy": "2.4.6",
+      "scikit-learn": "1.9.1",
+      "pytest": "9.2.0"
+    },
+    "uv_lock_check": {
+      "command": [
+        "uv",
+        "lock",
+        "--check"
+      ],
+      "return_code": 0,
+      "stdout": "",
+      "stderr": "Resolved 17 packages in 0.90ms"
+    },
+    "dependency_check": {
+      "command": [
+        "uv",
+        "pip",
+        "check"
+      ],
+      "return_code": 0,
+      "stdout": "",
+      "stderr": "Checked 16 packages in 1ms\nAll installed packages are compatible"
+    },
+    "pyproject_sha256": "96a65c104c4153ef1be0e0933712114f00e0c474b044c9c8592fd3efa5a6815e",
+    "uv_lock_sha256": "1271fdf47be8beada4f58deb4e40ad9db96a1698549292b3856e87b4719bf3de",
+    "python_version_file_sha256": "61141e9590171b900fdf709e7ea8f050d5c2a69198d4a4a1977d7c45186307e5"
+  },
+  "repository": {
+    "branch": "feat/ai4i-model-input-pipeline",
+    "head_commit": "763e0b858125c26cb5c72c56e29cd4f01e0d0174",
+    "working_tree_clean": false,
+    "git_status_short": [
+      "?? .python-version",
+      "?? configs/",
+      "?? pyproject.toml",
+      "?? scripts/generate_ai4i_validation_report.py",
+      "?? src/prediction/__init__.py",
+      "?? src/prediction/ai4i/",
+      "?? tests/prediction/",
+      "?? uv.lock"
+    ],
+    "git_state_captured_before_report_creation": true
+  },
+  "implementation_sha256": {
+    "src/prediction/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/prediction/ai4i/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/prediction/ai4i/feature_contract.py": "2cd5db85b51c630412cc394029139dc2bf5cfb4733a19b04bdd52dc064cf4bdd",
+    "src/prediction/ai4i/validation.py": "e876513c38f129a5fbabb5294310e4474320ee727d21df2efe9116ac2b5120c6",
+    "src/prediction/ai4i/access_policy.py": "87ed68f22b9e259eb24d4c86a69bac44ac1eaa40827af9a413e3de30e8b6df3b",
+    "src/prediction/ai4i/data_loader.py": "e3f82c5ad8993a59bf8e842238897c724abc4ffc57baa6dad49655eb78c688dc",
+    "configs/ai4i_test_access_policy.json": "9b4b30dd40abf084bd7ded167e4284a9c24f8f779c32066e3293b201b09836ab",
+    "scripts/generate_ai4i_validation_report.py": "077a97b2c347eadf39946566f994cea0763fa028040f3fed9ecf6962041b97ac",
+    "tests/prediction/test_ai4i_test_protection.py": "6f022d11416834eeb891292980e0b72479470dccbf673ce613d65cf901b3fe3c",
+    "tests/prediction/test_ai4i_pipeline_integration.py": "e0e31425c0e829be8a78d08a4b08cd8390c3e3cb257db97e5feebf9e70aabc74"
+  },
+  "independent_data_audit": {
+    "status": "AI4I_MODEL_INPUT_DATA_VALIDATED",
+    "scope": "STEP_5_1_1_READ_ONLY_DATA_AUDIT",
+    "dataset": "AI4I 2020",
+    "stage6_integrity": {
+      "status": "STAGE6_FILE_INTEGRITY_VERIFIED",
+      "stage6_report_sha256": "0250e7063eaae1f551a843cde3f963ba95f16f08cb261bd40b592783c58a3973",
+      "original_contract_status": "STAGE6_AI4I_TRAIN_ONLY_FEATURE_CONTRACT_PRELIMINARY",
+      "verified_output_file_count": 4,
+      "verified_files": {
+        "ai4i_test_features.csv": {
+          "status": "PASS",
+          "sha256": "9478aa663c40436560cf136ff24539291582e2d2abd00af4349cc5e2cad1f98f",
+          "size_bytes": 171551
+        },
+        "ai4i_train_features.csv": {
+          "status": "PASS",
+          "sha256": "6955ff605cf3e0261319db65fb9cd0a9e17c4c80969a9739e06374cfcb0457ec",
+          "size_bytes": 799844
+        },
+        "ai4i_train_only_feature_contract.json": {
+          "status": "PASS",
+          "sha256": "679b2922a5ac9fcc0c55d263201cfb7755c9bca83b5aaa78d89d8a2a3bf0bbba",
+          "size_bytes": 3441
+        },
+        "ai4i_validation_features.csv": {
+          "status": "PASS",
+          "sha256": "5eaadfa151d30f7322c6ddfb75a6eb59b080704a352977bca5fbfb1669ecb50e",
+          "size_bytes": 171716
+        }
+      }
+    },
+    "stage5_original_reviewer": {
+      "status": "STAGE5_ACTUAL_SOURCE_SPLIT_MANIFESTS_REVIEWED_READ_ONLY",
+      "original_stage5_report_sha256": "9bb0db903ee0490cd543ea592ef4773819af58ad57016e6dea3ca7cc86894cda",
+      "original_stage4_report_sha256": "c0c32dc6d523a7e67a2e1ec0ed01b01f0ddb4798c671836d2af97717ed56db29",
+      "all_seven_original_assignment_csv_sha256_verified": true,
+      "scania_official_partition_vehicles": {
+        "train": 23550,
+        "validation": 5046,
+        "test": 5045
+      },
+      "scania_original_repair_censor_and_five_class_tasks_kept_distinct": true,
+      "original_scania_readouts_not_resplit": 1516819,
+      "ai4i_eligible_original_udi_count": 9973,
+      "ai4i_quarantined_original_udis": 27,
+      "ai4i_original_eligible_partition_counts": {
+        "train": 6981,
+        "validation": 1497,
+        "test": 1495
+      },
+      "ai4i_original_target_counts_per_partition": {
+        "train": {
+          "0": 6750,
+          "1": 231
+        },
+        "validation": {
+          "0": 1447,
+          "1": 50
+        },
+        "test": {
+          "0": 1446,
+          "1": 49
+        }
+      },
+      "ai4i_original_product_type_counts_per_partition": {
+        "train": {
+          "H": 699,
+          "L": 4189,
+          "M": 2093
+        },
+        "validation": {
+          "H": 150,
+          "L": 898,
+          "M": 449
+        },
+        "test": {
+          "H": 149,
+          "L": 897,
+          "M": 449
+        }
+      },
+      "ai4i_exact_seeded_class_type_assignment_reconstructed": true,
+      "ai4i_all_10000_original_udi_references_accounted": true,
+      "images_supervised_partitions_created": false,
+      "image_original_labels_or_reuse_rights_verified": false,
+      "original_source_files_or_labels_modified": false,
+      "stage5_signoff_requires_review_of_this_output": true
+    },
+    "stage6_original_reviewer": {
+      "status": "STAGE6_ACTUAL_TRAIN_ONLY_FEATURES_VERIFIED_READ_ONLY",
+      "original_stage6_report_sha256": "0250e7063eaae1f551a843cde3f963ba95f16f08cb261bd40b592783c58a3973",
+      "prior_stage5_owner_verified_report_sha256": "9bb0db903ee0490cd543ea592ef4773819af58ad57016e6dea3ca7cc86894cda",
+      "actual_original_ai4i_source_sha256_verified": true,
+      "all_four_stage6_output_file_sha256_verified": true,
+      "all_9973_original_source_udi_memberships_and_targets_verified": true,
+      "all_27_original_disputed_udis_excluded_and_quarantined": true,
+      "numeric_original_features_fit_only_on_6981_training_udis_verified": 5,
+      "numeric_train_only_fitted_means_standard_deviations_and_ranges_recomputed": true,
+      "all_8_predictor_values_recomputed_from_original_source": true,
+      "individual_predictor_values_verified": 79784,
+      "per_partition": {
+        "train": {
+          "original_udis_verified": 6981,
+          "original_failure_target_counts": {
+            "0": 6750,
+            "1": 231
+          },
+          "all_eight_predictors_recomputed_from_original_source": true
+        },
+        "validation": {
+          "original_udis_verified": 1497,
+          "original_failure_target_counts": {
+            "0": 1447,
+            "1": 50
+          },
+          "all_eight_predictors_recomputed_from_original_source": true
+        },
+        "test": {
+          "original_udis_verified": 1495,
+          "original_failure_target_counts": {
+            "0": 1446,
+            "1": 49
+          },
+          "all_eight_predictors_recomputed_from_original_source": true
+        }
+      },
+      "scania_unified_supervised_feature_matrix_created": false,
+      "supervised_image_features_created": false,
+      "image_class_truth_and_reuse_rights_verified": false,
+      "source_data_or_original_labels_modified_by_review": false,
+      "feature_stage6_technical_signoff_still_requires_review": true
+    },
+    "partitions": {
+      "train": {
+        "status": "PASS",
+        "partition": "train",
+        "row_count": 6981,
+        "feature_count": 8,
+        "predictor_values_checked": 55848,
+        "feature_columns": [
+          "type_H",
+          "type_L",
+          "type_M",
+          "air_temperature_K_train_z",
+          "process_temperature_K_train_z",
+          "rotational_speed_rpm_train_z",
+          "torque_Nm_train_z",
+          "tool_wear_min_train_z"
+        ],
+        "feature_dtypes": {
+          "type_H": "int64",
+          "type_L": "int64",
+          "type_M": "int64",
+          "air_temperature_K_train_z": "float64",
+          "process_temperature_K_train_z": "float64",
+          "rotational_speed_rpm_train_z": "float64",
+          "torque_Nm_train_z": "float64",
+          "tool_wear_min_train_z": "float64"
+        },
+        "target_dtype": "int64",
+        "udi_dtype": "int64",
+        "missing_value_count": 0,
+        "non_finite_predictor_count": 0,
+        "one_hot_valid": true,
+        "binary_target_valid": true,
+        "duplicate_udi_count": 0,
+        "class_counts": {
+          "0": 6750,
+          "1": 231
+        },
+        "failure_rate": 0.03308981521272024,
+        "original_data_modified": false,
+        "source_file": "ai4i_train_features.csv",
+        "source_sha256": "6955ff605cf3e0261319db65fb9cd0a9e17c4c80969a9739e06374cfcb0457ec"
+      },
+      "validation": {
+        "status": "PASS",
+        "partition": "validation",
+        "row_count": 1497,
+        "feature_count": 8,
+        "predictor_values_checked": 11976,
+        "feature_columns": [
+          "type_H",
+          "type_L",
+          "type_M",
+          "air_temperature_K_train_z",
+          "process_temperature_K_train_z",
+          "rotational_speed_rpm_train_z",
+          "torque_Nm_train_z",
+          "tool_wear_min_train_z"
+        ],
+        "feature_dtypes": {
+          "type_H": "int64",
+          "type_L": "int64",
+          "type_M": "int64",
+          "air_temperature_K_train_z": "float64",
+          "process_temperature_K_train_z": "float64",
+          "rotational_speed_rpm_train_z": "float64",
+          "torque_Nm_train_z": "float64",
+          "tool_wear_min_train_z": "float64"
+        },
+        "target_dtype": "int64",
+        "udi_dtype": "int64",
+        "missing_value_count": 0,
+        "non_finite_predictor_count": 0,
+        "one_hot_valid": true,
+        "binary_target_valid": true,
+        "duplicate_udi_count": 0,
+        "class_counts": {
+          "0": 1447,
+          "1": 50
+        },
+        "failure_rate": 0.033400133600534405,
+        "original_data_modified": false,
+        "source_file": "ai4i_validation_features.csv",
+        "source_sha256": "5eaadfa151d30f7322c6ddfb75a6eb59b080704a352977bca5fbfb1669ecb50e"
+      },
+      "test": {
+        "status": "PASS",
+        "partition": "test",
+        "row_count": 1495,
+        "feature_count": 8,
+        "predictor_values_checked": 11960,
+        "feature_columns": [
+          "type_H",
+          "type_L",
+          "type_M",
+          "air_temperature_K_train_z",
+          "process_temperature_K_train_z",
+          "rotational_speed_rpm_train_z",
+          "torque_Nm_train_z",
+          "tool_wear_min_train_z"
+        ],
+        "feature_dtypes": {
+          "type_H": "int64",
+          "type_L": "int64",
+          "type_M": "int64",
+          "air_temperature_K_train_z": "float64",
+          "process_temperature_K_train_z": "float64",
+          "rotational_speed_rpm_train_z": "float64",
+          "torque_Nm_train_z": "float64",
+          "tool_wear_min_train_z": "float64"
+        },
+        "target_dtype": "int64",
+        "udi_dtype": "int64",
+        "missing_value_count": 0,
+        "non_finite_predictor_count": 0,
+        "one_hot_valid": true,
+        "binary_target_valid": true,
+        "duplicate_udi_count": 0,
+        "class_counts": {
+          "0": 1446,
+          "1": 49
+        },
+        "failure_rate": 0.03277591973244147,
+        "original_data_modified": false,
+        "source_file": "ai4i_test_features.csv",
+        "source_sha256": "9478aa663c40436560cf136ff24539291582e2d2abd00af4349cc5e2cad1f98f"
+      }
+    },
+    "stage5_stage6_alignment": {
+      "train": {
+        "status": "PASS",
+        "partition": "train",
+        "udi_membership_matches_stage5": true,
+        "original_targets_preserved": true,
+        "original_product_types_preserved": true,
+        "matched_udi_count": 6981,
+        "product_type_counts": {
+          "H": 699,
+          "L": 4189,
+          "M": 2093
+        }
+      },
+      "validation": {
+        "status": "PASS",
+        "partition": "validation",
+        "udi_membership_matches_stage5": true,
+        "original_targets_preserved": true,
+        "original_product_types_preserved": true,
+        "matched_udi_count": 1497,
+        "product_type_counts": {
+          "H": 150,
+          "L": 898,
+          "M": 449
+        }
+      },
+      "test": {
+        "status": "PASS",
+        "partition": "test",
+        "udi_membership_matches_stage5": true,
+        "original_targets_preserved": true,
+        "original_product_types_preserved": true,
+        "matched_udi_count": 1495,
+        "product_type_counts": {
+          "H": 149,
+          "L": 897,
+          "M": 449
+        }
+      }
+    },
+    "cross_partition_validation": {
+      "status": "PASS",
+      "partition_overlap_counts": {
+        "train_validation": 0,
+        "train_test": 0,
+        "validation_test": 0
+      },
+      "eligible_unique_udi_count": 9973,
+      "quarantined_unique_udi_count": 27,
+      "quarantine_overlap_count": 0,
+      "all_original_udis_accounted": 10000,
+      "complete_original_source_coverage": true
+    },
+    "summary": {
+      "eligible_rows": 9973,
+      "feature_count": 8,
+      "predictor_values_checked": 79784,
+      "normal_count": 9643,
+      "failure_count": 330,
+      "quarantined_rows": 27,
+      "failure_rate": 0.0330893412212975
+    },
+    "original_stage6_files_preserved": true,
+    "test_used_for_integrity_audit_only": true,
+    "model_training_performed": false,
+    "model_evaluation_performed": false,
+    "resampling_performed": false,
+    "new_preprocessing_performed": false
+  },
+  "development_source_verification": {
+    "status": "AI4I_DEVELOPMENT_SOURCES_VERIFIED",
+    "stage5_report_sha256": "9bb0db903ee0490cd543ea592ef4773819af58ad57016e6dea3ca7cc86894cda",
+    "feature_contract_sha256": "679b2922a5ac9fcc0c55d263201cfb7755c9bca83b5aaa78d89d8a2a3bf0bbba",
+    "original_contract_status": "STAGE6_AI4I_TRAIN_ONLY_FEATURE_CONTRACT_PRELIMINARY",
+    "assignment_sha256": {
+      "train": "60edbf92db41e72350e32556f6f9aa12abb938042a33f73e637241eccc78c0ae",
+      "validation": "2bdc69873d9f81e9cc88ccaf737204fae16a8c277c09c52eb3bda80fc06149b8"
+    },
+    "quarantine_sha256": "8128ef3e2997493b3ccd27a649c4724a5dffa0a7eb2188bdf0805742df263eb8",
+    "verified_development_partitions": [
+      "train",
+      "validation"
+    ],
+    "test_partition_files_read": false
+  },
+  "access_policy": {
+    "status": "AI4I_TEST_ACCESS_POLICY_VALIDATED",
+    "policy_version": "1.0.0",
+    "feature_contract_version": "1.0.0",
+    "current_project_step": "5.1.1",
+    "development_partitions": [
+      "train",
+      "validation"
+    ],
+    "protected_partition": "test",
+    "test_development_access_allowed": false,
+    "test_integrity_audit_allowed": true,
+    "test_final_evaluation_allowed": false,
+    "model_training_allowed": false,
+    "physical_file_isolation": false,
+    "enforcement_scope": "Application-level development access control"
+  },
+  "development_data": {
+    "status": "AI4I_DEVELOPMENT_DATA_LOADED",
+    "contract_version": "1.0.0",
+    "access_policy_version": "1.0.0",
+    "train": {
+      "partition": "train",
+      "X_shape": [
+        6981,
+        8
+      ],
+      "y_shape": [
+        6981
+      ],
+      "udi_shape": [
+        6981
+      ],
+      "row_count": 6981,
+      "feature_count": 8,
+      "feature_columns": [
+        "type_H",
+        "type_L",
+        "type_M",
+        "air_temperature_K_train_z",
+        "process_temperature_K_train_z",
+        "rotational_speed_rpm_train_z",
+        "torque_Nm_train_z",
+        "tool_wear_min_train_z"
+      ],
+      "class_counts": {
+        "0": 6750,
+        "1": 231
+      },
+      "source_file": "ai4i_train_features.csv",
+      "source_sha256": "6955ff605cf3e0261319db65fb9cd0a9e17c4c80969a9739e06374cfcb0457ec",
+      "contract_version": "1.0.0"
+    },
+    "validation": {
+      "partition": "validation",
+      "X_shape": [
+        1497,
+        8
+      ],
+      "y_shape": [
+        1497
+      ],
+      "udi_shape": [
+        1497
+      ],
+      "row_count": 1497,
+      "feature_count": 8,
+      "feature_columns": [
+        "type_H",
+        "type_L",
+        "type_M",
+        "air_temperature_K_train_z",
+        "process_temperature_K_train_z",
+        "rotational_speed_rpm_train_z",
+        "torque_Nm_train_z",
+        "tool_wear_min_train_z"
+      ],
+      "class_counts": {
+        "0": 1447,
+        "1": 50
+      },
+      "source_file": "ai4i_validation_features.csv",
+      "source_sha256": "5eaadfa151d30f7322c6ddfb75a6eb59b080704a352977bca5fbfb1669ecb50e",
+      "contract_version": "1.0.0"
+    },
+    "test_exposed": false,
+    "test_partition_files_read": false,
+    "complete_source_audit_executed_by_loader": false,
+    "model_training_performed": false,
+    "model_evaluation_performed": false,
+    "new_preprocessing_performed": false,
+    "resampling_performed": false
+  },
+  "automated_tests": {
+    "status": "PASS",
+    "total": 20,
+    "passed": 20,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "duration_seconds": 1.764,
+    "test_cases": [
+      {
+        "class_name": "tests.prediction.test_ai4i_test_protection",
+        "test_name": "test_train_loader_does_not_read_test",
+        "status": "PASSED",
+        "duration_seconds": 0.064
+      },
+      {
+        "class_name": "tests.prediction.test_ai4i_test_protection",
+        "test_name": "test_validation_loader_does_not_read_test",
+        "status": "PASSED",
+        "duration_seconds": 0.032
+      },
+      {
+        "class_name": "tests.prediction.test_ai4i_test_protection",
+        "test_name": "test_development_loader_does_not_read_test",
+        "status": "PASSED",
+        "duration_seconds": 0.106
+      },
+      {
+        "class_name": "tests.prediction.test_ai4i_test_protection",
+        "test_name": "test_direct_test_access_is_rejected",
+        "status": "PASSED",
+        "duration_seconds": 0.001
+      },
+      {
+        "class_name": "tests.prediction.test_ai4i_test_protection",
+        "test_name": "test_premature_final_evaluation_is_rejected",
+        "status": "PASSED",
+        "duration_seconds": 0.001
+      },
+      {
+        "class_name": "tests.prediction.test_ai4i_test_protection",
+        "test_name": "test_integrity_audit_permission",
+        "status": "PASSED",
+        "duration_seconds": 0.001
+      },
+      {
+        "class_name": "tests.prediction.test_ai4i_test_protection",
+        "test_name": "test_protected_file_guard_detects_access",
+        "status": "PASSED",
+        "duration_seconds": 0.001
+      },
+      {
+        "class_name": "tests.prediction.test_ai4i_pipeline_integration",
+        "test_name": "test_exact_feature_contract[train]",
+        "status": "PASSED",
+        "duration_seconds": 0.092
+      },
+      {
+        "class_name": "tests.prediction.test_ai4i_pipeline_integration",
+        "test_name": "test_exact_feature_contract[validation]",
+        "status": "PASSED",
+        "duration_seconds": 0.0
+      },
+      {
+        "class_name": "tests.prediction.test_ai4i_pipeline_integration",
+        "test_name": "test_target_and_identifier_separation[train]",
+        "status": "PASSED",
+        "duration_seconds": 0.005
+      },
+      {
+        "class_name": "tests.prediction.test_ai4i_pipeline_integration",
+        "test_name": "test_target_and_identifier_separation[validation]",
+        "status": "PASSED",
+        "duration_seconds": 0.003
+      },
+      {
+        "class_name": "tests.prediction.test_ai4i_pipeline_integration",
+        "test_name": "test_original_feature_values_preserved[train]",
+        "status": "PASSED",
+        "duration_seconds": 0.007
+      },
+      {
+        "class_name": "tests.prediction.test_ai4i_pipeline_integration",
+        "test_name": "test_original_feature_values_preserved[validation]",
+        "status": "PASSED",
+        "duration_seconds": 0.004
+      },
+      {
+        "class_name": "tests.prediction.test_ai4i_pipeline_integration",
+        "test_name": "test_development_partition_independence",
+        "status": "PASSED",
+        "duration_seconds": 0.001
+      },
+      {
+        "class_name": "tests.prediction.test_ai4i_pipeline_integration",
+        "test_name": "test_original_class_distributions",
+        "status": "PASSED",
+        "duration_seconds": 0.001
+      },
+      {
+        "class_name": "tests.prediction.test_ai4i_pipeline_integration",
+        "test_name": "test_reproducible_development_loading",
+        "status": "PASSED",
+        "duration_seconds": 0.087
+      },
+      {
+        "class_name": "tests.prediction.test_ai4i_pipeline_integration",
+        "test_name": "test_independent_loaded_copies",
+        "status": "PASSED",
+        "duration_seconds": 0.113
+      },
+      {
+        "class_name": "tests.prediction.test_ai4i_pipeline_integration",
+        "test_name": "test_original_development_files_unchanged",
+        "status": "PASSED",
+        "duration_seconds": 0.089
+      },
+      {
+        "class_name": "tests.prediction.test_ai4i_pipeline_integration",
+        "test_name": "test_loading_without_test_files",
+        "status": "PASSED",
+        "duration_seconds": 0.201
+      },
+      {
+        "class_name": "tests.prediction.test_ai4i_pipeline_integration",
+        "test_name": "test_current_step_restrictions",
+        "status": "PASSED",
+        "duration_seconds": 0.001
+      }
+    ],
+    "pytest_stdout": "....................                                                     [100%]\n20 passed in 1.76s",
+    "pytest_stderr": "",
+    "return_code": 0
+  },
+  "integrity_rechecked_after_tests": true,
+  "scope_restrictions": {
+    "model_training_performed": false,
+    "model_prediction_performed": false,
+    "model_evaluation_performed": false,
+    "hyperparameter_tuning_performed": false,
+    "resampling_performed": false,
+    "new_preprocessing_performed": false,
+    "original_data_modified": false,
+    "original_partitions_modified": false,
+    "original_labels_modified": false,
+    "test_used_for_integrity_audit_only": true,
+    "test_available_to_development_loader": false,
+    "physical_test_isolation": false,
+    "scania_modeling_performed": false,
+    "image_modeling_performed": false,
+    "rag_implementation_performed": false
+  },
+  "approval_status": {
+    "task_b_technical_validation": true,
+    "stage5_formal_signoff_granted": false,
+    "stage6_formal_signoff_granted": false,
+    "step_5_1_1_completed": false,
+    "step_5_1_2_training_authorized": false
+  },
+  "limitations": [
+    "AI4I is a published synthetic benchmark, not longitudinal industrial failure data.",
+    "Test protection is application-level and does not provide physical isolation.",
+    "Integrity audits inspect original test data without model evaluation.",
+    "Technical validation does not replace formal Stage 5 and Stage 6 approval.",
+    "Baseline models and evaluation protocol remain to be defined in later tasks."
+  ]
+}

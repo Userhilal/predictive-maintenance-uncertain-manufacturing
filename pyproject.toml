@@ -1,0 +1,14 @@
+[project]
+name = "predictive-maintenance-uncertain-manufacturing"
+version = "0.1.0"
+requires-python = ">=3.11.9,<3.12"
+dependencies = [
+    "numpy>=2.4.6",
+    "pandas>=3.1.1",
+    "scikit-learn>=1.9.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+]

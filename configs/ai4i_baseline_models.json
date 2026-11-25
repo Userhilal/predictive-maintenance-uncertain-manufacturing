@@ -1,0 +1,191 @@
+
+{
+    "configuration_version": "1.0.0",
+    "feature_contract_version": "1.0.0",
+    "imbalance_strategy_version": "1.0.0",
+    "dataset": "AI4I 2020",
+    "project_step": "5.1.1",
+    "task": "D - Baseline Model Configuration",
+    "configuration_status": "INITIAL_FIXED_BASELINE_CONFIGURATION",
+
+    "classification_task": {
+        "type": "binary_classification",
+        "target_column": "original_machine_failure_target_not_a_feature",
+        "negative_class": 0,
+        "positive_class": 1,
+        "feature_count": 8
+    },
+
+    "environment": {
+        "python_version": "3.11.9",
+        "scikit_learn_version": "1.9.1",
+        "dependency_lock_file": "uv.lock",
+        "global_random_seed": 42
+    },
+
+    "data_policy": {
+        "training_partition": "train",
+        "model_selection_partition": "validation",
+        "protected_partition": "test",
+        "existing_feature_contract_required": true,
+        "existing_partitions_preserved": true,
+        "original_class_distribution_preserved": true,
+        "additional_standardization_allowed": false,
+        "new_preprocessing_allowed": false,
+        "resampling_allowed": false,
+        "test_access_for_configuration_allowed": false
+    },
+
+    "model_order": [
+        "dummy_classifier",
+        "logistic_regression",
+        "random_forest"
+    ],
+
+    "models": {
+        "dummy_classifier": {
+            "enabled": true,
+            "display_name": "Dummy Classifier",
+            "estimator_class": "sklearn.dummy.DummyClassifier",
+            "role": "unweighted_reference_baseline",
+
+            "parameters": {
+                "strategy": "prior",
+                "random_state": 42,
+                "constant": null
+            },
+
+            "class_weight_policy": {
+                "enabled": false,
+                "source": null,
+                "additional_sample_weight_allowed": false
+            }
+        },
+
+        "logistic_regression": {
+            "enabled": true,
+            "display_name": "Logistic Regression",
+            "estimator_class": "sklearn.linear_model.LogisticRegression",
+            "role": "weighted_linear_baseline",
+
+            "parameters": {
+                "solver": "lbfgs",
+                "C": 1.0,
+                "l1_ratio": 0.0,
+                "dual": false,
+                "tol": 0.0001,
+                "fit_intercept": true,
+                "max_iter": 1000,
+                "random_state": 42,
+                "verbose": 0,
+                "warm_start": false
+            },
+
+            "class_weight_policy": {
+                "enabled": true,
+                "source": "verified_train_class_weights",
+                "method": "balanced",
+                "source_partition": "train",
+                "hardcoded_weights_allowed": false,
+                "additional_sample_weight_allowed": false
+            }
+        },
+
+        "random_forest": {
+            "enabled": true,
+            "display_name": "Random Forest",
+            "estimator_class": "sklearn.ensemble.RandomForestClassifier",
+            "role": "weighted_nonlinear_baseline",
+
+            "parameters": {
+                "n_estimators": 200,
+                "criterion": "gini",
+                "max_depth": 10,
+                "min_samples_split": 5,
+                "min_samples_leaf": 2,
+                "min_weight_fraction_leaf": 0.0,
+                "max_features": "sqrt",
+                "max_leaf_nodes": null,
+                "min_impurity_decrease": 0.0,
+                "bootstrap": true,
+                "oob_score": false,
+                "n_jobs": 1,
+                "random_state": 42,
+                "verbose": 0,
+                "warm_start": false,
+                "ccp_alpha": 0.0,
+                "max_samples": null,
+                "monotonic_cst": null
+            },
+
+            "class_weight_policy": {
+                "enabled": true,
+                "source": "verified_train_class_weights",
+                "method": "balanced",
+                "source_partition": "train",
+                "hardcoded_weights_allowed": false,
+                "additional_sample_weight_allowed": false,
+                "balanced_subsample_enabled": false
+            },
+
+            "bootstrap_policy": {
+                "internal_estimator_bootstrap_allowed": true,
+                "external_dataset_resampling_allowed": false,
+                "original_dataset_modification_allowed": false
+            }
+        }
+    },
+
+    "model_selection_policy": {
+        "initial_hyperparameters_fixed": true,
+        "hyperparameters_optimized": false,
+        "grid_search_allowed_at_current_step": false,
+        "randomized_search_allowed_at_current_step": false,
+        "cross_validation_enabled": false,
+        "future_selection_partition": "validation",
+        "test_used_for_model_selection": false,
+        "test_used_for_hyperparameter_tuning": false
+    },
+
+    "evaluation_guidance": {
+        "primary_metric": "average_precision",
+        "positive_class": 1,
+        "accuracy_as_primary_metric_allowed": false,
+        "precision_recall_analysis_required": true,
+        "probability_calibration_assessment_required": true,
+        "weighted_probabilities_assumed_calibrated": false,
+        "decision_threshold": null,
+        "future_threshold_selection_partition": "validation",
+        "evaluation_protocol_defined_in_task_e": true
+    },
+
+    "current_step_restrictions": {
+        "estimator_construction_allowed": true,
+        "model_training_allowed": false,
+        "model_prediction_allowed": false,
+        "model_evaluation_allowed": false,
+        "hyperparameter_tuning_allowed": false,
+        "threshold_optimization_allowed": false,
+        "probability_calibration_allowed": false,
+        "trained_model_serialization_allowed": false,
+        "original_data_modification_allowed": false,
+        "additional_models_allowed": false,
+        "xgboost_allowed": false,
+        "scania_modeling_allowed": false,
+        "image_modeling_allowed": false,
+        "rag_implementation_allowed": false
+    },
+
+    "limitations": [
+        "AI4I 2020 is a published synthetic benchmark.",
+        "The selected hyperparameters are initial fixed baseline choices.",
+        "No model has been trained or evaluated at this step.",
+        "No predictive performance ranking has been established.",
+        "Class weights compensate for statistical imbalance and do not represent measured industrial failure costs.",
+        "Weighted model probabilities are not assumed to be calibrated.",
+        "Random Forest internal bootstrap is not external class rebalancing.",
+        "Existing train-wide standardization prevents naive fold-level cross-validation.",
+        "No future-time failure prediction or industrial generalization has been established.",
+        "Formal training authorization is required before Step 5.1.2."
+    ]
+}

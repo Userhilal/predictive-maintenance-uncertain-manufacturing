@@ -1,0 +1,45 @@
+
+{
+  "policy_version": "1.0.0",
+  "dataset": "AI4I 2020",
+  "feature_contract_version": "1.0.0",
+  "current_project_step": "5.1.1",
+  "development_partitions": [
+    "train",
+    "validation"
+  ],
+  "protected_partition": "test",
+  "test_access": {
+    "development_loading_allowed": false,
+    "read_only_integrity_audit_allowed": true,
+    "training_allowed": false,
+    "cross_validation_allowed": false,
+    "hyperparameter_tuning_allowed": false,
+    "model_selection_allowed": false,
+    "feature_selection_allowed": false,
+    "threshold_selection_allowed": false,
+    "probability_calibration_allowed": false,
+    "final_evaluation_allowed_at_current_step": false
+  },
+  "current_step_restrictions": {
+    "model_training_allowed": false,
+    "model_evaluation_allowed": false,
+    "new_preprocessing_allowed": false,
+    "resampling_allowed": false,
+    "partition_regeneration_allowed": false,
+    "original_data_modification_allowed": false
+  },
+  "future_test_release_requirements": [
+    "Explicit approval of the final evaluation phase",
+    "Completed model selection",
+    "Frozen model configuration",
+    "Frozen feature contract",
+    "Frozen decision threshold",
+    "Completed probability calibration if applicable",
+    "Frozen evaluation protocol",
+    "Verified original source fingerprints"
+  ],
+  "enforcement_scope": "Application-level development access control",
+  "physical_file_isolation": false,
+  "original_test_file_must_remain_unchanged": true
+}

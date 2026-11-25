@@ -1,0 +1,111 @@
+
+{
+  "strategy_version": "1.0.0",
+  "feature_contract_version": "1.0.0",
+  "dataset": "AI4I 2020",
+  "project_step": "5.1.1",
+  "task": "C - Class Imbalance Strategy",
+
+  "classification_task": {
+    "type": "binary_classification",
+    "target_column": "original_machine_failure_target_not_a_feature",
+    "negative_class": 0,
+    "positive_class": 1,
+    "negative_class_meaning": "Normal operation",
+    "positive_class_meaning": "Machine failure"
+  },
+
+  "class_weighting": {
+    "enabled": true,
+    "method": "balanced",
+    "formula": "N / (K * N_c)",
+    "source_partition": "train",
+    "compute_from_verified_training_labels": true,
+    "validation_labels_allowed_for_weight_computation": false,
+    "test_labels_allowed_for_weight_computation": false,
+    "hardcoded_weights_allowed": false,
+    "industrial_cost_ratio_estimated": false
+  },
+
+  "expected_training_distribution": {
+    "total": 6981,
+    "normal": 6750,
+    "failure": 231
+  },
+
+  "model_strategy": {
+    "dummy_classifier": {
+      "class_weighting_enabled": false,
+      "strategy": "prior",
+      "purpose": "Unweighted reference baseline"
+    },
+
+    "logistic_regression": {
+      "class_weighting_enabled": true,
+      "weight_source": "verified_train_class_weights",
+      "additional_sample_weight_allowed": false
+    },
+
+    "random_forest": {
+      "class_weighting_enabled": true,
+      "weight_source": "verified_train_class_weights",
+      "additional_sample_weight_allowed": false,
+      "balanced_subsample_enabled": false
+    }
+  },
+
+  "resampling_policy": {
+    "random_oversampling_allowed": false,
+    "random_undersampling_allowed": false,
+    "smote_allowed": false,
+    "adasyn_allowed": false,
+    "synthetic_observations_allowed": false,
+    "observation_duplication_allowed": false,
+    "observation_removal_allowed": false,
+    "original_class_distribution_must_be_preserved": true
+  },
+
+  "validation_policy": {
+    "existing_train_validation_test_partitions_preserved": true,
+    "new_partition_generation_allowed": false,
+    "new_preprocessing_allowed": false,
+    "stratified_cross_validation_enabled": false,
+    "cross_validation_reason": "Existing numeric features were standardized using the complete original training partition. Naive cross-validation would introduce fold-level preprocessing leakage.",
+    "future_model_selection_partition": "validation",
+    "future_threshold_selection_partition": "validation",
+    "test_used_for_model_selection": false,
+    "test_used_for_threshold_selection": false
+  },
+
+  "evaluation_guidance": {
+    "primary_metric": "average_precision",
+    "positive_class": 1,
+    "accuracy_as_primary_metric_allowed": false,
+    "precision_recall_analysis_required": true,
+    "recall_required": true,
+    "precision_required": true,
+    "confusion_matrix_required": true,
+    "probability_calibration_assessment_required": true,
+    "weighted_probabilities_assumed_calibrated": false,
+    "evaluation_protocol_defined_in_task_e": true
+  },
+
+  "current_step_restrictions": {
+    "model_training_allowed": false,
+    "model_prediction_allowed": false,
+    "model_evaluation_allowed": false,
+    "hyperparameter_tuning_allowed": false,
+    "threshold_optimization_allowed": false,
+    "probability_calibration_allowed": false,
+    "original_data_modification_allowed": false
+  },
+
+  "limitations": [
+    "AI4I 2020 is a published synthetic benchmark.",
+    "Class weighting compensates for statistical class imbalance.",
+    "Class weights do not represent measured industrial failure costs.",
+    "Class weighting does not guarantee improved predictive performance.",
+    "Class weighting may affect probability calibration.",
+    "No future-time failure prediction or industrial generalization is established."
+  ]
+}
